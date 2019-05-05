@@ -8,12 +8,13 @@
 import Foundation
 import Vapor
 import FluentPostgreSQL
+import Authentication
 
 final class User: PostgreSQLModel {
     var id: Int?
     var username: String
     var password: String
-    var eMail: String
+    var eMail: String?
     var name: String?
     var surName: String?
     var jobName: String?
@@ -25,10 +26,10 @@ final class User: PostgreSQLModel {
     var phone: String?
     var acceptedTermsAndConditions: Bool?
     var tutorial: String?
-    var registrationDate: String?
+    var registrationDate: Date?
     var lastOnlineDate: String?
     
-    init(username: String, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: String, lastOnlineDate: String) {
+    init(username: String, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, lastOnlineDate: String) {
         self.username = username
         self.password = password
         self.eMail = eMail
@@ -46,9 +47,69 @@ final class User: PostgreSQLModel {
         self.registrationDate = registrationDate
         self.lastOnlineDate = lastOnlineDate
     }
+    
+    final class Public: PostgreSQLModel {
+        var id: Int?
+        var username: String
+        
+        init(id: Int?, username: String) {
+            self.id = id
+            self.username = username
+        }
+    }
 }
 
-extension User: Migration { }
+extension User: Migration {
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        return Database.create(self, on: conn) { builder in
+            try addProperties(to: builder)
+            builder.unique(on: \.username)
+            
+        }
+    }
+}
 extension User: Content { }
+extension User.Public: Content { }
 extension User: Parameter { }
 
+extension User {
+    func toPublic() -> User.Public {
+        return User.Public(id: id, username: username)
+    }
+}
+
+extension Future where T: User {
+    func toPublic() -> Future<User.Public> {
+        return map(to: User.Public.self) { (user) in
+            return user.toPublic()
+        }
+    }
+}
+
+extension User: BasicAuthenticatable {
+    static var usernameKey: UsernameKey {
+        return \User.username
+    }
+    
+    static var passwordKey: PasswordKey {
+        return \User.password
+    }
+}
+
+struct AdminUser: Migration {
+    typealias Database = PostgreSQLDatabase
+    
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        let password = try? BCrypt.hash("password")
+        guard let hashedPassword = password else {
+            fatalError("Failed to create admin user")
+        }
+        
+        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), lastOnlineDate: "") 
+        return user.save(on: conn).transform(to: ())
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
+    }
+}
