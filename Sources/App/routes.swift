@@ -4,4 +4,7 @@ import Vapor
 public func routes(_ router: Router) throws {
     let usersController = UserController()
     try router.register(collection: usersController)
+    
+    let orderController = OrderController()
+    try router.register(collection: orderController)
 }

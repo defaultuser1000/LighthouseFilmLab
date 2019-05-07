@@ -27,9 +27,10 @@ final class User: PostgreSQLModel {
     var acceptedTermsAndConditions: Bool?
     var tutorial: String?
     var registrationDate: Date?
-    var lastOnlineDate: String?
+    var modificationDate: Date?
+    var lastOnlineDate: Date?
     
-    init(username: String, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, lastOnlineDate: String) {
+    init(username: String, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, modificationDate: Date, lastOnlineDate: Date) {
         self.username = username
         self.password = password
         self.eMail = eMail
@@ -45,6 +46,7 @@ final class User: PostgreSQLModel {
         self.acceptedTermsAndConditions = acceptedTermsAndConditions
         self.tutorial = tutorial
         self.registrationDate = registrationDate
+        self.modificationDate = modificationDate
         self.lastOnlineDate = lastOnlineDate
     }
     
@@ -110,7 +112,7 @@ struct AdminUser: Migration {
             fatalError("Failed to create admin user")
         }
         
-        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), lastOnlineDate: "")
+        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), modificationDate: Date(), lastOnlineDate: Date())
         return user.save(on: conn).transform(to: ())
     }
     

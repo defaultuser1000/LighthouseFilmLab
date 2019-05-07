@@ -8,7 +8,7 @@ import Foundation
 import Vapor
 import Crypto
 
-final class OrderController {
+final class OrderController: RouteCollection {
     func boot(router: Router) throws {
         let ordersRoute = router.grouped("api", "orders")
         
@@ -20,6 +20,7 @@ final class OrderController {
         tokenProtected.post(use: createHandler)
         tokenProtected.put(Order.parameter, use: updateHandler)
         tokenProtected.delete(Order.parameter, use: deleteHandler)
+        tokenProtected.get(Order.parameter, "user", use: getUserHandler)
     }
     
     func getAllHandler(_ req: Request) throws -> Future<[Order]> {
@@ -32,6 +33,9 @@ final class OrderController {
     
     func createHandler(_ req: Request) throws -> Future<Order> {
         return try req.content.decode(Order.self).flatMap { order in
+            order.creationDate = Date()
+            order.modificationDate = Date()
+            
             return order.save(on: req)
         }
     }
@@ -54,6 +58,12 @@ final class OrderController {
     func deleteHandler(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Order.self).flatMap { order in
             return order.delete(on: req).transform(to: HTTPStatus.noContent)
+        }
+    }
+    
+    func getUserHandler(_ req: Request) throws -> Future<User.Public> {
+        return try req.parameters.next(Order.self).flatMap(to: User.Public.self) { order in
+            return order.user.get(on: req).toPublic()
         }
     }
 }

@@ -22,11 +22,11 @@ final class UserController: RouteCollection {
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
         let tokenProtected = usersRoute.grouped(tokenAuthMiddleware, guardAuthMiddleware)
         tokenProtected.get(use: getAllUsers)
-        tokenProtected.get(User.parameter, use: getOneUser)
+        tokenProtected.get("user", User.parameter, use: getOneUser)
         tokenProtected.put(User.parameter, use: updateUser)
         
         tokenProtected.delete(User.parameter, use: deleteUser)
-        tokenProtected.get(User.parameter, use: getUserOrders)
+        tokenProtected.get(User.parameter, "orders", use: getUserOrders)
         tokenProtected.get("logout", use: logout)
     }
     
@@ -63,8 +63,7 @@ final class UserController: RouteCollection {
             user.phone = updatedUser.phone
             user.acceptedTermsAndConditions = updatedUser.acceptedTermsAndConditions
             user.tutorial = updatedUser.tutorial
-            user.registrationDate = updatedUser.registrationDate
-            user.lastOnlineDate = updatedUser.lastOnlineDate
+            user.modificationDate = updatedUser.modificationDate
             
             return user.save(on: req).toPublic()
         }
