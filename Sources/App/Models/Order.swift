@@ -12,7 +12,7 @@ import FluentPostgreSQL
 final class Order: PostgreSQLModel {
     var id: Int?
     var orderNumber: Int
-    var userId: Int
+    var userID: User.ID
     var scanner: String
     var skinTones: String
     var contrast: String
@@ -23,9 +23,9 @@ final class Order: PostgreSQLModel {
     var creationDate: String
     var modificationDate: String
     
-    init(orderNumber: Int, password: String, userId: Int, scanner: String, skinTones: String, contrast: String, bwContrast: String, expressScan: Bool, special: String, status: String, creationDate: String, modificationDate: String) {
+    init(orderNumber: Int, password: String, userID: User.ID, scanner: String, skinTones: String, contrast: String, bwContrast: String, expressScan: Bool, special: String, status: String, creationDate: String, modificationDate: String) {
         self.orderNumber = orderNumber
-        self.userId = userId
+        self.userID = userID
         self.scanner = scanner
         self.skinTones = skinTones
         self.contrast = contrast
@@ -38,11 +38,18 @@ final class Order: PostgreSQLModel {
     }
 }
 
-extension Order: Migration { }
+extension Order: Migration {
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        return Database.create(self, on: conn) { builder in
+            try addProperties(to: builder)
+            builder.reference(from: \.userID, to: \User.id)
+        }
+    }
+}
 extension Order: Content { }
 extension Order: Parameter { }
 extension Order {
     var user: Parent<Order, User> {
-        return parent(\.userId)
+        return parent(\.userID)
     }
 }

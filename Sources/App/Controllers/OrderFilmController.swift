@@ -1,13 +1,14 @@
 //
-//  UserController.swift
+//  OrderFilmController.swift
 //  App
 //
-//  Created by Андрей Закржевский on 04/05/2019.
+//  Created by Андрей Закржевский on 07/05/2019.
 //
+
 import Foundation
 import Vapor
 
-final class OrderController {
+final class OrderFilmController {
     func index(_ req: Request) throws -> Future<[Order]> {
         return Order.query(on: req).all()
     }
@@ -18,9 +19,9 @@ final class OrderController {
         }
     }
     
-    func getUser(_ req: Request) throws -> Future<User.Public> {
-        return try req.parameters.next(Order.self).flatMap(to: User.Public.self) { order in
-            return order.user.get(on: req).toPublic()
+    func getOrder(_ req: Request) throws -> Future<Order> {
+        return try req.parameters.next(OrderFilm.self).flatMap(to: Order.self) { film in
+            return film.order.get(on: req)
         }
     }
 }

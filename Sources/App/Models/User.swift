@@ -64,7 +64,8 @@ extension User: Migration {
         return Database.create(self, on: conn) { builder in
             try addProperties(to: builder)
             builder.unique(on: \.username)
-            
+            builder.unique(on: \.eMail)
+            builder.unique(on: \.phone)
         }
     }
 }
@@ -75,6 +76,10 @@ extension User: Parameter { }
 extension User {
     func toPublic() -> User.Public {
         return User.Public(id: id, username: username)
+    }
+    
+    var orders: Children<User, Order> {
+        return children(\.userID)
     }
 }
 
@@ -105,11 +110,15 @@ struct AdminUser: Migration {
             fatalError("Failed to create admin user")
         }
         
-        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), lastOnlineDate: "") 
+        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), lastOnlineDate: "")
         return user.save(on: conn).transform(to: ())
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
         return .done(on: conn)
     }
+}
+
+extension User: TokenAuthenticatable {
+    typealias TokenType = Token
 }

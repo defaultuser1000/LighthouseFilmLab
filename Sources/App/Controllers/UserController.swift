@@ -11,33 +11,29 @@ import Crypto
 final class UserController: RouteCollection {
     func boot(router: Router) throws {
         let usersRoute = router.grouped("api", "users")
+        usersRoute.post("register", use: register)
+        
         let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
         let guardAuthMiddleware = User.guardAuthMiddleware()
+        
         let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
-        basicProtected.post(use: create)
         basicProtected.post("login", use: login)
-        usersRoute.get(use: getAllUsers)
-        usersRoute.get(User.parameter, use: getOneUser)
-        usersRoute.put(User.parameter, use: updateUser)
-        usersRoute.delete(User.parameter, use: deleteUser)
+        
+        let tokenAuthMiddleware = User.tokenAuthMiddleware()
+        let tokenProtected = usersRoute.grouped(tokenAuthMiddleware, guardAuthMiddleware)
+        tokenProtected.get(use: getAllUsers)
+        tokenProtected.get(User.parameter, use: getOneUser)
+        tokenProtected.put(User.parameter, use: updateUser)
+        
+        tokenProtected.delete(User.parameter, use: deleteUser)
+        tokenProtected.get(User.parameter, use: getUserOrders)
+        tokenProtected.get("logout", use: logout)
     }
     
-    func create(_ req: Request) throws -> Future<User.Public> {
+    func register(_ req: Request) throws -> Future<User.Public> {
         return try req.content.decode(User.self).flatMap { user in
             user.password = try BCrypt.hash(user.password)
-//            user.registrationDate = try
-            let date = Date()
-            if #available(OSX 10.12, *) {
-                let formatter = ISO8601DateFormatter()
-                if #available(OSX 10.13, *) {
-                    formatter.formatOptions.insert(.withFractionalSeconds)
-                    user.registrationDate = formatter.date(from: formatter.string(from: date))
-                } else {
-                    // Fallback on earlier versions
-                }
-            } else {
-                // Fallback on earlier versions
-            }
+            user.registrationDate = Date()
             
             return user.save(on: req).toPublic()
         }
@@ -84,5 +80,16 @@ final class UserController: RouteCollection {
         let user = try req.requireAuthenticated(User.self)
         let token = try Token.generate(for: user)
         return token.save(on: req)
+    }
+    
+    func logout(_ req: Request) throws -> Future<HTTPResponse> {
+        let user = try req.requireAuthenticated(User.self)
+        return try Token.query(on: req).filter(\Token.userId, .equal, user.requireID()).delete().transform(to: HTTPResponse(status: .ok))
+    }
+    
+    func getUserOrders(_ req: Request) throws -> Future<[Order]> {
+        return try req.parameters.next(User.self).flatMap(to: [Order].self) { user in
+            return try user.orders.query(on: req).all()
+        }
     }
 }

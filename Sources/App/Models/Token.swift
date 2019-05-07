@@ -10,7 +10,7 @@ import Vapor
 import FluentPostgreSQL
 import Authentication
 
-final class Token: PostgreSQLModel {
+final class Token: Codable {
     var id: Int?
     var token: String
     var userId: User.ID
@@ -21,6 +21,7 @@ final class Token: PostgreSQLModel {
     }
 }
 
+extension Token: PostgreSQLModel { }
 extension Token: Migration { }
 extension Token: Content { }
 
@@ -28,6 +29,18 @@ extension Token {
     static func generate(for user: User) throws -> Token {
         let random = try CryptoRandom().generateData(count: 16)
         return try Token(token: random.base64EncodedString(), userId: user.requireID())
+    }
+}
+
+extension Token: Authentication.Token {
+    typealias UserType = User
+    
+    static var userIDKey: UserIDKey {
+        return \Token.userId
+    }
+    
+    static var tokenKey: TokenKey {
+        return \Token.token
     }
 }
 
