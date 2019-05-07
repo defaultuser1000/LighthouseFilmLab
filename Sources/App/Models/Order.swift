@@ -20,10 +20,10 @@ final class Order: PostgreSQLModel {
     var expressScan: Bool
     var special: String
     var status: String
-    var creationDate: String
-    var modificationDate: String
+    var creationDate: Date
+    var modificationDate: Date
     
-    init(orderNumber: Int, password: String, userID: User.ID, scanner: String, skinTones: String, contrast: String, bwContrast: String, expressScan: Bool, special: String, status: String, creationDate: String, modificationDate: String) {
+    init(orderNumber: Int, password: String, userID: User.ID, scanner: String, skinTones: String, contrast: String, bwContrast: String, expressScan: Bool, special: String, status: String, creationDate: Date, modificationDate: Date) {
         self.orderNumber = orderNumber
         self.userID = userID
         self.scanner = scanner

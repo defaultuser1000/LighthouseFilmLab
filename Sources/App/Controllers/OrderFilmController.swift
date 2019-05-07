@@ -25,3 +25,5 @@ final class OrderFilmController {
         }
     }
 }
+
+extension OrderController { }
