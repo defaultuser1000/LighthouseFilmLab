@@ -19,5 +19,23 @@
         </div>
       </div>
     </div>
+    <div class="user_table" style="display: table; width: auto; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;">
+            #for(user in users) {
+               <div class="user_row" style="display: table-row; width: auto; clear: both;">
+                   <div class="user-name_cell" style="float: left; display: table-column; width: 300px; background-color: #ccc;">#(user.name) #(user.surName) (#(user.username))</div>
+                   <div class="user-button_cell" style="float: left; display: table-column; width: 50px; background-color: #ccc;"><button>Delete</button></div>
+               </div>
+            }
+        </div>
+        <br>
+        <h2>Orders</h2>
+        <div class="order_table" style="display: table; width: auto; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;">
+            #for(order in orders) {
+               <div class="order_row" style="display: table-row; width: auto; clear: both;">
+                   <div class="order-info_cell" style="float: left; display: table-column; width: 300px; background-color: #ccc;">Order #(order.orderNumber)</div>
+                   <div class="order-detail_cell" style="float: left; display: table-column; width: 50px; background-color: #ccc;"><button>Detail</button></div>
+               </div>
+            }
+        </div>
   </body>
 </html>

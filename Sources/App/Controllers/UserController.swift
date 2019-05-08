@@ -13,10 +13,10 @@ final class UserController: RouteCollection {
         let usersRoute = router.grouped("api", "users")
         usersRoute.post("register", use: register)
         
-        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
+//        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
         let guardAuthMiddleware = User.guardAuthMiddleware()
         
-        let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
+//        let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
         //basicProtected.post("login", use: login)
         
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
@@ -72,8 +72,22 @@ final class UserController: RouteCollection {
     }
     
     func renderProfile(_ req: Request) throws -> Future<View> {
+        struct PageData: Content {
+            var users: [User]
+            var orders: [Order]
+            var user: User
+        }
+        
+        let users = User.query(on: req).all()
+        let orders = Order.query(on: req).all()
+        
         let user = try req.requireAuthenticated(User.self)
-        return try req.view().render("profile", ["user": user])
+        
+        return flatMap(to: View.self, users, orders) { users, orders in
+            let context = PageData(users: users, orders: orders, user: user)
+            
+            return try req.view().render("profile", context)
+        }
     }
     
     func logout(_ req: Request) throws -> Future<Response> {
