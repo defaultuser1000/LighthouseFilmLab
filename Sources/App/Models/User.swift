@@ -12,9 +12,8 @@ import Authentication
 
 final class User: PostgreSQLModel {
     var id: Int?
-    var username: String
     var password: String
-    var eMail: String?
+    var eMail: String
     var name: String?
     var surName: String?
     var jobName: String?
@@ -30,8 +29,7 @@ final class User: PostgreSQLModel {
     var modificationDate: Date?
     var lastOnlineDate: Date?
     
-    init(username: String, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, modificationDate: Date, lastOnlineDate: Date) {
-        self.username = username
+    init(password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, modificationDate: Date, lastOnlineDate: Date) {
         self.password = password
         self.eMail = eMail
         self.name = name
@@ -52,11 +50,11 @@ final class User: PostgreSQLModel {
     
     final class Public: PostgreSQLModel {
         var id: Int?
-        var username: String
+        var name: String
         
-        init(id: Int?, username: String) {
+        init(id: Int?, name: String) {
             self.id = id
-            self.username = username
+            self.name = name
         }
     }
 }
@@ -65,7 +63,6 @@ extension User: Migration {
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: conn) { builder in
             try addProperties(to: builder)
-            builder.unique(on: \.username)
             builder.unique(on: \.eMail)
             builder.unique(on: \.phone)
         }
@@ -77,7 +74,7 @@ extension User: Parameter { }
 
 extension User {
     func toPublic() -> User.Public {
-        return User.Public(id: id, username: username)
+        return User.Public(id: id, name: name!)
     }
     
     var orders: Children<User, Order> {
@@ -94,14 +91,25 @@ extension Future where T: User {
 }
 
 extension User: BasicAuthenticatable {
-    static var usernameKey: UsernameKey {
-        return \User.username
+    static var usernameKey: WritableKeyPath<User, String> {
+        return \User.eMail
     }
     
     static var passwordKey: PasswordKey {
         return \User.password
     }
 }
+
+extension User: PasswordAuthenticatable {
+    static var usernameKeyP: WritableKeyPath<User, String> {
+        return \User.eMail
+    }
+    static var passwordKeyP: WritableKeyPath<User, String> {
+        return \User.password
+    }
+}
+
+extension User: SessionAuthenticatable { }
 
 struct AdminUser: Migration {
     typealias Database = PostgreSQLDatabase
@@ -112,7 +120,7 @@ struct AdminUser: Migration {
             fatalError("Failed to create admin user")
         }
         
-        let user = User(username: "admin", password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), modificationDate: Date(), lastOnlineDate: Date())
+        let user = User(password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), modificationDate: Date(), lastOnlineDate: Date())
         return user.save(on: conn).transform(to: ())
     }
     

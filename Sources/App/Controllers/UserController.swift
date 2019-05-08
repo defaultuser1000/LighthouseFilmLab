@@ -17,7 +17,7 @@ final class UserController: RouteCollection {
         let guardAuthMiddleware = User.guardAuthMiddleware()
         
         let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
-        basicProtected.post("login", use: login)
+        //basicProtected.post("login", use: login)
         
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
         let tokenProtected = usersRoute.grouped(tokenAuthMiddleware, guardAuthMiddleware)
@@ -30,14 +30,65 @@ final class UserController: RouteCollection {
         tokenProtected.get("logout", use: logout)
     }
     
-    func register(_ req: Request) throws -> Future<User.Public> {
+    func renderRegister(_ req: Request) throws -> Future<View> {
+        return try req.view().render("register")
+    }
+    
+    func register(_ req: Request) throws -> Future<Response> {
         return try req.content.decode(User.self).flatMap { user in
-            user.password = try BCrypt.hash(user.password)
-            user.registrationDate = Date()
-            
-            return user.save(on: req).toPublic()
+            return User.query(on: req).filter(\User.eMail, .equal, user.eMail).first().flatMap { result in
+                if let _ = result {
+                    return Future.map(on: req) {
+                        return req.redirect(to: "/register")
+                    }
+                }
+                user.password = try BCryptDigest().hash(user.password)
+                return user.save(on: req).map { _ in
+                    return req.redirect(to: "/login")
+                }
+            }
         }
     }
+    
+    func renderLogin(_ req: Request) throws -> Future<View> {
+        return try req.view().render("login")
+    }
+    
+    func login(_ req: Request) throws -> Future<Response> {
+        return try req.content.decode(User.self).flatMap { user in
+            return User.authenticate(
+                username: user.eMail,
+                password: user.password,
+                using: BCryptDigest(),
+                on: req
+                ).map { user in
+                    guard let user = user else {
+                        return req.redirect(to: "/login")
+                    }
+                    try req.authenticateSession(user)
+                    return req.redirect(to: "/profile")
+            }
+        }
+    }
+    
+    func renderProfile(_ req: Request) throws -> Future<View> {
+        let user = try req.requireAuthenticated(User.self)
+        return try req.view().render("profile", ["user": user])
+    }
+    
+    func logout(_ req: Request) throws -> Future<Response> {
+        try req.unauthenticateSession(User.self)
+        return Future.map(on: req) { return req.redirect(to: "/login") }
+    }
+    
+//    func register(_ req: Request) throws -> Future<User.Public> {
+//        return try req.content.decode(User.self).flatMap { user in
+//            user.password = try BCrypt.hash(user.password)
+//            user.registrationDate = Date()
+//            
+//            return user.save(on: req).toPublic()
+//        }
+//    }
     
     func getAllUsers(_ req: Request) throws -> Future<[User.Public]> {
         return User.query(on: req).decode(User.Public.self).all()
@@ -49,7 +100,6 @@ final class UserController: RouteCollection {
     
     func updateUser(_ req: Request) throws -> Future<User.Public> {
         return try flatMap(to: User.Public.self, req.parameters.next(User.self), req.content.decode(User.self)) { (user, updatedUser) in
-            user.username = updatedUser.username
             user.password = try BCrypt.hash(updatedUser.password)
             user.eMail = updatedUser.eMail
             user.name = updatedUser.name
@@ -75,16 +125,16 @@ final class UserController: RouteCollection {
         }
     }
     
-    func login(_ req: Request) throws -> Future<Token> {
-        let user = try req.requireAuthenticated(User.self)
-        let token = try Token.generate(for: user)
-        return token.save(on: req)
-    }
+//    func login(_ req: Request) throws -> Future<Token> {
+//        let user = try req.requireAuthenticated(User.self)
+//        let token = try Token.generate(for: user)
+//        return token.save(on: req)
+//    }
     
-    func logout(_ req: Request) throws -> Future<HTTPResponse> {
-        let user = try req.requireAuthenticated(User.self)
-        return try Token.query(on: req).filter(\Token.userId, .equal, user.requireID()).delete().transform(to: HTTPResponse(status: .ok))
-    }
+//    func logout(_ req: Request) throws -> Future<HTTPResponse> {
+//        let user = try req.requireAuthenticated(User.self)
+//        return try Token.query(on: req).filter(\Token.userId, .equal, user.requireID()).delete().transform(to: HTTPResponse(status: .ok))
+//    }
     
     func getUserOrders(_ req: Request) throws -> Future<[Order]> {
         return try req.parameters.next(User.self).flatMap(to: [Order].self) { user in

@@ -17,10 +17,16 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(router, as: Router.self)
 
     // Register middleware
-    var middlewares = MiddlewareConfig() // Create _empty_ middleware config
-    // middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
-    middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
+//    var middlewares = MiddlewareConfig() // Create _empty_ middleware config
+//    // middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
+//    middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
+//    services.register(middlewares)
+    
+    try services.register(AuthenticationProvider())
+    var middlewares = MiddlewareConfig.default()
+    middlewares.use(SessionsMiddleware.self)
     services.register(middlewares)
+    config.prefer(MemoryKeyedCache.self, for: KeyedCache.self)
     
 //    let config = PostgreSQLDatabaseConfig(hostname: "localhost", port: 5432, username: "azakrzhevskiy", database: "lighthouse", password: nil, transport: .cleartext)
     let config = PostgreSQLDatabaseConfig(url: "postgres://jksospvxgfvmqy:1ab1b512ef684bd976bd29b6d0a49daac97b30c6bb89775d92e4a503e802e58e@ec2-54-246-92-116.eu-west-1.compute.amazonaws.com:5432/dak5od9bde62sg")
