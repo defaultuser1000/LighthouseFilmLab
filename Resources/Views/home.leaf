@@ -64,24 +64,16 @@
             padding: .6rem;
             -webkit-overflow-scrolling: touch;
             -ms-overflow-style: scrollbar;
+            display: table;
+            flex: 1;
+            transition: margin-left .5s;
+            padding: 20px;
+            padding-left: 250px;
         }
 
         /*Entirely optional – just wanted to remove the scrollbar on WebKit browsers as I find them ugly*/
         .Left::-webkit-scrollbar {
             display: none;
-        }
-
-        /*  Left and Right are set sizes while the Middle is set to flex one so it occupies all remaining space. This could be set as a width too if prefereable, perhaps using calc.*/
-        .Left {
-            width: 20rem;
-            background-color: #F0F0F0;
-        }
-
-        .Middle {
-            flex: 1;
-            transition: margin-left .5s;
-            padding: 20px;
-            padding-left: 250px;
         }
 
         /* The navigation menu links */
@@ -147,6 +139,13 @@
         .header-name {
             position: absolute;
             left: 150px;
+            width: 750px;
+        }
+
+        div#child {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
         }
     </style>
     <script>
@@ -165,19 +164,13 @@
 </head>
 <body>
 <div class="Top">
-    <div>
-        <div class="header-left">
-            <div class="header-logo-element">
-                <a href="/home">
-                    <img alt="" class="logo-img" src="images/logo.png"/>
-                </a>
-            </div>
-            <p class="header-name">LFL Admin Console</p>
-        </div>
-        <div class="header-right">
-            <div><a href="/logout" class="btn btn-block btn-danger" style="width: 100px;">Logout</a></div>
-        </div>
+    <div class="header-logo-element">
+        <a href="/home">
+            <img alt="" class="logo-img" src="images/logo.png"/>
+        </a>
+        <p class="header-name">LFL Admin Console</p>
     </div>
+    <a href="/logout" class="btn btn-block btn-danger" style="width: 100px;">Logout</a>
 </div>
 <div class="Container">
     <div id="mySidenav" class="sidenav">
@@ -193,7 +186,7 @@
         #if(main) {
             #get(main)
         } else {
-            <div>Choose category!</div>
+            <div id="child">Choose category!</div>
         }
     </div>
 </div>
