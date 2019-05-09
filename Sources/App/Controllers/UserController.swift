@@ -13,11 +13,11 @@ final class UserController: RouteCollection {
         let usersRoute = router.grouped("api", "users")
         usersRoute.post("register", use: register)
         
-//        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
+        let basicAuthMiddleware = User.basicAuthMiddleware(using: BCryptDigest())
         let guardAuthMiddleware = User.guardAuthMiddleware()
         
-//        let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
-        //basicProtected.post("login", use: login)
+        let basicProtected = usersRoute.grouped(basicAuthMiddleware, guardAuthMiddleware)
+        basicProtected.post("login", use: login)
         
         let tokenAuthMiddleware = User.tokenAuthMiddleware()
         let tokenProtected = usersRoute.grouped(tokenAuthMiddleware, guardAuthMiddleware)
@@ -54,7 +54,23 @@ final class UserController: RouteCollection {
         return try req.view().render("login")
     }
     
-    func login(_ req: Request) throws -> Future<Response> {
+    func renderHome(_ req: Request) throws -> Future<View> {
+        return try req.view().render("home")
+    }
+    
+    func renderOrders(_ req: Request) throws -> Future<View> {
+        return try req.view().render("orders")
+    }
+    
+    func renderUsers(_ req: Request) throws -> Future<View> {
+        return try req.view().render("users")
+    }
+    
+    func renderSettings(_ req: Request) throws -> Future<View> {
+        return try req.view().render("settings")
+    }
+    
+    func loginWeb(_ req: Request) throws -> Future<Response> {
         return try req.content.decode(User.self).flatMap { user in
             return User.authenticate(
                 username: user.eMail,
@@ -66,7 +82,7 @@ final class UserController: RouteCollection {
                         return req.redirect(to: "/login")
                     }
                     try req.authenticateSession(user)
-                    return req.redirect(to: "/profile")
+                    return req.redirect(to: "/home")
             }
         }
     }
@@ -139,11 +155,11 @@ final class UserController: RouteCollection {
         }
     }
     
-//    func login(_ req: Request) throws -> Future<Token> {
-//        let user = try req.requireAuthenticated(User.self)
-//        let token = try Token.generate(for: user)
-//        return token.save(on: req)
-//    }
+    func login(_ req: Request) throws -> Future<Token> {
+        let user = try req.requireAuthenticated(User.self)
+        let token = try Token.generate(for: user)
+        return token.save(on: req)
+    }
     
 //    func logout(_ req: Request) throws -> Future<HTTPResponse> {
 //        let user = try req.requireAuthenticated(User.self)

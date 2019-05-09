@@ -1,0 +1,2 @@
+#set("main") { Settings }
+#embed("home")

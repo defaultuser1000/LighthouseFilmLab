@@ -2,9 +2,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "HelloVapor",
+    name: "Lighthouse Film Lab",
     products: [
-        .library(name: "HelloVapor", targets: ["App"]),
+        .library(name: "Lighthouse Film Lab", targets: ["App"]),
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.

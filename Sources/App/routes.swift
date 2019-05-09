@@ -15,10 +15,13 @@ public func routes(_ router: Router) throws {
     router.get("login", use: usersController.renderLogin)
     
     let authSessionRouter = router.grouped(User.authSessionsMiddleware())
-    authSessionRouter.post("login", use: usersController.login)
+    authSessionRouter.post("login", use: usersController.loginWeb)
     
     let protectedRouter = authSessionRouter.grouped(RedirectMiddleware<User>(path: "/login"))
-    protectedRouter.get("profile", use: usersController.renderProfile)
+    protectedRouter.get("home", use: usersController.renderHome)
+    protectedRouter.get("orders", use: usersController.renderOrders)
+    protectedRouter.get("users", use: usersController.renderUsers)
+    protectedRouter.get("settings", use: usersController.renderSettings)
+    protectedRouter.get(use: usersController.renderHome)
     router.get("logout", use: usersController.logout)
-    router.get(use: usersController.renderLogin)
 }

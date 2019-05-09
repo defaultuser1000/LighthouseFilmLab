@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Web Auth</title>
+<head>
+    <title>Admin | Lighthouse Film Lab</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  </head>
-  <body class="container">
-    <br />
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+</head>
+
+<body class="container">
+<br/>
+<div class="row justify-content-center">
+    <div class="col-md-6">
         <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">Profile</h3>
-            <p>Email: #(user.eMail)</p>
-            <a href="/logout" class="btn btn-block btn-danger">
-              logout
-            </a>
-          </div>
+            <div class="card-body">
+                <h3 class="card-title">Profile</h3>
+                <p>Email: #(user.eMail)</p>
+                <a href="/logout" class="btn btn-block btn-danger">logout</a>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="user_table" style="display: table; width: auto; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;">
-            #for(user in users) {
-               <div class="user_row" style="display: table-row; width: auto; clear: both;">
-                   <div class="user-name_cell" style="float: left; display: table-column; width: 300px; background-color: #ccc;">#(user.name) #(user.surName) (#(user.username))</div>
-                   <div class="user-button_cell" style="float: left; display: table-column; width: 50px; background-color: #ccc;"><button>Delete</button></div>
-               </div>
-            }
+</div>
+<div class="row justify-content-center">
+    <h2>Users</h2>
+    <div class="user_table card"
+         style="display: table; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;"> #for(user in
+        users) {
+        <div class="user_row" style="display: table-row; width: auto; clear: both;">
+            <div class="user-name_cell" style="float: left; display: table-column; width: 80%; background-color: #ccc;">
+                #(user.name) #(user.surName) (#(user.username))
+            </div>
+            <div class="user-button_cell"
+                 style="float: left; display: table-column; width: 20%; background-color: #ccc;">
+                <button>Delete</button>
+            </div>
         </div>
-        <br>
-        <h2>Orders</h2>
-        <div class="order_table" style="display: table; width: auto; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;">
-            #for(order in orders) {
-               <div class="order_row" style="display: table-row; width: auto; clear: both;">
-                   <div class="order-info_cell" style="float: left; display: table-column; width: 300px; background-color: #ccc;">Order #(order.orderNumber)</div>
-                   <div class="order-detail_cell" style="float: left; display: table-column; width: 50px; background-color: #ccc;"><button>Detail</button></div>
-               </div>
-            }
+        }
+    </div>
+    <br>
+    <h2>Orders</h2>
+    <div class="order_table card"
+         style="display: table; background-color: #eee; border: 1px solid #666666; border-spacing: 5px;"> #for(order in
+        orders) {
+        <div class="order_row" style="display: table-row; width: auto; clear: both;">
+            <div class="order-info_cell"
+                 style="float: left; display: table-column; width: 80%; background-color: #ccc;">Order
+                #(order.orderNumber)
+            </div>
+            <div class="order-detail_cell"
+                 style="float: left; display: table-column; width: 20%; background-color: #ccc;">
+                <button>Detail</button>
+            </div>
         </div>
-  </body>
+        }
+    </div>
+</div>
+</body>
 </html>

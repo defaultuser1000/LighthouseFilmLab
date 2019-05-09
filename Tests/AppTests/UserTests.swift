@@ -12,7 +12,6 @@ import XCTest
 
 final class UserTests: XCTestCase {
     let usersName = "Test"
-    let usersUsername = "test1234"
     let usersEMail = "test@test.test"
     let usersSurName = "Test"
     let usersJobName = "Test"
@@ -44,7 +43,7 @@ final class UserTests: XCTestCase {
     }
     
     func testUserCanBeSaved() throws {
-        let user = User(username: usersUsername, password: "password", eMail: usersEMail, name: usersName, surName: usersSurName, jobName: usersJobName, zip: usersZip, country: usersCountry, state: usersState, city: usersCity, address: usersAddress, phone: usersPhone, acceptedTermsAndConditions: usersAcceptedTermsAndConditions, tutorial: usersTutorial, registrationDate: usersRegistrationDate, lastOnlineDate: usersLastOnlineDate)
+        let user = User(password: "password", eMail: usersEMail, name: usersName, surName: usersSurName, jobName: usersJobName, zip: usersZip, country: usersCountry, state: usersState, city: usersCity, address: usersAddress, phone: usersPhone, acceptedTermsAndConditions: usersAcceptedTermsAndConditions, tutorial: usersTutorial, registrationDate: usersRegistrationDate, lastOnlineDate: usersLastOnlineDate)
         let createUserResponse = try app.sendRequest(to: usersURI, method: .POST, body: user, isLoggedInRequest: true)
         let receivedUser = try createUserResponse.content.decode([User.Public].self).wait()
         
@@ -58,12 +57,11 @@ final class UserTests: XCTestCase {
     }
     
     func testSingleUserCanBeRetrieved() throws {
-        let user = try User.create(username: usersUsername, password: "password", eMail: usersEMail, name: usersName, surName: usersSurName, jobName: usersJobName, zip: usersZip, country: usersCountry, state: usersState, city: usersCity, address: usersAddress, phone: usersPhone, acceptedTermsAndConditions: usersAcceptedTermsAndConditions, tutorial: usersTutorial, registrationDate: usersRegistrationDate, lastOnlineDate: usersLastOnlineDate, on: conn)
+        let user = try User.create(password: "password", eMail: usersEMail, name: usersName, surName: usersSurName, jobName: usersJobName, zip: usersZip, country: usersCountry, state: usersState, city: usersCity, address: usersAddress, phone: usersPhone, acceptedTermsAndConditions: usersAcceptedTermsAndConditions, tutorial: usersTutorial, registrationDate: usersRegistrationDate, lastOnlineDate: usersLastOnlineDate, on: conn)
         let body: EmptyBody? = nil
         let response = try app.sendRequest(to: "\(usersURI)/\(user.id!)", method: .GET, body: body, isLoggedInRequest: true)
         let receivedUser = try response.content.decode(User.Public.self).wait()
         
-        XCTAssertEqual(receivedUser.username, usersUsername)
         XCTAssertEqual(receivedUser.id, user.id)
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/auth.git--2398059884743706638" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/console.git-631997605412601565" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/core.git--4947104370422035135" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/crypto.git-8369501161735148489" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/database-kit.git-7656122593107919579" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/fluent-postgresql.git--4619288835283298852" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/fluent-sqlite.git--6255206212774911210" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/fluent.git--3900307422983325649" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/http.git--1640693608241482037" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/leaf.git-9065439000138749654" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/multipart.git--1362018440398531259" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/postgresql.git-2213681148518959533" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/routing.git-6637113589091816204" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/service.git-2592381433120202406" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/sql.git--1026428635630324128" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/sqlite.git-6103736296717763230" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/swift-nio-ssl-support.git-5620769264121060512" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/swift-nio-ssl.git--924864600487016666" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/swift-nio-zlib-support.git--5629499011350969036" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/swift-nio.git-1196102814476454222" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/template-kit.git--3260990921912241023" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/url-encoded-form.git-4473360387629829075" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/validation.git-2832914109364099019" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/vapor.git-123716615748469362" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/websocket.git-3581545304950461979" vcs="Git" />
+  </component>
+</project>
