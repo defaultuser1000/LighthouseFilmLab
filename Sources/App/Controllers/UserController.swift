@@ -118,6 +118,10 @@ final class UserController: RouteCollection {
         }
     }
     
+    func renderAddNewUser(_ req: Request) throws -> Future<View> {
+        return try req.view().render("add_new_user")
+    }
+    
     func logout(_ req: Request) throws -> Future<Response> {
         try req.unauthenticateSession(User.self)
         return Future.map(on: req) { return req.redirect(to: "/login") }
@@ -129,6 +133,17 @@ final class UserController: RouteCollection {
             user.registrationDate = Date()
             
             return user.save(on: req).toPublic()
+        }
+    }
+    
+    func createNewUser(_ req: Request) throws -> Future<Response> {
+        return try req.content.decode(User.self).flatMap { user in
+            user.password = try BCrypt.hash(user.password)
+            user.registrationDate = Date()
+            
+            return user.save(on: req).map { _ in
+                return req.redirect(to: "/users")
+            }
         }
     }
     
