@@ -23,5 +23,7 @@ public func routes(_ router: Router) throws {
     protectedRouter.get("users", use: usersController.renderUsers)
     protectedRouter.get("settings", use: usersController.renderSettings)
     protectedRouter.get(use: usersController.renderHome)
+    protectedRouter.get("orders", "add", use: usersController.renderAddNewOrder)
+    protectedRouter.post("orders", "add", use: orderController.createHandler)
     router.get("logout", use: usersController.logout)
 }

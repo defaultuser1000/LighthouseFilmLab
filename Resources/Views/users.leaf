@@ -1,2 +1,15 @@
-#set("main") { Users }
+#set("main") { <h2>Users</h2>
+<div class="users_container">#if(users) {
+<div style="margin-right: 50%; margin-bottom: 25px;">
+    #for(user in users) {
+        #if(user.name != NULL) {#(user.name) } else {NULL }
+        #if(user.surName != NULL) { #(user.surName) | } else { NULL | }
+        UserID: #(user.id)
+        <div class="btn btn-outline-secondary btn-block" style="width: 150px;">More Info</div>
+    }
+</div>
+} else { There is no users yet...}
+</div>
+<a href="orders/add"><button type="button" class="btn btn-primary">Add new User</button></a>
+}
 #embed("home")

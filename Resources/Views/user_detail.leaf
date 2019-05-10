@@ -1,0 +1,12 @@
+#set("main") {
+<div class="users_container">
+    #if(users) {
+    <ul>#for(user in users) {
+        <li>#user.name #user.surName</li>
+        }
+    </ul>
+    } else { There is no users yet...}
+</div>
+        }
+
+#embed("home")

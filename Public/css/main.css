@@ -1,0 +1,154 @@
+/*I love me some border-box*/
+* {
+    box-sizing: border-box;
+    color: #555555;
+}
+
+/*This just stops me getting horizontal scrolling if anything overflows the width*/
+body {
+    overflow-x: hidden;
+}
+
+/*Just removing default browser padding/margin*/
+html,
+body {
+    padding: 0;
+    margin: 0;
+    color: #ebebeb;
+}
+
+/*Flexbox gives us the flexiness we need. The top just stays put as there is no scrolling on the body due to the page never exceeding viewport height*/
+.Top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DADADA;
+    font-size: 3rem;
+    position: relative;
+    z-index: 10;
+    height: 100px;
+}
+
+.Container {
+    display: flex;
+    overflow: hidden;
+    height: calc(100vh - 100px);
+    position: relative;
+    width: 100%;
+}
+
+/*All the scrollable sections should overflow and be whatever height they need to be. As they are flex-items (due to being inside a flex container) they could be made to stretch full height at all times if needed.
+WebKit inertia scrolling is being added here for any present/future devices that are able to make use of it.
+*/
+
+.Middle {
+    overflow: auto;
+    height: auto;
+    /*padding: .6rem;*/
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: scrollbar;
+    flex: 1;
+    transition: margin-left .5s;
+    padding: 20px 50px 20px 300px;
+    color: #818181;
+}
+
+/*Entirely optional – just wanted to remove the scrollbar on WebKit browsers as I find them ugly*/
+.Left::-webkit-scrollbar {
+    display: none;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    display: block;
+    padding: 20px 20px 20px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    transition: 0.3s;
+}
+
+hr {
+    display: flex;
+    margin: 0 0 0 5%;
+    width: 90%;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f0f0f0;
+    background-color: #D84F47;
+    /*font-size: calc(20px);*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-width: 450px) {
+    .sidenav {padding-top: 15px; width: 0;}
+    .sidenav a {font-size: 18px;}
+}
+
+/* The sidenav */
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #F0F0F0;
+    overflow-x: hidden;
+    margin-top: 100px;
+    /*padding-top: 15px;*/
+}
+
+.logo-img {
+    display: flex;
+    width: 65px;
+    height: 65px;
+}
+
+.header-logo-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    left: 35px;
+    background-color: #FFF;
+    border-radius: 39px;
+}
+
+.header-name {
+    position: absolute;
+    left: 100px;
+    width: 400px;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.header-logout {
+    background-color: #D84F47;
+    position: absolute;
+    right: 30px;
+    width: 100px;
+}
+
+p#version {
+    color: #b9b9b9;
+    position: absolute;
+    bottom: 100px;
+    width: 20%;
+    left: 40%;
+}

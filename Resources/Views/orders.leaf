@@ -1,2 +1,44 @@
-#set("main") { Orders }
+#set("main") { <h2>Orders</h2>
+<div class="orders_container">
+#if(orders) {
+<div style="margin-right: 50%; margin-bottom: 25px;">#for(order in orders) {
+<button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+    #if(order.orderNumber != NULL) { Order ##(order.orderNumber) } else { NULL }
+    #if(order.status == "New") {
+    <span class="badge badge-pill badge-primary">#(order.status)</span>
+    } else if(order.status == "Arrived") {
+    <span class="badge badge-pill badge-info">#(order.status)</span>
+    } else if(order.status == "Ready") {
+    <span class="badge badge-pill badge-success">#(order.status)</span>
+    } else if(order.status == "Scanned") {
+    <span class="badge badge-pill badge-warning">#(order.status)</span>
+    } else if(order.status == "Canceled") {
+    <span class="badge badge-pill badge-danger">#(order.status)</span>
+    }</button>
+}
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Order #(order.orderNumber)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+} else { There is no orders yet...}
+</div>
+<a href="orders/add"><button type="button" class="btn btn-primary">Add new Order</button></a>
+}
 #embed("home")

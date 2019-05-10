@@ -1,2 +1,21 @@
-#set("main") { Settings }
+#set("main") { <h2>Settings</h2>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="btn btn-outline-primary">Scanner1</div>
+        </div>
+        <div class="col">
+            <div class="btn btn-outline-primary">Scanner1</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="btn btn-outline-primary">Scanner1</div>
+        </div>
+        <div class="col">
+            <div class="btn btn-outline-primary">Scanner1</div>
+        </div>
+    </div>
+</div>
+        }
 #embed("home")

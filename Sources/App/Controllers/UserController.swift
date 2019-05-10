@@ -34,7 +34,7 @@ final class UserController: RouteCollection {
         return try req.view().render("register")
     }
     
-    func register(_ req: Request) throws -> Future<Response> {
+    func registerWeb(_ req: Request) throws -> Future<Response> {
         return try req.content.decode(User.self).flatMap { user in
             return User.query(on: req).filter(\User.eMail, .equal, user.eMail).first().flatMap { result in
                 if let _ = result {
@@ -59,11 +59,23 @@ final class UserController: RouteCollection {
     }
     
     func renderOrders(_ req: Request) throws -> Future<View> {
-        return try req.view().render("orders")
+        return Order.query(on: req).all().flatMap(to: View.self) { orders in
+            return try req.view().render("orders", ["orders": orders])
+        }
+        
+//        return try req.view().render("orders")
+    }
+    
+    func renderAddNewOrder(_ req: Request) throws -> Future<View> {
+        return try req.view().render("add_new_order")
     }
     
     func renderUsers(_ req: Request) throws -> Future<View> {
-        return try req.view().render("users")
+        return User.query(on: req).all().flatMap(to: View.self) { users in
+            return try req.view().render("users", ["users": users])
+        }
+        
+//        return try req.view().render("users")
     }
     
     func renderSettings(_ req: Request) throws -> Future<View> {
@@ -111,14 +123,14 @@ final class UserController: RouteCollection {
         return Future.map(on: req) { return req.redirect(to: "/login") }
     }
     
-//    func register(_ req: Request) throws -> Future<User.Public> {
-//        return try req.content.decode(User.self).flatMap { user in
-//            user.password = try BCrypt.hash(user.password)
-//            user.registrationDate = Date()
-//            
-//            return user.save(on: req).toPublic()
-//        }
-//    }
+    func register(_ req: Request) throws -> Future<User.Public> {
+        return try req.content.decode(User.self).flatMap { user in
+            user.password = try BCrypt.hash(user.password)
+            user.registrationDate = Date()
+            
+            return user.save(on: req).toPublic()
+        }
+    }
     
     func getAllUsers(_ req: Request) throws -> Future<[User.Public]> {
         return User.query(on: req).decode(User.Public.self).all()

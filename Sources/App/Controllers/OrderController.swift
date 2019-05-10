@@ -31,12 +31,15 @@ final class OrderController: RouteCollection {
         return try req.parameters.next(Order.self)
     }
     
-    func createHandler(_ req: Request) throws -> Future<Order> {
+    func createHandler(_ req: Request) throws -> Future<Response> {
         return try req.content.decode(Order.self).flatMap { order in
+            order.status = "New"
             order.creationDate = Date()
             order.modificationDate = Date()
             
-            return order.save(on: req)
+            return order.save(on: req).map { _ in
+                return req.redirect(to: "/orders")
+            }
         }
     }
     
