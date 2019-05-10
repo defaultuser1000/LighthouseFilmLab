@@ -10,6 +10,6 @@
 </div>
 } else { There is no users yet...}
 </div>
-<a href="orders/add"><button type="button" class="btn btn-primary">Add new User</button></a>
+<button type="button" class="btn btn-primary">Add new User</button>
 }
 #embed("home")
