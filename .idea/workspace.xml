@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c946773-cf13-4f97-b4b7-fe13dc5a2c46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/orders.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/settings.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings.leaf" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +28,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/settings.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="184">
+              <caret line="8" column="95" selection-start-line="8" selection-start-column="95" selection-end-line="8" selection-end-column="95" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,20 +71,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/add_new_user.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+            <state relative-caret-position="255">
+              <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="46" column="70" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="70" />
+            <state>
+              <caret column="149" selection-start-column="149" selection-end-column="149" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -135,14 +141,14 @@
         <option value="$PROJECT_DIR$/Sources/App/configure.swift" />
         <option value="$PROJECT_DIR$/Resources/Views/users.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/user_detail.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/settings.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/order_edit.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/order_details.leaf" />
         <option value="$PROJECT_DIR$/Public/css/main.css" />
         <option value="$PROJECT_DIR$/Resources/Views/home.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/orders.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/orders.leaf" />
       </list>
     </option>
   </component>
@@ -240,12 +246,12 @@
       <workItem from="1557405229996" duration="157000" />
       <workItem from="1557405708111" duration="525000" />
       <workItem from="1557408416681" duration="3166000" />
-      <workItem from="1557496220540" duration="20526000" />
+      <workItem from="1557496220540" duration="21438000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35160000" />
+    <option name="totallyTimeSpent" value="36072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
@@ -350,13 +356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/home.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
@@ -364,20 +363,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
+    <entry file="file://$PROJECT_DIR$/Resources/Views/add_new_user.leaf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="46" column="70" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="70" />
+        <state relative-caret-position="255">
+          <caret line="33" column="10" lean-forward="true" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="95" selection-start-line="8" selection-start-column="95" selection-end-line="8" selection-end-column="95" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/add_new_user.leaf">
+    <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
+        <state>
+          <caret column="149" selection-start-column="149" selection-end-column="149" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
