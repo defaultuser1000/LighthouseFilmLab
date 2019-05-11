@@ -34,7 +34,8 @@
 <div class="Top">
     <div class="header-logo-element">
         <a href="/home">
-            <img alt="" class="logo-img" src="images/logo.png"/>
+            #if(imgLogo){#get(imgLogo)}else{<img alt="" class="logo-img" src="images/logo.png"/>}
+            <!--<img alt="" class="logo-img" src="images/logo.png"/>-->
         </a>
         <p class="header-name">LFL Admin Console</p>
     </div>

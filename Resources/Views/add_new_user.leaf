@@ -62,5 +62,6 @@
 </div>
 <button type="submit" class="btn btn-primary">Add new User</button>
 </form>}
+#set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
 #embed("home")
 

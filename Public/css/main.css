@@ -19,23 +19,27 @@ body {
 
 /*Flexbox gives us the flexiness we need. The top just stays put as there is no scrolling on the body due to the page never exceeding viewport height*/
 .Top {
+    height: 100px;
+    width: 100%;
     position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #DADADA;
     font-size: 3rem;
-    position: relative;
-    z-index: 10;
-    height: 100px;
 }
 
 .Container {
     display: flex;
     overflow: hidden;
-    height: calc(100vh - 100px);
+    height: calc(100vh);
     position: relative;
     width: 100%;
+    padding-top: 100px;
+    padding-left: 250px;
 }
 
 /*All the scrollable sections should overflow and be whatever height they need to be. As they are flex-items (due to being inside a flex container) they could be made to stretch full height at all times if needed.
@@ -50,7 +54,7 @@ WebKit inertia scrolling is being added here for any present/future devices that
     -ms-overflow-style: scrollbar;
     flex: 1;
     transition: margin-left .5s;
-    padding: 20px 50px 20px 300px;
+    padding: 40px 50px 20px 40px;
     color: #818181;
 }
 
@@ -152,4 +156,8 @@ p#version {
     bottom: 100px;
     width: 20%;
     left: 40%;
+}
+
+.orders_container {
+    margin-top: 15px;
 }

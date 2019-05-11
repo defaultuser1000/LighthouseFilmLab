@@ -1,4 +1,4 @@
-#set("main") { <h2>Orders</h2>
+#set("main") { <h2>Orders</h2><a href="orders/add"><button type="button" class="btn btn-primary">Add new Order</button></a>
 <div class="orders_container">
 #if(orders) {
 <div style="margin-right: 50%; margin-bottom: 25px;">#for(order in orders) {
@@ -39,7 +39,6 @@
 </div-->
 } else { There is no orders yet...}
 </div>
-<a href="orders/add"><button type="button" class="btn btn-primary">Add new Order</button></a>
 }
 #set("crumbs") {
 <nav aria-label="breadcrumb">
@@ -49,4 +48,5 @@
 </ol>
 </nav>
 }
+#set("imgLogo") {<img alt="" class="logo-img" src="images/logo.png"/>}
 #embed("home")

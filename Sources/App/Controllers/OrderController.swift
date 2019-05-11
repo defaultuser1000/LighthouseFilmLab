@@ -83,4 +83,10 @@ final class OrderController: RouteCollection {
             return try req.view().render("order_details", ["order": order])
         }
     }
+    
+    func renderOrderEdit(_ req: Request) throws -> Future<View> {
+        return try req.parameters.next(Order.self).flatMap { order in
+            return try req.view().render("order_edit", ["order": order])
+        }
+    }
 }

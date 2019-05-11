@@ -1,4 +1,40 @@
-#set("main") { <h2>Order ##(order.orderNumber)</h2> }
+#set("main") { <h2>Order ##(order.orderNumber)</h2>
+<form method="post">
+<div class="form-group">
+    <label for="exampleFormControlInput1">Order Number</label>
+    <input type="number" name="orderNumber" class="form-control" id="exampleFormControlInput1" placeholder="#(order.orderNumber)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlInput1">UserID</label>
+    <input type="number" name="userID" class="form-control" id="exampleFormControlInput2" placeholder="#(order.userID)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Scanner</label>
+    <input type="number" name="scanner" class="form-control" id="exampleFormControlSelect1" placeholder="#(order.scanner)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Skin tones</label>
+    <input type="number" name="skinTones" class="form-control" id="exampleFormControlSelect2" placeholder="#(order.skinTones)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Contrast</label>
+    <input type="number" name="contrast" class="form-control" id="exampleFormControlSelect3" placeholder="#(order.contrast)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">B&amp;W Contrast</label>
+    <input type="number" name="bwContrast" class="form-control" id="exampleFormControlSelect4" placeholder="#(order.bwContrast)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Express Scanning</label>
+    <input type="number" name="expressScan" class="form-control" id="exampleFormControlSelect5" placeholder="#(order.expressScan)" readonly/>
+</div>
+<div class="form-group">
+    <label for="exampleFormControlTextarea1">Special</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="special" placeholder="#(order.special)" readonly></textarea>
+</div>
+<!--button type="submit" class="btn btn-primary">Add new Order</button-->
+</form>
+}
 #set("crumbs") {
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
@@ -8,4 +44,5 @@
 </ol>
 </nav>
 }
+#set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
 #embed("home")

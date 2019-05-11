@@ -26,4 +26,5 @@
 </ol>
 </nav>
 }
+#set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
 #embed("home")

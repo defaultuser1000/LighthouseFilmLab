@@ -1,4 +1,4 @@
-#set("main") { <h2>Add New Order</h2>
+#set("main") { <h2>Order ##(order.orderNumber)</h2>
 <form method="post">
 <div class="form-group">
     <label for="exampleFormControlInput1">Order Number</label>
@@ -59,7 +59,7 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/home">Home</a></li>
     <li class="breadcrumb-item"><a href="/orders">Orders</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Add New Order</li>
+    <li class="breadcrumb-item active" aria-current="page">Order details (editing)</li>
 </ol>
 </nav>
 }
