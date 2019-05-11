@@ -49,13 +49,13 @@
             orderButtons.insertBefore(cancelButton, orderButtons.firstChild);
             orderButtons.insertBefore(saveButton, orderButtons.firstChild);
 
-            document.getElementById("userIdFormControlInput").removeAttribute("readonly");
-            document.getElementById("scannerFormControlSelect").removeAttribute("readonly");
-            document.getElementById("skinTonesFormControlSelect").removeAttribute("readonly");
-            document.getElementById("contrastFormControlSelect").removeAttribute("readonly");
-            document.getElementById("bwContrastFormControlSelect").removeAttribute("readonly");
-            document.getElementById("expressScanningFormControlSelect").removeAttribute("readonly");
-            document.getElementById("specialFormControlTextarea").removeAttribute("readonly");
+            document.getElementById("userIdFormControlInput").removeAttribute("disabled");
+            document.getElementById("scannerFormControlSelect").removeAttribute("disabled");
+            document.getElementById("skinTonesFormControlSelect").removeAttribute("disabled");
+            document.getElementById("contrastFormControlSelect").removeAttribute("disabled");
+            document.getElementById("bwContrastFormControlSelect").removeAttribute("disabled");
+            document.getElementById("expressScanningFormControlSelect").removeAttribute("disabled");
+            document.getElementById("specialFormControlTextarea").removeAttribute("disabled");
             // orderButtons.appendChild(saveButton);
         }
     </script>
@@ -80,8 +80,8 @@
         <hr/>
         <a href="/users">Users</a>
         <hr/>
-        <a href="/schedule">Schedule</a>
-        <hr/>
+        <!--a href="/schedule">Schedule</a>
+        <hr/-->
         <a href="/settings">Settings</a>
         <hr/>
         <p id="version">v 1.0.a</p>

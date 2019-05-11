@@ -8,12 +8,15 @@
     </a>
 </div>
 <div class="users_container">#if(users) {
-<div style="margin-right: 50%; margin-bottom: 25px;">
-    #for(user in users) {
-    #if(user.name != NULL) {#(user.name) } else {NULL }
-    #if(user.surName != NULL) { #(user.surName) | } else { NULL | }
-    UserID: #(user.id)
-    <div class="btn btn-outline-secondary btn-block" style="width: 150px;">More Info</div>
+<div class="container">#for(user in users) {
+    <div class="row" style="margin-bottom: 10px;">
+        <span class="col-10">
+            #if(user.name != NULL) {#(user.name) } else {NULL }
+            #if(user.surName != NULL) { #(user.surName) | } else { NULL | }
+            UserID: #(user.id)
+        </span>
+        <a href="users/user/#(user.id)" class="btn btn-outline-secondary col-2">More Info</a>
+    </div>
     }
 </div>
 } else { There is no users yet...}

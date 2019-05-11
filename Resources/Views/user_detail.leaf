@@ -1,13 +1,112 @@
 #set("main") {
-<div class="users_container">
-    #if(users) {
-    <ul>#for(user in users) {
-        <li>#user.name #user.surName</li>
-        }
-    </ul>
-    } else { There is no users yet...}
+<div class="navbar">
+    <h2>User "#(user.name) #(user.surName)"</h2>
+    <div id="orderDetailButtons">
+        <button type="button" class="btn btn-primary" onclick="editUser()" disabled>Edit</button>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>Delete</button>
+    </div>
 </div>
-        }
+#if(user) {
+<form method="post" id="changedUserForm">
+    <div class="form-group">
+        <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" value="#(user.eMail)" name="eMail" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput3">Name and Surname</label>
+        <div class="form-row" id="exampleFormControlInput3">
+            <div class="col">
+                <input type="text" class="form-control" value="#(user.name)" name="name" disabled/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" value="#(user.surName)" name="surName" disabled/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput5">Jobname</label>
+        <div class="input-group mb-3">
+            <input type="text" name="jobType" class="form-control" placeholder="Jobname (Instagram or smth.)" aria-label="Username" aria-describedby="basic-addon1" disabled/>
+            <div class="input-group-prepend" id="exampleFormControlInput5">
+                <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input type="text" name="jobName" class="form-control" value="#(user.jobName)" aria-label="Jobname" aria-describedby="basic-addon1" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" value="#(user.address)" name="address" disabled/>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" value="#(user.city)" id="inputCity" disabled/>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <input id="inputState" class="form-control" value="state" name="state" disabled/>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" value="zip" id="inputZip" name="zip" disabled/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput7">Country</label>
+        <input type="text" name="country" class="form-control" id="exampleFormControlInput7" value="#(user.country)" disabled/>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput11">Phone</label>
+        <input type="tel" name="phone" class="form-control" id="exampleFormControlInput11" value="#(user.phone)" disabled/>
+    </div>
+</form>
+} else { Error loading user info. }
+</div>
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Save confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Do you really want to save changes into User "#(user.name) #(user.surName)"?
+            <br/>
+            Changes can not be undone.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" form="changedUserForm">Close</button>
+            <button type="submit" class="btn btn-primary" form="changedUserForm" > Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+
+        <!-- Modal for Edit -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete Order User "#(user.name) #(user.surName)"?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" form="changedUserForm" onclick="javascript: form.action='/users/user/#(user.id)/delete';" disabled>Delete</button>
+        </div>
+    </div>
+</div>
+</div>
+}
 #set("crumbs") {
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">

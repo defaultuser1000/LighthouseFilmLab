@@ -1,12 +1,12 @@
 #set("main") { <h2>Settings</h2>
 <div class="container px-lg-5">
     <div class="row mx-lg-n5">
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanner1</a>
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanner2</a>
+        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Cell 1</a>
+        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Cell 2</a>
     </div>
     <div class="row mx-lg-n5">
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanner3</a>
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanner4</a>
+        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Cell 3</a>
+        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Cell 4</a>
     </div>
 </div>
 }

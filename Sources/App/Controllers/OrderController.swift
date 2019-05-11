@@ -45,22 +45,48 @@ final class OrderController: RouteCollection {
     
     func updateHandler(_ req: Request) throws -> Future<Order> {
         return try flatMap(to: Order.self, req.parameters.next(Order.self), req.content.decode(Order.self)) { (order, updatedOrder) in
+            order.userID = updatedOrder.userID
             order.scanner = updatedOrder.scanner
             order.skinTones = updatedOrder.skinTones
             order.contrast = updatedOrder.contrast
             order.bwContrast = updatedOrder.bwContrast
             order.expressScan = updatedOrder.expressScan
             order.special = updatedOrder.special
-            order.status = updatedOrder.status
+            order.modificationDate = Date()
+
+            return order.save(on: req)
+        }
+    }
+    
+    func updateHandlerWeb(_ req: Request) throws -> Future<Response> {
+        return try flatMap(req.parameters.next(Order.self), req.content.decode(Order.self)) { order, updatedOrder in
+            order.userID = updatedOrder.userID
+            order.scanner = updatedOrder.scanner
+            order.skinTones = updatedOrder.skinTones
+            order.contrast = updatedOrder.contrast
+            order.bwContrast = updatedOrder.bwContrast
+            order.expressScan = updatedOrder.expressScan
+            order.special = updatedOrder.special
             order.modificationDate = Date()
             
             return order.save(on: req)
+                .map(to: Response.self) { savedOrder in
+                    return req.redirect(to: "/orders/order/\(savedOrder.id!)")
+            }
         }
     }
     
     func deleteHandler(_ req: Request) throws -> Future<HTTPStatus> {
         return try req.parameters.next(Order.self).flatMap { order in
             return order.delete(on: req).transform(to: HTTPStatus.noContent)
+        }
+    }
+    
+    func deleteHandlerWeb(_ req: Request) throws -> Future<Response> {
+        return try req.parameters.next(Order.self).flatMap { order in
+            return order.delete(on: req).map {_ in
+                req.redirect(to: "/orders")
+            }
         }
     }
     

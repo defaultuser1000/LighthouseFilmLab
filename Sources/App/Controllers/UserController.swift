@@ -110,6 +110,12 @@ final class UserController: RouteCollection {
         return try req.view().render("add_new_user")
     }
     
+    func renderUserDetails(_ req: Request) throws -> Future<View> {
+        return try req.parameters.next(User.self).flatMap { user in
+            return try req.view().render("user_detail", ["user": user])
+        }
+    }
+    
     func logout(_ req: Request) throws -> Future<Response> {
         try req.unauthenticateSession(User.self)
         return Future.map(on: req) { return req.redirect(to: "/login") }

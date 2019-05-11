@@ -17,18 +17,22 @@
         <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">Delete</button>
     </div>
 </div>
-<form method="post">
+<form method="post" id="changedOrderForm">
 <div class="form-group">
-    <label for="exampleFormControlInput1">Order Number</label>
-    <input type="number" name="orderNumber" class="form-control" id="exampleFormControlInput1" placeholder="#(maxOrderNumber + 1)" readonly/>
+    <label for="idFormControlInput">Order Id</label>
+    <input type="number" name="id" class="form-control" id="idFormControlInput" value="#(order.id)" disabled/>
+</div>
+<div class="form-group">
+    <label for="orderNumberFormControlInput">Order Number</label>
+    <input type="number" name="orderNumber" class="form-control" id="orderNumberFormControlInput" value="#(order.orderNumber)" disabled/>
 </div>
 <div class="form-group">
     <label for="userIdFormControlInput">UserID</label>
-    <input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.userID)" readonly/>
+    <input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.userID)" disabled/>
 </div>
 <div class="form-group">
-    <label for="disabledSelect">Scanner</label>
-    <select class="form-control" id="disabledSelect" name="scanner" disabled>
+    <label for="scannerFormControlSelect">Scanner</label>
+    <select class="form-control" id="scannerFormControlSelect" name="scanner" disabled>
         #if(order.scanner == "Frontier SP-3000"){
         <option>-</option>
         <option selected>Frontier SP-3000</option>
@@ -45,93 +49,100 @@
     </select>
 </div>
 <div class="form-group">
-    <label for="exampleFormControlSelect2">Skin tones</label>
-    <select class="form-control" id="exampleFormControlSelect2" name="skinTones">
+    <label for="skinTonesFormControlSelect">Skin tones</label>
+    <select class="form-control" id="skinTonesFormControlSelect" name="skinTones" disabled>
+        #if(order.skinTones == "High"){
+        <option selected>High</option>
+        <option>Neutral</option>
+        <option>Low</option>
+        }else if(order.skinTones == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
+        }else if(order.skinTones == "Low"){
+        <option>High</option>
+        <option>Neutral</option>
+        <option selected>Low</option>
+        }
     </select>
 </div>
 <div class="form-group">
-    <label for="exampleFormControlSelect3">Contrast</label>
-    <select class="form-control" id="exampleFormControlSelect3" name="contrast">
+    <label for="contrastFormControlSelect">Contrast</label>
+    <select class="form-control" id="contrastFormControlSelect" name="contrast" disabled>
+        #if(order.contrast == "High"){
+        <option selected>High</option>
+        <option>Neutral</option>
+        <option>Low</option>
+        }else if(order.contrast == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
+        }else if(order.contrast == "Low"){
+        <option>High</option>
+        <option>Neutral</option>
+        <option selected>Low</option>
+        }
     </select>
 </div>
 <div class="form-group">
-    <label for="exampleFormControlSelect4">B&amp;W Contrast</label>
-    <select class="form-control" id="exampleFormControlSelect4" name="bwContrast">
+    <label for="bwContrastFormControlSelect">B&amp;W Contrast</label>
+    <select class="form-control" id="bwContrastFormControlSelect" name="bwContrast" disabled>
+        #if(order.bwContrast == "High"){
+        <option selected>High</option>
+        <option>Neutral</option>
+        <option>Low</option>
+        }else if(order.bwContrast == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
+        }else if(order.bwContrast == "Low"){
+        <option>High</option>
+        <option>Neutral</option>
+        <option selected>Low</option>
+        }
     </select>
 </div>
 <div class="form-group">
-    <label for="exampleFormControlSelect5">Express Scanning</label>
-    <select class="form-control" id="exampleFormControlSelect5" name="expressScan">
+    <label for="expressScanningFormControlSelect">Express Scanning</label>
+    <select class="form-control" id="expressScanningFormControlSelect" name="expressScan" disabled>
+        #if(order.expressScan == "4-6 days + 50%"){
+        <option></option>
+        <option selected>4-6 days + 50%</option>
+        <option>2-4 days + 100%</option>
+        }else if(order.expressScan == "2-4 days + 100%"){
+        <option></option>
+        <option>4-6 days + 50%</option>
+        <option selected>2-4 days + 100%</option>
+        }else{
         <option selected></option>
         <option>4-6 days + 50%</option>
         <option>2-4 days + 100%</option>
+        }
     </select>
 </div>
 <div class="form-group">
     <label for="specialFormControlTextarea">Special</label>
-    <textarea class="form-control" id="specialFormControlTextarea" rows="3" name="special" placeholder="Enter your specials here">#(order.special)</textarea>
+    <textarea class="form-control" id="specialFormControlTextarea" rows="3" name="special" placeholder="Enter your specials here" disabled>#(order.special)</textarea>
 </div>
 </form>
-<!--<form method="post">-->
-<!--<div class="form-group">-->
-    <!--<label for="orderNumberFormControlInput">Order Number</label>-->
-    <!--<input type="number" name="orderNumber" class="form-control" id="orderNumberFormControlInput" value="#(order.orderNumber)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="userIdFormControlInput">UserID</label>-->
-    <!--<input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.userID)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="scannerFormControlSelect">Scanner</label>-->
-    <!--<input type="text" name="scanner" class="form-control" id="scannerFormControlSelect" value="#(order.scanner)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="skinTonesFormControlSelect">Skin tones</label>-->
-    <!--<input type="text" name="skinTones" class="form-control" id="skinTonesFormControlSelect" value="#(order.skinTones)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="contrastFormControlSelect">Contrast</label>-->
-    <!--<input type="text" name="contrast" class="form-control" id="contrastFormControlSelect" value="#(order.contrast)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="bwContrastFormControlSelect">B&amp;W Contrast</label>-->
-    <!--<input type="text" name="bwContrast" class="form-control" id="bwContrastFormControlSelect" value="#(order.bwContrast)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="expressScanningFormControlSelect">Express Scanning</label>-->
-    <!--<input type="text" name="expressScan" class="form-control" id="expressScanningFormControlSelect" value="#(order.expressScan)" readonly/>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-    <!--<label for="specialFormControlTextarea">Special</label>-->
-    <!--<textarea class="form-control" id="specialFormControlTextarea" rows="3" name="special" readonly>#(order.special)</textarea>-->
-<!--</div>-->
-<!--&lt;!&ndash;button type="submit" class="btn btn-primary">Add new Order</button&ndash;&gt;-->
-<!--</form>-->
-<!-- Modal for Edit -->
+
 <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="editModalLabel">Save confirmation</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            ...
+            Do you really want to save changes into Order ##(order.orderNumber)?
+            <br/>
+            Changes can not be undone.
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" form="changedOrderForm">Close</button>
+            <button type="submit" class="btn btn-primary" form="changedOrderForm" > Save changes</button>
         </div>
     </div>
 </div>
@@ -152,7 +163,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.id)/delete';">Delete</button>
         </div>
     </div>
 </div>
