@@ -58,14 +58,6 @@ final class UserController: RouteCollection {
         return try req.view().render("home")
     }
     
-    func renderOrders(_ req: Request) throws -> Future<View> {
-        return Order.query(on: req).all().flatMap(to: View.self) { orders in
-            return try req.view().render("orders", ["orders": orders])
-        }
-        
-//        return try req.view().render("orders")
-    }
-    
     func renderAddNewOrder(_ req: Request) throws -> Future<View> {
         return try req.view().render("add_new_order")
     }

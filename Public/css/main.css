@@ -19,6 +19,7 @@ body {
 
 /*Flexbox gives us the flexiness we need. The top just stays put as there is no scrolling on the body due to the page never exceeding viewport height*/
 .Top {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;

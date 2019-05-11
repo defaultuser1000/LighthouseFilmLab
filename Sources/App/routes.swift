@@ -19,7 +19,8 @@ public func routes(_ router: Router) throws {
     
     let protectedRouter = authSessionRouter.grouped(RedirectMiddleware<User>(path: "/login"))
     protectedRouter.get("home", use: usersController.renderHome)
-    protectedRouter.get("orders", use: usersController.renderOrders)
+    protectedRouter.get("orders", use: orderController.renderOrders)
+    protectedRouter.get("orders", "order", Order.parameter, use: orderController.renderOrderDetails)
     protectedRouter.get("users", use: usersController.renderUsers)
     protectedRouter.get("users", "add", use: usersController.renderAddNewUser)
     protectedRouter.post("users", "add", use: usersController.createNewUser)

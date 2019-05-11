@@ -43,6 +43,8 @@
 <div class="Container">
     <div id="mySidenav" class="sidenav">
         <!--a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a-->
+        <a href="/home">Home</a>
+        <hr/>
         <a href="/orders">Orders</a>
         <hr/>
         <a href="/users">Users</a>
@@ -57,6 +59,16 @@
     <!-- Use any element to open the sidenav -->
     <!--<span onclick="openNav()">open</span>-->
     <div id="main" class="Middle">
+        #if(crumbs) {
+            #get(crumbs)
+        } else {
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+        </nav>
+        }
+
         #if(main) {
             #get(main)
         } else {

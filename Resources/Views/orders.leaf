@@ -2,7 +2,7 @@
 <div class="orders_container">
 #if(orders) {
 <div style="margin-right: 50%; margin-bottom: 25px;">#for(order in orders) {
-<button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+<a href="orders/order/#(order.id)" class="btn btn-outline-secondary btn-block"> <!--data-toggle="modal" data-target="#exampleModalCenter"-->
     #if(order.orderNumber != NULL) { Order ##(order.orderNumber) } else { NULL }
     #if(order.status == "New") {
     <span class="badge badge-pill badge-primary">#(order.status)</span>
@@ -14,11 +14,11 @@
     <span class="badge badge-pill badge-warning">#(order.status)</span>
     } else if(order.status == "Canceled") {
     <span class="badge badge-pill badge-danger">#(order.status)</span>
-    }</button>
+    }</a>
 }
 </div>
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!--div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -36,9 +36,17 @@
             </div>
         </div>
     </div>
-</div>
+</div-->
 } else { There is no orders yet...}
 </div>
 <a href="orders/add"><button type="button" class="btn btn-primary">Add new Order</button></a>
+}
+#set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Orders</li>
+</ol>
+</nav>
 }
 #embed("home")

@@ -69,4 +69,18 @@ final class OrderController: RouteCollection {
             return order.user.get(on: req).toPublic()
         }
     }
+    
+    func renderOrders(_ req: Request) throws -> Future<View> {
+        return Order.query(on: req).all().flatMap(to: View.self) { orders in
+            return try req.view().render("orders", ["orders": orders])
+        }
+        
+        //        return try req.view().render("orders")
+    }
+    
+    func renderOrderDetails(_ req: Request) throws -> Future<View> {
+        return try req.parameters.next(Order.self).flatMap { order in
+            return try req.view().render("order_details", ["order": order])
+        }
+    }
 }
