@@ -21,7 +21,8 @@
         <span class="badge badge-pill badge-warning">#(order.status)</span>
         } else if(order.status == "Canceled") {
         <span class="badge badge-pill badge-danger">#(order.status)</span>
-        }</a>
+        }
+    </a>
     }
 </div>
 <!-- Modal -->

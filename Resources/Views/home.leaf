@@ -28,6 +28,36 @@
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
         }
+
+        function editOrder() {
+            let orderButtons = document.getElementById("orderDetailButtons");
+
+            const saveButton = document.createElement('button');
+            saveButton.setAttribute('type', 'button');
+            saveButton.setAttribute('class', 'btn btn-success');
+            saveButton.setAttribute('data-toggle', 'modal');
+            saveButton.setAttribute('data-target', '#saveModal');
+            saveButton.innerText = "Save";
+
+            const cancelButton = document.createElement('button');
+            cancelButton.setAttribute('type', 'button');
+            cancelButton.setAttribute('class', 'btn btn-secondary');
+            //cancelButton.setAttribute('data-toggle', 'modal');
+            //cancelButton.setAttribute('data-target', '#saveModal');
+            cancelButton.innerText = "Cancel";
+
+            orderButtons.insertBefore(cancelButton, orderButtons.firstChild);
+            orderButtons.insertBefore(saveButton, orderButtons.firstChild);
+
+            document.getElementById("userIdFormControlInput").removeAttribute("readonly");
+            document.getElementById("scannerFormControlSelect").removeAttribute("readonly");
+            document.getElementById("skinTonesFormControlSelect").removeAttribute("readonly");
+            document.getElementById("contrastFormControlSelect").removeAttribute("readonly");
+            document.getElementById("bwContrastFormControlSelect").removeAttribute("readonly");
+            document.getElementById("expressScanningFormControlSelect").removeAttribute("readonly");
+            document.getElementById("specialFormControlTextarea").removeAttribute("readonly");
+            // orderButtons.appendChild(saveButton);
+        }
     </script>
 </head>
 <body>

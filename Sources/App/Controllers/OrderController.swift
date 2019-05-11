@@ -89,4 +89,10 @@ final class OrderController: RouteCollection {
             return try req.view().render("order_edit", ["order": order])
         }
     }
+    
+    func renderAddNewOrder(_ req: Request) throws -> Future<View> {
+        let maxOrderNumber = Order.query(on: req).max(\.orderNumber)
+        
+        return try req.view().render("add_new_order", ["maxOrderNumber": maxOrderNumber])
+    }
 }
