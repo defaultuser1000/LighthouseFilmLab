@@ -47,6 +47,7 @@ body {
 
 .middle_header {
     height: 145px;
+    background-color: #fff;
     /*width: 100%;*/
     position: fixed;
     z-index: 2;
@@ -187,12 +188,24 @@ hr {
     width: 100px;
 }
 
-p#version {
+span#version {
+    display: block;
     color: #b9b9b9;
     position: absolute;
-    bottom: 100px;
+    bottom: 110px;
     width: 20%;
     left: 40%;
+    text-decoration: none;
+}
+
+@media (max-width: 867px) {
+    div.navbar h2 {
+        width: 100%;
+    }
+
+    #main-container{
+        padding-top: 300px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -205,7 +218,9 @@ p#version {
     }
 
     #middle-header{
-        margin-left: 0;
+        background-color: #fff;
+        height: 200px;
+        margin: 0;
     }
 
     #mySidenav {
