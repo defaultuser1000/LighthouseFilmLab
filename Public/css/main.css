@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
 /*I love me some border-box*/
 * {
     box-sizing: border-box;
@@ -7,6 +9,7 @@
 /*This just stops me getting horizontal scrolling if anything overflows the width*/
 body {
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 
 /*Just removing default browser padding/margin*/
@@ -22,7 +25,7 @@ body {
     height: 100px;
     width: 100%;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     left: 0;
     display: flex;
@@ -38,13 +41,37 @@ body {
     height: calc(100vh);
     position: relative;
     width: 100%;
-    padding-top: 100px;
+    padding-top: 250px;
     padding-left: 250px;
+}
+
+.middle_header {
+    height: 145px;
+    /*width: 100%;*/
+    position: fixed;
+    z-index: 2;
+    top: 100px;
+    right: 0;
+    left: 0;
+    display: flex;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*background-color: #656565;*/
+    /*font-size: 3rem;*/
+    /*border: 0.5px #333333 solid;*/
+    /*border-radius: 10px 10px 0 0;*/
+    transition: margin-left .5s;
+    padding-top: 20px;
+    margin: 10px 10px 20px 260px;
 }
 
 /*All the scrollable sections should overflow and be whatever height they need to be. As they are flex-items (due to being inside a flex container) they could be made to stretch full height at all times if needed.
 WebKit inertia scrolling is being added here for any present/future devices that are able to make use of it.
 */
+
+#main-container {
+    transition: padding-left .5s;
+}
 
 .Middle {
     overflow: auto;
@@ -53,8 +80,8 @@ WebKit inertia scrolling is being added here for any present/future devices that
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: scrollbar;
     flex: 1;
-    transition: margin-left .5s;
-    padding: 40px 50px 20px 40px;
+    transition: padding-left .5s;
+    padding: 10px 40px 10px 40px;
     color: #818181;
 }
 
@@ -70,7 +97,7 @@ WebKit inertia scrolling is being added here for any present/future devices that
     text-decoration: none;
     font-size: 15px;
     color: #818181;
-    transition: 0.3s;
+
 }
 
 hr {
@@ -89,19 +116,19 @@ hr {
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
+.Top .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    /*top: 15px;*/
+    left: 30px;
+    /*font-size: 36px;*/
+    /*margin-left: 50px;*/
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-width: 450px) {
-    .sidenav {padding-top: 15px; width: 0;}
-    .sidenav a {font-size: 18px;}
-}
+/*@media screen and (max-width: 450px) {*/
+    /*.sidenav {padding-top: 15px; width: 0;}*/
+    /*.sidenav a {font-size: 18px;}*/
+/*}*/
 
 /* The sidenav */
 .sidenav {
@@ -114,7 +141,15 @@ hr {
     background-color: #F0F0F0;
     overflow-x: hidden;
     margin-top: 100px;
+    transition: 0.4s;
     /*padding-top: 15px;*/
+}
+
+
+
+.header-logo-with-name{
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-img {
@@ -129,18 +164,20 @@ hr {
     justify-content: center;
     width: 78px;
     height: 78px;
-    position: absolute;
-    left: 35px;
+    margin-left: 15px;
+    /*position: absolute;*/
+    /*left: 35px;*/
     background-color: #FFF;
     border-radius: 39px;
 }
 
 .header-name {
-    position: absolute;
-    left: 100px;
-    width: 400px;
+    /*position: absolute;*/
+    /*left: 100px;*/
+    margin-left: 15px;
+    width: 300px;
     font-size: 30px;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 
 .header-logout {
@@ -158,6 +195,42 @@ p#version {
     left: 40%;
 }
 
-.orders_container {
-    margin-top: 15px;
+@media (max-width: 768px) {
+    .header-name {
+        display: none;
+    }
+
+    #main-container{
+        padding-left: 0;
+    }
+
+    #middle-header{
+        margin-left: 0;
+    }
+
+    #mySidenav {
+        width: 0;
+    }
+    /*.sidenav.active {*/
+        /*margin-left: 0;*/
+    /*}*/
+}
+
+@media (min-width: 991px) {
+    .header-logo-element{
+        position: absolute;
+        left: 78px;
+        /*width: 100%;*/
+        /*align-items: center;*/
+        /*justify-content: center;*/
+    }
+    .header-name {
+        position: absolute;
+        left: 180px;
+    }
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    transition: all 0.3s;
 }

@@ -1,10 +1,10 @@
-#set("main") {
+#set("pageHeader") {
 <div class="navbar">
     <h2>Orders</h2>
-    <a href="orders/add">
-        <button type="button" class="btn btn-primary">Add new Order</button>
-    </a>
+    <a href="orders/add" class="btn btn-primary">Add new Order</a>
 </div>
+        }
+#set("main") {
 <div class="orders_container">
 #if(orders) {
 <div class="container">#for(order in orders) {
@@ -32,10 +32,10 @@
         }
         #set("crumbs") {
 <nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/home">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Orders</li>
-</ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+    </ol>
 </nav>
         }
         #set("imgLogo") {<img alt="" class="logo-img" src="images/logo.png"/>}
