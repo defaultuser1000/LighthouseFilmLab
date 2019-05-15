@@ -1,11 +1,15 @@
-#set("main") {
+#set("pageHeader") {
 <div class="navbar">
-    <h2>User "#(user.name) #(user.surName)"</h2>
-    <div id="orderDetailButtons">
-        <button type="button" class="btn btn-primary" onclick="editUser()" disabled>Edit</button>
-        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>Delete</button>
+    <div class="navbar">
+        <h2>User "#(user.name) #(user.surName)"</h2>
+        <div id="orderDetailButtons">
+            <button type="button" class="btn btn-primary" onclick="editUser()" disabled>Edit</button>
+            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>Delete</button>
+        </div>
     </div>
 </div>
+        }
+#set("main") {
 #if(user) {
 <form method="post" id="changedUserForm">
     <div class="form-group">

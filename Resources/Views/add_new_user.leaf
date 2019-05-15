@@ -1,4 +1,9 @@
-#set("main") { <h2>Add New User</h2>
+#set("pageHeader") {
+<div class="navbar">
+    <h2>Add New User</h2>
+</div>
+        }
+#set("main") {
 <form method="post">
 <div class="form-group">
     <div class="form-row">
