@@ -121,4 +121,10 @@ final class OrderController: RouteCollection {
         
         return try req.view().render("add_new_order", ["maxOrderNumber": maxOrderNumber])
     }
+    
+//    func printPDF(_ req: Request) throws -> String {
+//        return try req.parameters.next(Order.self).flatMap { order in
+//            return PDFHelper.renderPDF(invoiceNumber: order.orderNumber)
+//        }
+//    }
 }
