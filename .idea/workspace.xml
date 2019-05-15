@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c946773-cf13-4f97-b4b7-fe13dc5a2c46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Sources/App/Models/OrderStatus.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Models/Scanner.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Models/UserRole.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/home.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/home.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/order_details.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/order_details.leaf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/Views/orders.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/settings.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/user_detail.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/user_detail.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/users.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/users.leaf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Models/Order.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/Order.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/App/configure.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/configure.swift" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -94,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+            <state relative-caret-position="253">
+              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -115,7 +102,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/add_new_order.leaf">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="253">
@@ -182,9 +169,9 @@
         <option value="$PROJECT_DIR$/Resources/Views/user_detail.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/order_details.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/orders.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/orders.leaf" />
       </list>
     </option>
   </component>
@@ -282,12 +269,12 @@
       <workItem from="1557405229996" duration="157000" />
       <workItem from="1557405708111" duration="525000" />
       <workItem from="1557408416681" duration="3166000" />
-      <workItem from="1557496220540" duration="81429000" />
+      <workItem from="1557496220540" duration="82021000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96063000" />
+    <option name="totallyTimeSpent" value="96655000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
@@ -419,16 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/users.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
@@ -443,6 +420,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="15" column="104" selection-start-line="15" selection-start-column="104" selection-end-line="15" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/orders.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -97,6 +97,16 @@ final class OrderController: RouteCollection {
     }
     
     func renderOrders(_ req: Request) throws -> Future<View> {
+//        struct PageData: Content {
+//            var orders: [Order]
+//            var statuses: [OrderStatus]
+//        }
+//
+//        let joined = Order.query(on: req).join(\OrderStatus.id, to: Order.self).alsoDecode(OrderStatus.self).all()
+//        return Order.query(on: req).join(\OrderStatus.id, to: Order.self).alsoDecode(OrderStatus.self).all().flatMap(to: View.self) { orders in
+//            return try req.view().render("orders", ["orders": orders])
+//        }
+        
         return Order.query(on: req).all().flatMap(to: View.self) { orders in
             return try req.view().render("orders", ["orders": orders])
         }
