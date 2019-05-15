@@ -17,20 +17,17 @@
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
     <script>
-        let opened = true;
-        /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-        function closeNav() {
-            if (opened) {
-                opened = false;
+        function sideNavAction() {
+            let sideNav = document.querySelector('#mySidenav');
+            const sideNavComputedWidth = getComputedStyle(sideNav);
+            if (sideNavComputedWidth.width !== "0px") {
                 document.getElementById("mySidenav").style.width = "0";
-                document.getElementById("main-container").style.paddingLeft = "0";
-                // document.getElementById("main-container").style.width = '100%';
-                document.getElementById("middle-header").style.marginLeft = "0";
+                //document.getElementById("main-container").style.paddingLeft = "0";
+                //document.getElementById("middle-header").style.marginLeft = "0";
             } else {
-                opened = true;
                 document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main-container").style.paddingLeft = "250px";
-                document.getElementById("middle-header").style.marginLeft = "260px";
+                //document.getElementById("main-container").style.paddingLeft = "250px";
+                //document.getElementById("middle-header").style.marginLeft = "260px";
             }
         }
 
@@ -215,7 +212,7 @@
 </head>
 <body>
 <nav class="Top navbar navbar-expand-lg navbar-light">
-    <button class="closebtn navbar-toggler" type="button" aria-label="Toggle navigation" onclick="closeNav()">
+    <button class="closebtn navbar-toggler" type="button" aria-label="Toggle navigation" onclick="sideNavAction()">
         <span class="navbar-toggler-icon"></span>
     </button>
 

@@ -224,6 +224,7 @@ span#version {
     }
 
     #mySidenav {
+        z-index: 5;
         width: 0;
     }
     /*.sidenav.active {*/
