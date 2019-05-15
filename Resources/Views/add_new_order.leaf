@@ -2,7 +2,7 @@
 <form method="post">
 <div class="form-group">
     <label for="exampleFormControlInput1">Order Number</label>
-    <input type="number" name="orderNumber" class="form-control" id="exampleFormControlInput1" placeholder="#if(maxOrderNumber){#(maxOrderNumber + 1)}else{1}" readonly/>
+    <input type="number" name="orderNumber" class="form-control" id="exampleFormControlInput1" value="#if(maxOrderNumber){#(maxOrderNumber + 1)}else{1}" readonly/>
 </div>
 <div class="form-group">
     <label for="exampleFormControlInput1">UserID</label>

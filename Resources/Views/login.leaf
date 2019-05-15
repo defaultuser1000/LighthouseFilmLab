@@ -4,7 +4,8 @@
     <title>Login | Lighthouse Film Lab</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
   </head>
-  <body class="container">
+  <!--<body class="container">-->
+  <body>
     <br />
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -16,7 +17,7 @@
             <form action="/login" method="POST">
               <div class="form-group">
                 <label for="eMail">Email</label>
-                <input type="eMail" name="eMail" class="form-control" id="eMail" />
+                <input type="email" name="eMail" class="form-control" id="eMail" />
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
