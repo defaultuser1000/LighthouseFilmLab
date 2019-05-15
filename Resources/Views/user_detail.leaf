@@ -1,11 +1,13 @@
 #set("pageHeader") {
 <div class="navbar">
-    <div class="navbar">
-        <h2>User "#(user.name) #(user.surName)"</h2>
-        <div id="orderDetailButtons">
-            <button type="button" class="btn btn-primary" onclick="editUser()" disabled>Edit</button>
-            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>Delete</button>
-        </div>
+    <span class="header-title">User details</span>
+    <div id="orderDetailButtons">
+        <button type="button" class="btn btn-primary" onclick="editUser()" disabled>
+            <i class="material-icons edit-button">edit</i>
+        </button>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>
+            <i class="material-icons delete-button">delete_forever</i>
+        </button>
     </div>
 </div>
         }

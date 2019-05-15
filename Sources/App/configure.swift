@@ -39,6 +39,17 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     
     var migrations = MigrationConfig()
     migrations.add(model: User.self, database: .psql)
+    migrations.add(model: OrderStatus.self, database: .psql)
+    
+    migrations.add(migration: NewStatus.self, database: .psql)
+    migrations.add(migration: ConfirmedStatus.self, database: .psql)
+    migrations.add(migration: SentStatus.self, database: .psql)
+    migrations.add(migration: ArrivedStatus.self, database: .psql)
+    migrations.add(migration: DevelopedStatus.self, database: .psql)
+    migrations.add(migration: ScannedStatus.self, database: .psql)
+    migrations.add(migration: ProcessedStatus.self, database: .psql)
+    migrations.add(migration: ReadyStatus.self, database: .psql)
+    
     migrations.add(model: Order.self, database: .psql)
     migrations.add(model: OrderFilm.self, database: .psql)
     migrations.add(migration: AdminUser.self, database: .psql)

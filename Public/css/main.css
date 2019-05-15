@@ -20,6 +20,11 @@ body {
     color: #ebebeb;
 }
 
+span.header-title {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
 /*Flexbox gives us the flexiness we need. The top just stays put as there is no scrolling on the body due to the page never exceeding viewport height*/
 .Top {
     height: 100px;
@@ -198,15 +203,65 @@ span#version {
     text-decoration: none;
 }
 
-@media (max-width: 867px) {
-    div.navbar h2 {
-        width: 100%;
-    }
-
-    #main-container{
-        padding-top: 300px;
-    }
+.user-add {
+    color: #FFF;
+    margin-top: 5px;
 }
+
+.user-name {
+    padding-top: 12px;
+}
+
+.user-info {
+    margin-top: 5px;
+}
+
+.edit-button {
+    color: #FFF;
+    margin-top: 5px;
+}
+
+.delete-button {
+    color: #FFF;
+    margin-top: 5px;
+}
+
+.navbar h2 {
+    width: 200px;
+}
+
+.order-add {
+    color: #FFF;
+    margin-top: 5px;
+}
+
+.order-detail-button {
+    padding-top: 12px;
+}
+
+.order-detail-badge {
+    font-size: .6rem;
+    vertical-align: top;
+}
+
+@media (max-width: 867px) {
+    /*div.navbar h2 {*/
+        /*width: 100%;*/
+    /*}*/
+
+    /*#main-container{*/
+        /*padding-top: 300px;*/
+    /*}*/
+}
+
+/*@media (max-width: 545px) {*/
+    /*.delete-button {*/
+        /*background-image: url("images/outline-delete-black-18/2x/outline_delete_black_18dp.png");*/
+        /*background-repeat: no-repeat;*/
+        /*background-position: center;*/
+        /*background-size: cover;*/
+    /*}*/
+/*}*/
 
 @media (max-width: 768px) {
     .header-name {
@@ -219,7 +274,7 @@ span#version {
 
     #middle-header{
         background-color: #fff;
-        height: 200px;
+        /*height: 200px;*/
         margin: 0;
     }
 

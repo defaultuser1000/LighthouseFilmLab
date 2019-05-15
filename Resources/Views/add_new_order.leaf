@@ -1,6 +1,6 @@
 #set("pageHeader") {
 <div class="navbar">
-    <h2>Add New Order</h2>
+    <span class="header-title">Add New Order</span>
 </div>
         }
 #set("main") {
@@ -10,8 +10,12 @@
     <input type="number" name="orderNumber" class="form-control" id="exampleFormControlInput1" value="#if(maxOrderNumber){#(maxOrderNumber + 1)}else{1}" readonly/>
 </div>
 <div class="form-group">
-    <label for="exampleFormControlInput1">UserID</label>
-    <input type="number" name="userID" class="form-control" id="exampleFormControlInput2" placeholder="Enter user ID here"/>
+    <label for="exampleFormControlInput1">User</label>
+    <select class="form-control" id="userSelect" name="userID">
+        <option selected>-</option>
+        #if(users){#for(user in users){<option value="#(user.id)">#(user.name) #(user.surName)</option>}}
+    </select>
+    <!--<input type="number" name="userID" class="form-control" id="exampleFormControlInput2" placeholder="Enter user ID here"/>-->
 </div>
 <div class="form-group">
     <label for="exampleFormControlSelect1">Scanner</label>

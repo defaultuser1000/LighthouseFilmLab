@@ -1,20 +1,24 @@
 #set("pageHeader") {
 <div class="navbar">
-    <h2>Order ##(order.orderNumber)#if(order.status == "New") {
-        <span class="badge badge-pill badge-primary">#(order.status)</span>
+    <span class="header-title">Order ##(order.orderNumber)#if(order.status == "New") {
+        <span class="badge badge-pill badge-primary order-detail-badge">#(order.status)</span>
         } else if(order.status == "Arrived") {
-        <span class="badge badge-pill badge-info">#(order.status)</span>
+        <span class="badge badge-pill badge-info order-detail-badge">#(order.status)</span>
         } else if(order.status == "Ready") {
-        <span class="badge badge-pill badge-success">#(order.status)</span>
+        <span class="badge badge-pill badge-success order-detail-badge">#(order.status)</span>
         } else if(order.status == "Scanned") {
-        <span class="badge badge-pill badge-warning">#(order.status)</span>
+        <span class="badge badge-pill badge-warning order-detail-badge">#(order.status)</span>
         } else if(order.status == "Canceled") {
-        <span class="badge badge-pill badge-danger">#(order.status)</span>
+        <span class="badge badge-pill badge-danger order-detail-badge">#(order.status)</span>
         }
-    </h2>
+    </span>
     <div id="orderDetailButtons">
-        <button type="button" class="btn btn-primary" onclick="editOrder()">Edit</button>
-        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+        <button type="button" class="btn btn-primary" onclick="editOrder()">
+            <i class="material-icons edit-button">edit</i>
+        </button>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
+            <i class="material-icons delete-button">delete_forever</i>
+        </button>
     </div>
 </div>
         }
@@ -169,7 +173,7 @@
 </div>
 </div>
 
-<!-- Modal for Edit -->
+<!-- Modal for Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">

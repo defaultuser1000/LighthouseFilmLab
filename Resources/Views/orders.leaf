@@ -1,7 +1,9 @@
 #set("pageHeader") {
 <div class="navbar">
-    <h2>Orders</h2>
-    <a href="orders/add" class="btn btn-primary">Add new Order</a>
+    <span class="header-title">Orders</span>
+    <a href="orders/add" class="btn btn-primary">
+        <i class="material-icons order-add">note_add</i>
+    </a>
 </div>
         }
 #set("main") {
@@ -9,7 +11,7 @@
 #if(orders) {
 <div class="container">#for(order in orders) {
     <div class="row" style="margin-bottom: 10px;">
-        <a href="orders/order/#(order.id)" class="btn btn-outline-secondary btn-block col-10">
+        <a href="orders/order/#(order.id)" class="btn btn-outline-secondary btn-block col order-detail-button">
         #if(order.orderNumber != NULL) { Order ##(order.orderNumber) } else { NULL }
         #if(order.status == "New") {
         <span class="badge badge-pill badge-primary">#(order.status)</span>
@@ -23,7 +25,6 @@
         <span class="badge badge-pill badge-danger">#(order.status)</span>
         }
         </a>
-        <button onclick="" type="button" class="btn btn-outline-danger col-2" disabled>Delete</button>
     </div>
     }
 </div>

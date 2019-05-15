@@ -33,7 +33,7 @@ final class OrderController: RouteCollection {
     
     func createHandler(_ req: Request) throws -> Future<Response> {
         return try req.content.decode(Order.self).flatMap { order in
-            order.status = "New"
+            order.statusID = 1
             order.creationDate = Date()
             order.modificationDate = Date()
             
@@ -111,9 +111,17 @@ final class OrderController: RouteCollection {
     }
     
     func renderAddNewOrder(_ req: Request) throws -> Future<View> {
+        struct PageData: Content {
+            var maxOrderNumber: Int
+            var users: [User]
+        }
         let maxOrderNumber = Order.query(on: req).max(\.orderNumber)
-        
-        return try req.view().render("add_new_order", ["maxOrderNumber": maxOrderNumber])
+        let users = User.query(on: req).all()
+
+        return flatMap(to: View.self, maxOrderNumber, users) { maxOrderNumber, users in
+            let context = PageData(maxOrderNumber: maxOrderNumber ?? 0, users: users)
+            return try req.view().render("add_new_order", context)
+        }
     }
     
 //    func printPDF(_ req: Request) throws -> String {

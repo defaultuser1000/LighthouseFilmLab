@@ -1,6 +1,6 @@
 #set("pageHeader") {
 <div class="navbar">
-    <h2>Add New User</h2>
+    <span class="header-title">Add New User</span>
 </div>
         }
 #set("main") {
@@ -68,6 +68,15 @@
 </div>
 <button type="submit" class="btn btn-primary">Add new User</button>
 </form>}
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item "><a href="/users">Users</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add New User</li>
+</ol>
+</nav>
+        }
 #set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
 #embed("home")
 

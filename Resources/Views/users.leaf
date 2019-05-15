@@ -1,19 +1,23 @@
 #set("pageHeader") {
 <div class="navbar">
-    <h2>Users</h2>
-    <a href="users/add" class="btn btn-primary">Add new User</a>
+    <span class="header-title">Users</span>
+    <a href="users/add" class="btn btn-primary">
+        <i class="material-icons user-add">person_add</i>
+    </a>
 </div>
         }
 #set("main") {
 <div class="users_container">#if(users) {
 <div class="container">#for(user in users) {
     <div class="row" style="margin-bottom: 10px;">
-        <span class="col-10">
+        <span class="col-10 user-name">
             #if(user.name != NULL) {#(user.name) } else {NULL }
             #if(user.surName != NULL) { #(user.surName) | } else { NULL | }
             UserID: #(user.id)
         </span>
-        <a href="users/user/#(user.id)" class="btn btn-outline-secondary col-2">More Info</a>
+        <a href="users/user/#(user.id)" class="btn btn-outline-secondary col-2">
+            <i class="material-icons user-info">info</i>
+        </a>
     </div>
     }
 </div>
