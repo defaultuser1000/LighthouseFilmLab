@@ -10,7 +10,7 @@
 <div class="orders_container">
 #if(orders) {
 <div class="container">#for(order in orders) {
-    #(order.
+    <!--#(order.-->
     <div class="row" style="margin-bottom: 10px;">
         <a href="orders/order/#(order.id)" class="btn btn-outline-secondary btn-block col order-detail-button">
         #if(order.orderNumber != NULL) { Order ##(order.orderNumber) } else { NULL }
