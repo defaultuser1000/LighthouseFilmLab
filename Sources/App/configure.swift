@@ -2,6 +2,7 @@ import Leaf
 import FluentPostgreSQL
 import Vapor
 import Authentication
+import LeafErrorMiddleware
 
 /// Called before your application initializes.
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
@@ -10,6 +11,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     try services.register(AuthenticationProvider())
     try services.register(LeafProvider())
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
+    services.register { worker in
+        return LeafErrorMiddleware(environment: worker.environment)
+    }
 
     // Register routes to the router
     let router = EngineRouter.default()
@@ -24,6 +28,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     
     try services.register(AuthenticationProvider())
     var middlewares = MiddlewareConfig.default()
+    middlewares.use(LeafErrorMiddleware.self)
     middlewares.use(FileMiddleware.self)
     middlewares.use(SessionsMiddleware.self)
     services.register(middlewares)

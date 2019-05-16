@@ -11,6 +11,7 @@
     <mapping directory="$PROJECT_DIR$/.build/checkouts/fluent-sqlite.git--6255206212774911210" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/fluent.git--3900307422983325649" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/http.git--1640693608241482037" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/leaf-error-middleware.git--6965195570597598736" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/leaf.git-9065439000138749654" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/multipart.git--1362018440398531259" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/postgresql.git-2213681148518959533" vcs="Git" />

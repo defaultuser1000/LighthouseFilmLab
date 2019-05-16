@@ -35,5 +35,9 @@ public func routes(_ router: Router) throws {
     
     protectedRouter.get("settings", use: usersController.renderSettings)
     
+    router.get("404") { req in
+        return try req.view().render("404")
+    }
+    
     router.get("logout", use: usersController.logout)
 }

@@ -1,0 +1,7 @@
+#set("main") {<div class="container">
+    <div class="row">#(status)</div>
+    <br/>
+    <div class="row">#(statusMessage)</div>
+</div>}
+#set("crumbs") {}
+#embed("home")
