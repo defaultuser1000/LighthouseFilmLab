@@ -7,13 +7,20 @@
 <form method="post">
 <div class="form-group">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label for="inputEmail4">Email</label>
             <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="eMail"/>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label for="inputPassword4">Password</label>
             <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="roleSelect">Role</label>
+            <select class="form-control" id="roleSelect" name="roleID">
+                <option selected>-</option>
+                #if(roles){#for(role in roles){<option value="#(role.id)">#(role.name)</option>}}
+            </select>
         </div>
     </div>
 </div>

@@ -4,4 +4,5 @@
     <div class="row">#(statusMessage)</div>
 </div>}
 #set("crumbs") {}
+#set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
 #embed("home")

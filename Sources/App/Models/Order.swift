@@ -13,7 +13,7 @@ final class Order: PostgreSQLModel {
     var id: Int?
     var orderNumber: Int?
     var userID: User.ID
-    var scanner: String
+    var scannerID: Scanner.ID
     var skinTones: String
     var contrast: String
     var bwContrast: String
@@ -23,9 +23,9 @@ final class Order: PostgreSQLModel {
     var creationDate: Date?
     var modificationDate: Date?
     
-    init(password: String, userID: String, scanner: String, skinTones: String, contrast: String, bwContrast: String, expressScan: String, special: String, statusID: OrderStatus.ID?, creationDate: Date, modificationDate: Date) {
+    init(password: String, userID: String, scannerID: Scanner.ID, skinTones: String, contrast: String, bwContrast: String, expressScan: String, special: String, statusID: OrderStatus.ID?, creationDate: Date, modificationDate: Date) {
         self.userID = Int(userID) ?? 1
-        self.scanner = scanner
+        self.scannerID = scannerID
         self.skinTones = skinTones
         self.contrast = contrast
         self.bwContrast = bwContrast
@@ -43,6 +43,7 @@ extension Order: Migration {
             try addProperties(to: builder)
             builder.unique(on: \.orderNumber)
             builder.reference(from: \.userID, to: \User.id)
+            builder.reference(from: \.scannerID, to: \Scanner.id)
             builder.reference(from: \.statusID, to: \OrderStatus.id)
         }
     }
@@ -58,5 +59,8 @@ extension Order {
     }
     var films: Children<Order, OrderFilm> {
         return children(\.id)
+    }
+    var scanner: Parent<Order, Scanner> {
+        return parent(\.scannerID)
     }
 }

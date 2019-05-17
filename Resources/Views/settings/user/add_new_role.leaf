@@ -1,0 +1,27 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Add New Role</span>
+</div>
+        }
+        #set("main") {
+<form method="post">
+<div class="form-group">
+    <label for="scannerName">Name</label>
+    <input type="text" name="name" class="form-control" id="scannerName"/>
+</div>
+<button type="submit" class="btn btn-primary">Add new Role</button>
+</form>
+        }
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item"><a href="/settings/user">User Settings</a></li>
+    <li class="breadcrumb-item"><a href="/settings/user/roles">Roles</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add New Role</li>
+</ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
+        #embed("home")

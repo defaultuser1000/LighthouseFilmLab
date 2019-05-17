@@ -1,0 +1,33 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Scanners</span>
+    <a href="scanners/add" class="btn btn-primary">
+        <i class="material-icons scanner-add">add</i>
+    </a>
+</div>
+        }
+#set("main") {
+<div class="scanners_container">
+    #if(scanners) {
+    <div class="container">#for(scanner in scanners) {
+        <div class="row" style="margin-bottom: 10px;">
+            <a href="scanners/scanner/#(scanner.id)" class="btn btn-outline-secondary btn-block col scanner-detail-button">
+                #if(scanner.name != NULL) { #(scanner.name) } else { NULL }
+            </a>
+        </div>
+        }
+
+    </div>} else { There is no scanners yet...}
+</div>
+    }
+#set("crumbs") {
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Scanners</li>
+    </ol>
+</nav>
+    }
+#set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
+#embed("home")

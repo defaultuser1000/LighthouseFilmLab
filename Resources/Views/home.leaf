@@ -266,7 +266,6 @@
             </div>
         </div>
     </div>
-    <!-- Use any element to open the sidenav -->
     <div id="main" class="Middle">
         #if(main) {
             #get(main)

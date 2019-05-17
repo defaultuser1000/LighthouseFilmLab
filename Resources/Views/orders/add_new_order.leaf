@@ -20,8 +20,8 @@
 <div class="form-group">
     <label for="exampleFormControlSelect1">Scanner</label>
     <select class="form-control" id="exampleFormControlSelect1" name="scanner">
-        <option>Frontier SP-3000</option>
-        <option>Noritsu HS-1800</option>
+        <option selected>-</option>
+        #if(scanners){#for(scanner in scanners){<option value="#(user.id)">#(scanner.name)</option>}}
     </select>
 </div>
 <div class="form-group">

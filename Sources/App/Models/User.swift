@@ -12,6 +12,7 @@ import Authentication
 
 final class User: PostgreSQLModel {
     var id: Int?
+    var roleID: Role.ID?
     var password: String
     var eMail: String
     var name: String?
@@ -29,7 +30,8 @@ final class User: PostgreSQLModel {
     var modificationDate: Date?
     var lastOnlineDate: Date?
     
-    init(password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, modificationDate: Date, lastOnlineDate: Date) {
+    init(roleID: Role.ID?, password: String, eMail: String, name: String, surName: String, jobName: String, zip: String, country: String, state: String, city: String, address: String, phone: String, acceptedTermsAndConditions: Bool, tutorial: String, registrationDate: Date, modificationDate: Date, lastOnlineDate: Date) {
+        self.roleID = roleID
         self.password = password
         self.eMail = eMail
         self.name = name
@@ -65,6 +67,7 @@ extension User: Migration {
             try addProperties(to: builder)
             builder.unique(on: \.eMail)
             builder.unique(on: \.phone)
+            builder.reference(from: \.roleID, to: \Role.id)
         }
     }
 }
@@ -79,6 +82,10 @@ extension User {
     
     var orders: Children<User, Order> {
         return children(\.userID)
+    }
+    
+    var role: Parent<User, Role> {
+        return parent(\.roleID!)
     }
 }
 
@@ -120,7 +127,7 @@ struct AdminUser: Migration {
             fatalError("Failed to create admin user")
         }
         
-        let user = User(password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), modificationDate: Date(), lastOnlineDate: Date())
+        let user = User(roleID: 1, password: hashedPassword, eMail: "admin@lighthouse.com", name: "Admin", surName: "Admin", jobName: "Lighthouse Film Lab", zip: "107045", country: "Russia", state: "", city: "Moscow", address: "Pechatnikov pereulok, 22", phone: "", acceptedTermsAndConditions: true, tutorial: "Not Needed", registrationDate: Date(), modificationDate: Date(), lastOnlineDate: Date())
         return user.save(on: conn).transform(to: ())
     }
     

@@ -1,0 +1,33 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Roles</span>
+    <a href="add_new_role" class="btn btn-primary">
+        <i class="material-icons role-add">group_add</i>
+    </a>
+</div>
+}
+#set("main") {
+<div class="uroles_container">#if(roles) {
+<div class="container">#for(role in roles) {
+    <div class="row" style="margin-bottom: 10px;">
+        <a href="role/#(role.id)" class="btn btn-outline-secondary btn-block col role-detail-button">
+            #(role.name)
+        </a>
+    </div>
+    }
+</div>
+} else { There is no users yet...}
+</div>
+}
+#set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item"><a href="/settings/user">User Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Roles</li>
+</ol>
+</nav>
+}
+#set("imgLogo") {<img alt="" class="logo-img" src="/images/logo.png"/>}
+#embed("home")

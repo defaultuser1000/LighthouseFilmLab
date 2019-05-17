@@ -216,6 +216,11 @@ span#version {
     margin-top: 5px;
 }
 
+.push-status {
+    color: inherit;
+    margin-top: 5px;
+}
+
 .edit-button {
     color: #FFF;
     margin-top: 5px;
@@ -235,6 +240,16 @@ span#version {
     margin-top: 5px;
 }
 
+.scanner-add {
+    color: #FFF;
+    margin-top: 6px;
+}
+
+.role-add {
+    color: #FFF;
+    margin-top: 6px;
+}
+
 .order-detail-button {
     padding-top: 12px;
 }
@@ -242,6 +257,11 @@ span#version {
 .order-detail-badge {
     font-size: .6rem;
     vertical-align: top;
+}
+
+div#moveStatus span.order-badge {
+    font-size: 1rem;
+    vertical-align: auto;
 }
 
 @media (max-width: 867px) {
@@ -262,6 +282,10 @@ span#version {
         /*background-size: cover;*/
     /*}*/
 /*}*/
+.closebtn {
+    display: none;
+    transition: all 0.3s;
+}
 
 @media (max-width: 768px) {
     .header-name {
@@ -281,6 +305,9 @@ span#version {
     #mySidenav {
         z-index: 5;
         width: 0;
+    }
+    .closebtn {
+        display: block;
     }
     /*.sidenav.active {*/
         /*margin-left: 0;*/

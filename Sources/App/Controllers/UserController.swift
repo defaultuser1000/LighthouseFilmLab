@@ -60,14 +60,14 @@ final class UserController: RouteCollection {
     
     func renderUsers(_ req: Request) throws -> Future<View> {
         return User.query(on: req).all().flatMap(to: View.self) { users in
-            return try req.view().render("users", ["users": users])
+            return try req.view().render("users/users", ["users": users])
         }
         
 //        return try req.view().render("users")
     }
     
     func renderSettings(_ req: Request) throws -> Future<View> {
-        return try req.view().render("settings")
+        return try req.view().render("settings/settings")
     }
     
     func loginWeb(_ req: Request) throws -> Future<Response> {
@@ -107,12 +107,14 @@ final class UserController: RouteCollection {
     }
     
     func renderAddNewUser(_ req: Request) throws -> Future<View> {
-        return try req.view().render("add_new_user")
+        let roles = Role.query(on: req).all()
+        
+        return try req.view().render("users/add_new_user", ["roles": roles])
     }
     
     func renderUserDetails(_ req: Request) throws -> Future<View> {
         return try req.parameters.next(User.self).flatMap { user in
-            return try req.view().render("user_detail", ["user": user])
+            return try req.view().render("users/user_detail", ["user": user])
         }
     }
     

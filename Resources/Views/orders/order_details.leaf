@@ -1,17 +1,38 @@
 #set("pageHeader") {
+#if(order){
 <div class="navbar">
-    <span class="header-title">Order ##(order.orderNumber)#if(order.status == "New") {
-        <span class="badge badge-pill badge-primary order-detail-badge">#(order.status)</span>
-        } else if(order.status == "Arrived") {
-        <span class="badge badge-pill badge-info order-detail-badge">#(order.status)</span>
-        } else if(order.status == "Ready") {
-        <span class="badge badge-pill badge-success order-detail-badge">#(order.status)</span>
-        } else if(order.status == "Scanned") {
-        <span class="badge badge-pill badge-warning order-detail-badge">#(order.status)</span>
-        } else if(order.status == "Canceled") {
-        <span class="badge badge-pill badge-danger order-detail-badge">#(order.status)</span>
+    <span class="header-title">Order ##(order.order.orderNumber)#if(order.status.code == "New") {
+        <span class="badge badge-pill badge-primary order-detail-badge">#(order.status.code)</span>
+        } else if(order.status.code == "Arrived") {
+        <span class="badge badge-pill badge-info order-detail-badge">#(order.status.code)</span>
+        } else if(order.status.code == "Ready") {
+        <span class="badge badge-pill badge-success order-detail-badge">#(order.status.code)</span>
+        } else if(order.status.code == "Scanned") {
+        <span class="badge badge-pill badge-warning order-detail-badge">#(order.status.code)</span>
+        } else if(order.status.code == "Canceled") {
+        <span class="badge badge-pill badge-danger order-detail-badge">#(order.status.code)</span>
         }
     </span>
+    <div id="moveStatus">
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary"> <!--onclick="editOrder()"-->
+                <i class="material-icons push-status">arrow_forward</i>
+            </button>
+            <!--#if(nextStatus.code == "New") {-->
+            <!--<span class="badge badge-pill badge-primary order-badge">#(order.nextStatus.code)</span>-->
+            <!--} else if(order.nextStatus.code == "Arrived") {-->
+            <!--<span class="badge badge-pill badge-info order-badge">#(order.nextStatus.code)</span>-->
+            <!--} else if(order.nextStatus.code == "Ready") {-->
+            <!--<span class="badge badge-pill badge-success order-badge">#(order.nextStatus.code)</span>-->
+            <!--} else if(order.nextStatus.code == "Scanned") {-->
+            <!--<span class="badge badge-pill badge-warning order-badge">#(order.nextStatus.code)</span>-->
+            <!--} else if(order.nextStatus.code == "Canceled") {-->
+            <!--<span class="badge badge-pill badge-danger order-badge">#(order.nextStatus.code)</span>-->
+            <!--} else {-->
+            <!--<span class="badge badge-pill badge-info order-badge">Arrived</span>-->
+            <!--}-->
+        </div>
+    </div>
     <div id="orderDetailButtons">
         <button type="button" class="btn btn-primary" onclick="editOrder()">
             <i class="material-icons edit-button">edit</i>
@@ -20,30 +41,31 @@
             <i class="material-icons delete-button">delete_forever</i>
         </button>
     </div>
-</div>
+</div>}else{Error header}
         }
 #set("main") {
+#if(order){
 <form method="post" id="changedOrderForm">
 <div class="form-group">
     <label for="idFormControlInput">Order Id</label>
-    <input type="number" name="id" class="form-control" id="idFormControlInput" value="#(order.id)" disabled/>
+    <input type="number" name="id" class="form-control" id="idFormControlInput" value="#(order.order.id)" disabled/>
 </div>
 <div class="form-group">
     <label for="orderNumberFormControlInput">Order Number</label>
-    <input type="number" name="orderNumber" class="form-control" id="orderNumberFormControlInput" value="#(order.orderNumber)" disabled/>
+    <input type="number" name="orderNumber" class="form-control" id="orderNumberFormControlInput" value="#(order.order.orderNumber)" disabled/>
 </div>
 <div class="form-group">
     <label for="userIdFormControlInput">UserID</label>
-    <input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.userID)" disabled/>
+    <input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.order.userID)" disabled/>
 </div>
 <div class="form-group">
     <label for="scannerFormControlSelect">Scanner</label>
     <select class="form-control" id="scannerFormControlSelect" name="scanner" disabled>
-        #if(order.scanner == "Frontier SP-3000"){
+        #if(order.order.scanner == "Frontier SP-3000"){
         <option>-</option>
         <option selected>Frontier SP-3000</option>
         <option>Noritsu HS-1800</option>
-        }else if(order.scanner == "Noritsu HS-1800"){
+        }else if(order.order.scanner == "Noritsu HS-1800"){
         <option>-</option>
         <option>Frontier SP-3000</option>
         <option selected>Noritsu HS-1800</option>
@@ -57,15 +79,15 @@
 <div class="form-group">
     <label for="skinTonesFormControlSelect">Skin tones</label>
     <select class="form-control" id="skinTonesFormControlSelect" name="skinTones" disabled>
-        #if(order.skinTones == "High"){
+        #if(order.order.skinTones == "High"){
         <option selected>High</option>
         <option>Neutral</option>
         <option>Low</option>
-        }else if(order.skinTones == "Neutral"){
+        }else if(order.order.skinTones == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
-        }else if(order.skinTones == "Low"){
+        }else if(order.order.skinTones == "Low"){
         <option>High</option>
         <option>Neutral</option>
         <option selected>Low</option>
@@ -75,15 +97,15 @@
 <div class="form-group">
     <label for="contrastFormControlSelect">Contrast</label>
     <select class="form-control" id="contrastFormControlSelect" name="contrast" disabled>
-        #if(order.contrast == "High"){
+        #if(order.order.contrast == "High"){
         <option selected>High</option>
         <option>Neutral</option>
         <option>Low</option>
-        }else if(order.contrast == "Neutral"){
+        }else if(order.order.contrast == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
-        }else if(order.contrast == "Low"){
+        }else if(order.order.contrast == "Low"){
         <option>High</option>
         <option>Neutral</option>
         <option selected>Low</option>
@@ -93,15 +115,15 @@
 <div class="form-group">
     <label for="bwContrastFormControlSelect">B&amp;W Contrast</label>
     <select class="form-control" id="bwContrastFormControlSelect" name="bwContrast" disabled>
-        #if(order.bwContrast == "High"){
+        #if(order.order.bwContrast == "High"){
         <option selected>High</option>
         <option>Neutral</option>
         <option>Low</option>
-        }else if(order.bwContrast == "Neutral"){
+        }else if(order.order.bwContrast == "Neutral"){
         <option>High</option>
         <option selected>Neutral</option>
         <option>Low</option>
-        }else if(order.bwContrast == "Low"){
+        }else if(order.order.bwContrast == "Low"){
         <option>High</option>
         <option>Neutral</option>
         <option selected>Low</option>
@@ -111,11 +133,11 @@
 <div class="form-group">
     <label for="expressScanningFormControlSelect">Express Scanning</label>
     <select class="form-control" id="expressScanningFormControlSelect" name="expressScan" disabled>
-        #if(order.expressScan == "4-6 days + 50%"){
+        #if(order.order.expressScan == "4-6 days + 50%"){
         <option></option>
         <option selected>4-6 days + 50%</option>
         <option>2-4 days + 100%</option>
-        }else if(order.expressScan == "2-4 days + 100%"){
+        }else if(order.order.expressScan == "2-4 days + 100%"){
         <option></option>
         <option>4-6 days + 50%</option>
         <option selected>2-4 days + 100%</option>
@@ -128,7 +150,7 @@
 </div>
 <div class="form-group">
     <label for="specialFormControlTextarea">Special</label>
-    <textarea class="form-control" id="specialFormControlTextarea" rows="3" name="special" placeholder="Enter your specials here" disabled>#(order.special)</textarea>
+    <textarea class="form-control" id="specialFormControlTextarea" rows="3" name="special" placeholder="Enter your specials here" disabled>#(order.order.special)</textarea>
 </div>
 </form>
 
@@ -161,7 +183,7 @@
             </button>
         </div>
         <div class="modal-body">
-            Do you really want to save changes into Order ##(order.orderNumber)?
+            Do you really want to save changes into Order ##(order.order.orderNumber)?
             <br/>
             Changes can not be undone.
         </div>
@@ -184,15 +206,16 @@
             </button>
         </div>
         <div class="modal-body">
-            Are you sure you want to delete Order ##(order.orderNumber)?
+            Are you sure you want to delete Order ##(order.order.orderNumber)?
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.id)/delete';">Delete</button>
+            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.order.id)/delete';">Delete</button>
         </div>
     </div>
 </div>
 </div>
+}else{Error main}
 }
 #set("crumbs") {
 <nav aria-label="breadcrumb">

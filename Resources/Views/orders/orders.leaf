@@ -1,0 +1,44 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Orders</span>
+    <a href="orders/add" class="btn btn-primary">
+        <i class="material-icons order-add">note_add</i>
+    </a>
+</div>
+        }
+#set("main") {
+<div class="orders_container">
+#if(orders) {
+    <div class="container">#for(order in orders) {
+        <div class="row" style="margin-bottom: 10px;">
+            <a href="orders/order/#(order.order.id)" class="btn btn-outline-secondary btn-block col order-detail-button">
+                #if(order.order.orderNumber != NULL) { Order ##(order.order.orderNumber) } else { NULL }
+                #if(order.status.code == "New") {
+                <span class="badge badge-pill badge-primary">#(order.status.code)</span>
+                } else if(order.status.code == "Arrived") {
+                <span class="badge badge-pill badge-info">#(order.status.code)</span>
+                } else if(order.status.code == "Ready") {
+                <span class="badge badge-pill badge-success">#(order.status.code)</span>
+                } else if(order.status.code == "Scanned") {
+                <span class="badge badge-pill badge-warning">#(order.status.code)</span>
+                } else if(order.status.code == "Canceled") {
+                <span class="badge badge-pill badge-danger">#(order.status.code)</span>
+                }
+            </a>
+        </div>
+        }
+
+    </div>
+} else { There is no orders yet...}
+</div>
+}
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/home">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+    </ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="images/logo.png"/>}
+        #embed("home")

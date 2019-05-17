@@ -1,0 +1,106 @@
+#set("pageHeader") {
+        #if(scanner){
+<div class="navbar">
+    <span class="header-title">Scanner</span>
+    <div id="orderDetailButtons">
+        <button type="button" class="btn btn-primary" onclick="editOrder()">
+            <i class="material-icons edit-button">edit</i>
+        </button>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
+            <i class="material-icons delete-button">delete_forever</i>
+        </button>
+    </div>
+</div>}else{Error header}
+        }
+        #set("main") {
+        #if(scanner){
+<form method="post" id="scannerDetailForm">
+<div class="form-group">
+    <label for="scannerName">Scanner Name</label>
+    <input type="text" name="name" class="form-control" id="scannerName" value="#(scanner.name)" disabled/>
+</div>
+<div class="form-group">
+    <label for="yearOfProduction">Year of Production</label>
+    <input type="date" name="yearOfProduction" class="form-control" id="yearOfProduction" value="#(scanner.yearOfProduction)" min="1990-01-01" max="2020-12-31" disabled/>
+</div>
+<div class="form-group">
+    <label for="shortInfo">Short Info</label>
+    <textarea class="form-control" id="shortInfo" rows="3" name="shortInfo" placeholder="Enter scanner short info here" disabled>#(scanner.shortInfo)</textarea>
+</div>
+</form>
+
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="cancelModalLabel">Cancel confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Do you really want to discard changes into Order ##(order.orderNumber)?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal" form="changedOrderForm">Close</button>
+            <button class="btn btn-primary" data-dismiss="modal" onclick="cancelEditOrder()">Cancel changes</button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Save confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Do you really want to save changes into Order ##(order.order.orderNumber)?
+            <br/>
+            Changes can not be undone.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" form="changedOrderForm">Close</button>
+            <button type="submit" class="btn btn-primary" form="changedOrderForm" > Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+
+        <!-- Modal for Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete Order ##(order.order.orderNumber)?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.order.id)/delete';">Delete</button>
+        </div>
+    </div>
+</div>
+</div>
+        }else{Error main}
+        }
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item"><a href="/settings/Scanners">Scanners</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Scanner Details</li>
+</ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="/../../images/logo.png"/>}
+        #embed("home")

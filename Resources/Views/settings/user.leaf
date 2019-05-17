@@ -1,0 +1,28 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">User Settings</span>
+</div>
+        }
+        #set("main") {
+<div class="container px-lg-5">
+<div class="row mx-lg-n5">
+    <a href="user/roles" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Roles</a>
+    <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">1</a>
+</div>
+<div class="row mx-lg-n5">
+    <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">2</a>
+    <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">3</a>
+</div>
+</div>
+        }
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">User Settings</li>
+</ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
+        #embed("home")

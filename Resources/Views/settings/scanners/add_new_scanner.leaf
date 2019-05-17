@@ -1,0 +1,34 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Add New Order</span>
+</div>
+        }
+        #set("main") {
+<form method="post">
+<div class="form-group">
+    <label for="scannerName">Scanner Name</label>
+    <input type="text" name="name" class="form-control" id="scannerName"/>
+</div>
+<div class="form-group">
+    <label for="yearOfProduction">Year of Production</label>
+    <input type="date" name="yearOfProduction" class="form-control" id="yearOfProduction" min="1990-01-01" max="2020-12-31"/>
+</div>
+<div class="form-group">
+    <label for="shortInfo">Short Info</label>
+    <textarea class="form-control" id="shortInfo" rows="3" name="shortInfo" placeholder="Enter scanner short info here"></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Add new Scanner</button>
+</form>
+        }
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item"><a href="/settings/Scanners">Scanners</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add New Scanner</li>
+</ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
+        #embed("home")
