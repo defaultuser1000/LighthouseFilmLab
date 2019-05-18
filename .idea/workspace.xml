@@ -2,36 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c946773-cf13-4f97-b4b7-fe13dc5a2c46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Resources/Views/orders/orders.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/add_new_scanner.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/user.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Controllers/RoleController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Controllers/ScannerController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Controllers/SettingsController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/App/Models/Role.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/home.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/home.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/order_details.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders/order_details.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/orders.leaf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/serverError.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/serverError.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/settings.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/settings.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/user_detail.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/users/user_detail.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Views/users.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/users/users.leaf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Controllers/UserController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Controllers/UserController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Models/Order.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/Order.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Models/Scanner.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/Scanner.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/Models/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/User.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/configure.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/configure.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/App/routes.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/routes.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -66,25 +37,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="22" column="77" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="22" selection-end-column="77" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="377">
+              <caret line="27" column="69" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="27" selection-end-column="69" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -101,11 +57,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="79" column="77" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
+            <state relative-caret-position="762">
+              <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -215,6 +180,7 @@
         <option value="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" />
       </list>
     </option>
   </component>
@@ -363,12 +329,12 @@
       <workItem from="1557405229996" duration="157000" />
       <workItem from="1557405708111" duration="525000" />
       <workItem from="1557408416681" duration="3166000" />
-      <workItem from="1557496220540" duration="100153000" />
+      <workItem from="1557496220540" duration="100446000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114787000" />
+    <option name="totallyTimeSpent" value="115080000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
@@ -466,16 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -584,16 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -601,10 +547,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="27" column="69" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="27" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="79" column="77" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
+        <state relative-caret-position="762">
+          <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>

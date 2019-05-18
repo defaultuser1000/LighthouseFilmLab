@@ -11,7 +11,7 @@
     </div>
     <div class="row mx-lg-n5">
         <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Statuses constructor</a>
-        <a href="scanners" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanners</a>
+        <a href="settings/scanners" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanners</a>
     </div>
 </div>
 }
