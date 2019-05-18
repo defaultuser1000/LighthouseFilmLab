@@ -136,9 +136,11 @@ final class OrderController: RouteCollection {
             for joinResult in joinOrderResults {
 //                try OrderStatus.find(joinResult.1.nextStatusId!, on: req).flatMap(to: OrderStatus.self) { nextStatus in
                     joinResultsTuples.append( JoinResultsTuple( order: joinResult.0, status: joinResult.1) )
+                print("Appended \(joinResult.0) and \(joinResult.1) to Tuple")
 //                }
             }
             let context = MyContext(title: "order", orderTuples: joinResultsTuples)
+            print("Context: \(context)")
             
             return try req.view().render("orders/order_details", context)
         }
