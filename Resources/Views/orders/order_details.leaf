@@ -42,7 +42,7 @@
             <i class="material-icons delete-button">delete_forever</i>
         </button>
     </div>
-</div>}else{Error header}
+</div>}
         }
 #set("main") {
 #if(order){
@@ -216,7 +216,7 @@
     </div>
 </div>
 </div>
-}else{Error main}
+}else{This page is in production. Please, stand by...}
 }
 #set("crumbs") {
 <nav aria-label="breadcrumb">
