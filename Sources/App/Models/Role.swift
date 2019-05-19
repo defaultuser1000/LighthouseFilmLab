@@ -13,11 +13,13 @@ import Authentication
 final class Role: PostgreSQLModel {
     var id: Int?
     var name: String
+    var roleType: String
     var creationDate: Date?
     var modificationDate: Date?
     
-    init(name: String, creationDate: Date?, modificationDate: Date?) {
+    init(name: String, roleType: String, creationDate: Date?, modificationDate: Date?) {
         self.name = name
+        self.roleType = roleType
         self.creationDate = creationDate
         self.modificationDate = modificationDate
     }
@@ -44,7 +46,7 @@ struct AdminRole: Migration {
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
         
-        let role = Role(name: "Admin", creationDate: Date(), modificationDate: Date())
+        let role = Role(name: "Admin", roleType: "SYSTEM", creationDate: Date(), modificationDate: Date())
         return role.save(on: conn).transform(to: ())
     }
     
@@ -53,3 +55,44 @@ struct AdminRole: Migration {
     }
 }
 
+struct TestRole: Migration {
+    typealias Database = PostgreSQLDatabase
+    
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        
+        let role = Role(name: "Test", roleType: "SYSTEM", creationDate: Date(), modificationDate: Date())
+        return role.save(on: conn).transform(to: ())
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
+    }
+}
+
+struct EmployeRole: Migration {
+    typealias Database = PostgreSQLDatabase
+    
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        
+        let role = Role(name: "Employe", roleType: "WORK", creationDate: Date(), modificationDate: Date())
+        return role.save(on: conn).transform(to: ())
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
+    }
+}
+
+struct EmployerRole: Migration {
+    typealias Database = PostgreSQLDatabase
+    
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        
+        let role = Role(name: "Employer", roleType: "WORK", creationDate: Date(), modificationDate: Date())
+        return role.save(on: conn).transform(to: ())
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
+    }
+}

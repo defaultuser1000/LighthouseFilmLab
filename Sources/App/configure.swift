@@ -45,6 +45,10 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var migrations = MigrationConfig()
     migrations.add(model: Role.self, database: .psql)
     migrations.add(migration: AdminRole.self, database: .psql)
+    migrations.add(migration: TestRole.self, database: .psql)
+    migrations.add(migration: EmployerRole.self, database: .psql)
+    migrations.add(migration: EmployeRole.self, database: .psql)
+    
     migrations.add(model: User.self, database: .psql)
     migrations.add(model: OrderStatus.self, database: .psql)
     

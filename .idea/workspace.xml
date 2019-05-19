@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c946773-cf13-4f97-b4b7-fe13dc5a2c46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Public/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Public/js/order_details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Public/js/role_details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Public/js/scanner_details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Public/js/user_details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/home.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/home.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/login.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/login.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/orders/order_details.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/orders/order_details.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Views/users/user_detail.leaf" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Views/users/user_detail.leaf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Controllers/OrderController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/Models/Order.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/Order.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/Models/Role.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/Role.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/Models/User.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/Models/User.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/configure.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/configure.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/App/routes.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/App/routes.swift" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,61 +36,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/css/main.css">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/home.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="249" column="20" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/orders/orders.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+            <state relative-caret-position="158">
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="8" selection-end-line="58" selection-end-column="14" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="27" column="69" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="27" selection-end-column="69" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="100" column="74" selection-end-line="106" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="762">
-              <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -78,26 +50,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="21" column="86" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="86" />
+            <state relative-caret-position="138">
+              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/add_new_scanner.leaf">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/users/user_detail.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="28" column="79" selection-end-line="33" selection-end-column="22" />
+            <state relative-caret-position="-198">
+              <caret line="109" column="84" lean-forward="true" selection-start-line="109" selection-start-column="84" selection-end-line="109" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/js/user_details.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="97" column="19" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/login.leaf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="105" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="15" selection-end-column="105" />
+            <state relative-caret-position="483">
+              <caret line="21" column="79" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
               <folding>
                 <element signature="e#1816#1821#0" expanded="true" />
               </folding>
@@ -106,15 +96,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf">
+        <entry file="file://$PROJECT_DIR$/Public/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+            <state relative-caret-position="339">
+              <caret line="88" column="10" lean-forward="true" selection-start-line="88" selection-start-column="10" selection-end-line="88" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/orders/order_details.leaf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="469">
+              <caret line="229" column="75" selection-start-line="229" selection-start-column="17" selection-end-line="229" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Public/js/role_details.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="189" column="1" selection-start-line="189" selection-start-column="1" selection-end-line="189" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="583">
+              <caret line="35" column="13" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="35" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -136,6 +160,7 @@
       <find>status.code</find>
       <find>order</find>
       <find>OrderStatus</find>
+      <find>editOrder</find>
     </findStrings>
     <replaceStrings>
       <replace>disabled</replace>
@@ -146,6 +171,8 @@
       <replace>order-badge</replace>
       <replace>scanner</replace>
       <replace>nextStatus.code</replace>
+      <replace>edit</replace>
+      <replace>Edit</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -158,13 +185,11 @@
         <option value="$PROJECT_DIR$/Resources/Views/order_edit.leaf" />
         <option value="$USER_HOME$/simple-html-invoice-template/invoice.html" />
         <option value="$PROJECT_DIR$/Resources/order_form_template.html" />
-        <option value="$PROJECT_DIR$/Resources/Views/login.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/profile.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/users.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/user_detail.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/add_new_user.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/404.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/home.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/orders.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/serverError.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/order_details.leaf" />
@@ -172,21 +197,31 @@
         <option value="$PROJECT_DIR$/Resources/Views/add_new_order.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/scanners.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/scanners/add_new_scanner.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/settings/settings.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/user.leaf" />
-        <option value="$PROJECT_DIR$/Public/css/main.css" />
-        <option value="$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/user/roles.leaf" />
-        <option value="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" />
         <option value="$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings/settings.leaf" />
+        <option value="$PROJECT_DIR$/Public/js/main.js" />
+        <option value="$PROJECT_DIR$/Public/js/role_details.js" />
+        <option value="$PROJECT_DIR$/Public/js/order_details.js" />
+        <option value="$PROJECT_DIR$/Resources/Views/orders/order_details.leaf" />
+        <option value="$PROJECT_DIR$/Public/js/scanner_details.js" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf" />
+        <option value="$PROJECT_DIR$/Public/js/user_details.js" />
+        <option value="$PROJECT_DIR$/Resources/Views/users/user_detail.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/home.leaf" />
+        <option value="$PROJECT_DIR$/Public/css/main.css" />
+        <option value="$PROJECT_DIR$/Resources/Views/login.leaf" />
+        <option value="$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1049" />
+    <option name="width" value="1440" />
     <option name="height" value="827" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -219,6 +254,12 @@
               <item name="HelloVapor" type="462c0819:PsiDirectoryNode" />
               <item name="Public" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HelloVapor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HelloVapor" type="462c0819:PsiDirectoryNode" />
+              <item name="Public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HelloVapor" type="b2602c69:ProjectViewProjectNode" />
@@ -286,11 +327,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Public/js" />
       <recent name="$PROJECT_DIR$/Resources/Views/settings" />
       <recent name="$PROJECT_DIR$/Resources/Views/users" />
       <recent name="$PROJECT_DIR$/Resources/Views/orders" />
       <recent name="$PROJECT_DIR$/Resources/Views/settings/scanners" />
-      <recent name="$PROJECT_DIR$/Public/images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -329,12 +370,12 @@
       <workItem from="1557405229996" duration="157000" />
       <workItem from="1557405708111" duration="525000" />
       <workItem from="1557408416681" duration="3166000" />
-      <workItem from="1557496220540" duration="100446000" />
+      <workItem from="1557496220540" duration="113146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115080000" />
+    <option name="totallyTimeSpent" value="127780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
@@ -380,13 +421,6 @@
     <entry file="file://$PROJECT_DIR$/Resources/test.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/login.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/order_edit.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1242">
@@ -414,13 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/users/user_detail.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2245">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/404.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -435,37 +462,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/orders/order_details.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2019">
-          <caret line="46" column="11" selection-end-line="230" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/statemachine/dom.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/home.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="979">
-          <caret line="267" column="10" selection-start-line="267" selection-start-column="10" selection-end-line="267" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/settings.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="30" selection-end-line="27" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -492,13 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="249" column="20" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/orders/orders.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -509,41 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="105" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="15" selection-end-column="105" />
-          <folding>
-            <element signature="e#1816#1821#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="86" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/add_new_scanner.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="28" column="79" selection-end-line="33" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="100" column="74" selection-end-line="106" />
         </state>
       </provider>
     </entry>
@@ -557,17 +519,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="92" column="31" selection-start-line="92" selection-start-column="31" selection-end-line="92" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanners.leaf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/settings.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#a#1;n#div#1;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/order_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/role_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="189" column="1" selection-start-line="189" selection-start-column="1" selection-end-line="189" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/scanner_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1288">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/scanners/scanner_detail.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/role_detail.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/settings/user/add_new_role.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/js/user_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="97" column="19" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/users/user_detail.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="109" column="84" lean-forward="true" selection-start-line="109" selection-start-column="84" selection-end-line="109" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/users/add_new_user.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Public/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="88" column="10" lean-forward="true" selection-start-line="88" selection-start-column="10" selection-end-line="88" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/orders/order_details.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="229" column="75" selection-start-line="229" selection-start-column="17" selection-end-line="229" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/home.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="8" selection-end-line="58" selection-end-column="14" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/login.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Views/orders/add_new_order.leaf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="79" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+          <folding>
+            <element signature="e#1816#1821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

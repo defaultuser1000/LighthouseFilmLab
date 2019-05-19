@@ -1,5 +1,27 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+#content {
+    position: relative;
+    background-color: #FFF;
+    margin: 0 auto;
+    width: auto;
+    height:100%;
+}
+
+#top-padding {
+    background: #FFF;
+    height: 30px;
+    width: 100%;
+}
+
+#stuff {
+    overflow-x:auto;
+    background-color: lightgreen;
+    top:30px;
+    left:0;right:0;
+    bottom:0;
+    position:absolute;
+}
 /*I love me some border-box*/
 * {
     box-sizing: border-box;
@@ -41,24 +63,28 @@ span.header-title {
 }
 
 .Container {
-    display: flex;
-    overflow: hidden;
+    /*display: flex;*/
+    /*overflow: hidden;*/
     height: calc(100vh);
     position: relative;
     width: 100%;
-    padding-top: 250px;
+    padding-top: 100px;
     padding-left: 250px;
 }
 
 .middle_header {
-    height: 145px;
+    /*float: left;*/
+    /*width: 100%;*/
+    height: auto;
+    border-bottom: 1px #b1b1b1 solid;
     background-color: #fff;
     /*width: 100%;*/
-    position: fixed;
-    z-index: 2;
-    top: 100px;
-    right: 0;
-    left: 0;
+    /*position: fixed;*/
+    /*z-index: 2;*/
+    /*overflow: hidden;*/
+    /*top: 100px;*/
+    /*right: 0;*/
+    /*left: 0;*/
     display: flex;
     /*align-items: center;*/
     /*justify-content: center;*/
@@ -67,8 +93,9 @@ span.header-title {
     /*border: 0.5px #333333 solid;*/
     /*border-radius: 10px 10px 0 0;*/
     transition: margin-left .5s;
-    padding-top: 20px;
-    margin: 10px 10px 20px 260px;
+    margin: 0 10px 20px 20px;
+    padding-top: 30px;
+    /*width: 100%;*/
 }
 
 /*All the scrollable sections should overflow and be whatever height they need to be. As they are flex-items (due to being inside a flex container) they could be made to stretch full height at all times if needed.
@@ -79,16 +106,33 @@ WebKit inertia scrolling is being added here for any present/future devices that
     transition: padding-left .5s;
 }
 
+.test {
+    position: relative;
+    background-color: #FFF;
+    margin: 0 auto;
+    width: auto;
+    height:100%;
+}
+
 .Middle {
-    overflow: auto;
-    height: auto;
-    /*padding: .6rem;*/
+    overflow-x:auto;
+    /*background-color: lightgreen;*/
+    top: auto;
+    left:0;right:0;
+    bottom:0;
+    position:relative;
+
+    /*display: flex;*/
+    /*float: left;*/
+    /*height: auto;*/
+    /*!*padding: .6rem;*!*/
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: scrollbar;
     flex: 1;
     transition: padding-left .5s;
-    padding: 10px 40px 10px 40px;
+    padding: 10px 40px 40px 40px;
     color: #818181;
+    clear: left;
 }
 
 /*Entirely optional – just wanted to remove the scrollbar on WebKit browsers as I find them ugly*/
@@ -248,6 +292,20 @@ span#version {
 .role-add {
     color: #FFF;
     margin-top: 6px;
+}
+
+.cancel-button {
+    color: #FFF;
+    margin-top: 5px;
+}
+
+.save-button {
+    color: #FFF;
+    margin-top: 5px;
+}
+
+button:has(i.save-button) {
+    margin-right: 5px;
 }
 
 .order-detail-button {

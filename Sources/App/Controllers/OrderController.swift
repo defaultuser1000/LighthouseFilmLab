@@ -166,6 +166,8 @@ final class OrderController: RouteCollection {
             var users: [User]
             var scanners: [Scanner]
         }
+//        let userSerssion = try req.http.cookies.all
+//        print(userSerssion)
         let maxOrderNumber = Order.query(on: req).max(\.orderNumber)
         let users = User.query(on: req).all()
         let scanners = Scanner.query(on: req).all()

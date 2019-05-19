@@ -54,6 +54,7 @@ public func routes(_ router: Router) throws {
     protectedRouter.post("settings", "scanners", "add", use: scannerController.createHandler)
     protectedRouter.get("settings", "scanners", "scanner", Scanner.parameter, use: scannerController.renderScannerDetails)
     protectedRouter.post("settings", "scanners", "scanner", Scanner.parameter, use: scannerController.updateHandlerWeb)
+    protectedRouter.post("settings", "scanners", "scanner", Scanner.parameter, "delete", use: scannerController.deleteHandlerWeb)
     
     protectedRouter.get("settings", "add", use: usersController.renderAddNewUser)
     protectedRouter.post("settings", "add", use: usersController.createNewUser)

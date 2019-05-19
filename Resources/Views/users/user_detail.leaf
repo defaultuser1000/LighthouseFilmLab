@@ -1,11 +1,12 @@
+#set("page_script"){<script src="/js/user_details.js"></script>}
 #set("pageHeader") {
 <div class="navbar">
     <span class="header-title">User details</span>
     <div id="orderDetailButtons">
-        <button type="button" class="btn btn-primary" onclick="editUser()" disabled>
+        <button type="button" class="btn btn-primary" onclick="edit()">
             <i class="material-icons edit-button">edit</i>
         </button>
-        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal" disabled>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
             <i class="material-icons delete-button">delete_forever</i>
         </button>
     </div>
@@ -87,6 +88,26 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" form="changedUserForm">Close</button>
             <button type="submit" class="btn btn-primary" form="changedUserForm" > Save changes</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="cancelModalLabel">Cancel confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Do you really want to discard changes into User "#(user.name) #(user.surName)"?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal" form="changedUserForm">Close</button>
+            <button class="btn btn-primary" data-dismiss="modal" onclick="cancelEdit()">Cancel changes</button>
         </div>
     </div>
 </div>

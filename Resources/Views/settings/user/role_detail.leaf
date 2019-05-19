@@ -1,3 +1,4 @@
+#set("page_script"){<script src="/js/role_details.js"></script>}
 #set("pageHeader") {
         #if(role){
 <div class="navbar">
@@ -18,6 +19,21 @@
 <div class="form-group">
     <label for="scannerName">Role Name</label>
     <input type="text" name="name" class="form-control" id="scannerName" value="#(role.name)" disabled/>
+</div>
+<div class="form-group">
+    <label for="roleType">Role Type</label>
+    <select class="form-control" id="roleType" name="roleType" disabled>
+        #if(role.roleType == "SYSTEM"){
+        <option selected>SYSTEM</option>
+        <option>WORK</option>
+        }else if(role.roleType == "WORK"){
+        <option>SYSTEM</option>
+        <option selected>WORK</option>
+        }else{
+        <option>SYSTEM</option>
+        <option>WORK</option>
+        }
+    </select>
 </div>
 </form>
 

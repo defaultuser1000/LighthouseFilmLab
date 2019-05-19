@@ -1,9 +1,10 @@
+#set("page_script"){<script src="/js/scanner_details.js"></script>}
 #set("pageHeader") {
-        #if(scanner){
+#if(scanner){
 <div class="navbar">
     <span class="header-title">Scanner</span>
-    <div id="orderDetailButtons">
-        <button type="button" class="btn btn-primary" onclick="editOrder()">
+    <div id="detailButtons">
+        <button type="button" class="btn btn-primary" onclick="edit()">
             <i class="material-icons edit-button">edit</i>
         </button>
         <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
@@ -11,9 +12,9 @@
         </button>
     </div>
 </div>}else{Error header}
-        }
-        #set("main") {
-        #if(scanner){
+}
+#set("main") {
+#if(scanner){
 <form method="post" id="scannerDetailForm">
 <div class="form-group">
     <label for="scannerName">Scanner Name</label>
@@ -39,11 +40,11 @@
             </button>
         </div>
         <div class="modal-body">
-            Do you really want to discard changes into Order ##(order.orderNumber)?
+            Do you really want to discard changes into Scanner "#(scanner.name)"?
         </div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" data-dismiss="modal" form="changedOrderForm">Close</button>
-            <button class="btn btn-primary" data-dismiss="modal" onclick="cancelEditOrder()">Cancel changes</button>
+            <button class="btn btn-secondary" data-dismiss="modal" form="scannerDetailForm">Close</button>
+            <button class="btn btn-primary" data-dismiss="modal" onclick="cancelEdit()">Cancel changes</button>
         </div>
     </div>
 </div>
@@ -58,19 +59,18 @@
             </button>
         </div>
         <div class="modal-body">
-            Do you really want to save changes into Order ##(order.order.orderNumber)?
+            Do you really want to save changes into Scanner "#(scanner.name)"?
             <br/>
             Changes can not be undone.
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" form="changedOrderForm">Close</button>
-            <button type="submit" class="btn btn-primary" form="changedOrderForm" > Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" form="scannerDetailForm">Close</button>
+            <button type="submit" class="btn btn-primary" form="scannerDetailForm" > Save changes</button>
         </div>
     </div>
 </div>
 </div>
-
-        <!-- Modal for Delete -->
+<!-- Modal for Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -81,26 +81,26 @@
             </button>
         </div>
         <div class="modal-body">
-            Are you sure you want to delete Order ##(order.order.orderNumber)?
+            Are you sure you want to delete Scanner "#(scanner.name)"?
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.order.id)/delete';">Delete</button>
+            <button type="submit" class="btn btn-danger" form="scannerDetailForm" onclick="javascript: form.action='/settings/scanners/scanner/#(scanner.id)/delete';">Delete</button>
         </div>
     </div>
 </div>
 </div>
-        }else{Error main}
-        }
-        #set("crumbs") {
+}else{Error main}
+}
+#set("crumbs") {
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/home">Home</a></li>
     <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
-    <li class="breadcrumb-item"><a href="/settings/Scanners">Scanners</a></li>
+    <li class="breadcrumb-item"><a href="/settings/scanners">Scanners</a></li>
     <li class="breadcrumb-item active" aria-current="page">Scanner Details</li>
 </ol>
 </nav>
-        }
-        #set("imgLogo") {<img alt="" class="logo-img" src="/../../images/logo.png"/>}
-        #embed("home")
+}
+#set("imgLogo") {<img alt="" class="logo-img" src="/../../images/logo.png"/>}
+#embed("home")

@@ -1,3 +1,4 @@
+#set("page_script"){<script src="/js/order_details.js"></script>}
 #set("pageHeader") {
 #if(order){
 <div class="navbar">

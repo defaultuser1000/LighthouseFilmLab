@@ -84,6 +84,10 @@ extension User {
         return children(\.userID)
     }
     
+    var orderCreated: Children<User, Order> {
+        return children(\.userCreatedID)
+    }
+    
     var role: Parent<User, Role> {
         return parent(\.roleID!)
     }
