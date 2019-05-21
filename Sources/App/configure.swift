@@ -63,6 +63,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     
     migrations.add(model: Scanner.self, database: .psql)
     migrations.add(model: Order.self, database: .psql)
+    migrations.add(model: OrderPDF.self, database: .psql)
     migrations.add(model: OrderFilm.self, database: .psql)
     
     migrations.add(migration: AdminUser.self, database: .psql)

@@ -1,37 +1,42 @@
 #set("page_script"){<script src="/js/order_details.js"></script>}
 #set("pageHeader") {
 #if(order){
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-modal-xl" onclick="setInvoiceContent('#(order.orderPDF)')"><i class="material-icons edit-button">print</i></button>
+
+<!--<a href="#(order.id)/storePdf">Store PDF</a>-->
+<!--#(order.orderPDF)-->
+<div></div>
 <div class="navbar">
-    <span class="header-title">Order ##(order.order.orderNumber)#if(order.status.code == "New") {
-        <span class="badge badge-pill badge-primary order-detail-badge">#(order.status.code)</span>
-        } else if(order.status.code == "Arrived") {
-        <span class="badge badge-pill badge-info order-detail-badge">#(order.status.code)</span>
-        } else if(order.status.code == "Ready") {
-        <span class="badge badge-pill badge-success order-detail-badge">#(order.status.code)</span>
-        } else if(order.status.code == "Scanned") {
-        <span class="badge badge-pill badge-warning order-detail-badge">#(order.status.code)</span>
-        } else if(order.status.code == "Canceled") {
-        <span class="badge badge-pill badge-danger order-detail-badge">#(order.status.code)</span>
+    <span class="header-title">Order ##(order.order.orderNumber)#if(order.currentStatus.code == "New") {
+        <span class="badge badge-pill badge-primary order-detail-badge">#(order.currentStatus.code)</span>
+        } else if(order.currentStatus.code == "Arrived") {
+        <span class="badge badge-pill badge-info order-detail-badge">#(order.currentStatus.code)</span>
+        } else if(order.currentStatus.code == "Ready") {
+        <span class="badge badge-pill badge-success order-detail-badge">#(order.currentStatus.code)</span>
+        } else if(order.currentStatus.code == "Scanned") {
+        <span class="badge badge-pill badge-warning order-detail-badge">#(order.currentStatus.code)</span>
+        } else if(order.currentStatus.code == "Canceled") {
+        <span class="badge badge-pill badge-danger order-detail-badge">#(order.currentStatus.code)</span>
         }
     </span>
     <div id="moveStatus">
         <div class="container">
             <button type="button" class="btn btn-outline-primary"> <!--onclick="editOrder()"-->
                 <i class="material-icons push-status">arrow_forward</i>
+                #if(order.nextStatus.code == "New") {
+                <span class="badge badge-pill badge-primary order-badge next-status">#(order.nextStatus.code)</span>
+                } else if(order.nextStatus.code == "Arrived") {
+                <span class="badge badge-pill badge-info order-badge next-status">#(order.nextStatus.code)</span>
+                } else if(order.nextStatus.code == "Ready") {
+                <span class="badge badge-pill badge-success order-badge next-status">#(order.nextStatus.code)</span>
+                } else if(order.nextStatus.code == "Scanned") {
+                <span class="badge badge-pill badge-warning order-badge next-status">#(order.nextStatus.code)</span>
+                } else if(order.nextStatus.code == "Canceled") {
+                <span class="badge badge-pill badge-danger order-badge next-status">#(order.nextStatus.code)</span>
+                } else {
+                <span class="badge badge-pill badge-info order-badge next-status">Arrived</span>
+                }
             </button>
-            <!--#if(nextStatus.code == "New") {-->
-            <!--<span class="badge badge-pill badge-primary order-badge">#(order.nextStatus.code)</span>-->
-            <!--} else if(order.nextStatus.code == "Arrived") {-->
-            <!--<span class="badge badge-pill badge-info order-badge">#(order.nextStatus.code)</span>-->
-            <!--} else if(order.nextStatus.code == "Ready") {-->
-            <!--<span class="badge badge-pill badge-success order-badge">#(order.nextStatus.code)</span>-->
-            <!--} else if(order.nextStatus.code == "Scanned") {-->
-            <!--<span class="badge badge-pill badge-warning order-badge">#(order.nextStatus.code)</span>-->
-            <!--} else if(order.nextStatus.code == "Canceled") {-->
-            <!--<span class="badge badge-pill badge-danger order-badge">#(order.nextStatus.code)</span>-->
-            <!--} else {-->
-            <!--<span class="badge badge-pill badge-info order-badge">Arrived</span>-->
-            <!--}-->
         </div>
     </div>
     <div id="orderDetailButtons">
@@ -56,24 +61,46 @@
     <input type="number" name="orderNumber" class="form-control" id="orderNumberFormControlInput" value="#(order.order.orderNumber)" disabled/>
 </div>
 <div class="form-group">
-    <label for="userIdFormControlInput">UserID</label>
-    <input type="number" name="userID" class="form-control" id="userIdFormControlInput" value="#(order.order.userID)" disabled/>
+    <label for="userSelect">User</label>
+    <select class="form-control" id="userSelect" name="userID" disabled>
+        #if(order.users){
+            #for(user in order.users){
+                #if(user.id == order.orderOwner.id){
+                    <option selected value="#(user.id)">#(user.name) #(user.surName)</option>
+                }else{
+                    <option value="#(user.id)">#(user.name) #(user.surName)</option>
+                }
+            }
+        }
+    </select>
+    <!--<input type="number" name="userID" class="form-control" id="exampleFormControlInput2" placeholder="Enter user ID here"/>-->
+</div>
+<div class="form-group">
+    <label for="userCreatedSelect">User Created</label>
+    <select class="form-control" id="userCreatedSelect" name="userCreatedID" disabled>
+        #if(order.users){
+            #for(user in order.users){
+                #if(user.id == order.userCreated.id){
+                    <option selected value="#(user.id)">#(user.name) #(user.surName)</option>
+                }else{
+                    <option value="#(user.id)">#(user.name) #(user.surName)</option>
+                }
+            }
+        }
+    </select>
+    <!--<input type="number" name="userID" class="form-control" id="exampleFormControlInput2" placeholder="Enter user ID here"/>-->
 </div>
 <div class="form-group">
     <label for="scannerFormControlSelect">Scanner</label>
-    <select class="form-control" id="scannerFormControlSelect" name="scanner" disabled>
-        #if(order.order.scanner == "Frontier SP-3000"){
-        <option>-</option>
-        <option selected>Frontier SP-3000</option>
-        <option>Noritsu HS-1800</option>
-        }else if(order.order.scanner == "Noritsu HS-1800"){
-        <option>-</option>
-        <option>Frontier SP-3000</option>
-        <option selected>Noritsu HS-1800</option>
-        }else{
-        <option>-</option>
-        <option>Frontier SP-3000</option>
-        <option>Noritsu HS-1800</option>
+    <select class="form-control" id="scannerFormControlSelect" name="scanner" disabled required>
+        #if(order.scanners){
+            #for(scanner in order.scanners){
+                #if(order.selectedScanner.name == scanner.name){
+                    <option selected value="#(scanner.id)">#(scanner.name)</option>
+                }else{
+                    <option value="#(scanner.id)">#(scanner.name)</option>
+                }
+            }
         }
     </select>
 </div>
@@ -198,23 +225,44 @@
 
 <!-- Modal for Delete -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Delete confirmation</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            Are you sure you want to delete Order ##(order.order.orderNumber)?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.order.id)/delete';">Delete</button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete Order ##(order.order.orderNumber)?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.id)/delete';">Delete</button>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Extra large modal -->
+<div class="modal fade bd-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 <div id="invoice"><iframe</div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-primary">Print</button>
+             </div>
+        </div>
+    </div>
 </div>
 }else{This page is in production. Please, stand by...}
 }

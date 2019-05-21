@@ -317,6 +317,10 @@ button:has(i.save-button) {
     vertical-align: top;
 }
 
+.next-status {
+    font-size: 1.2rem;
+}
+
 div#moveStatus span.order-badge {
     font-size: 1rem;
     vertical-align: auto;

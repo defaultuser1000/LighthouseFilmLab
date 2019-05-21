@@ -5,6 +5,7 @@ let contrast;
 let bwContrast;
 let expressScanning;
 let special;
+let invoiceContent;
 
 let editing = false;
 function editOrder() {
@@ -187,4 +188,9 @@ function cancelEditOrder() {
     document.getElementById("specialFormControlTextarea").setAttribute("disabled","");
 
     // orderButtons.appendChild(saveButton);
+}
+
+function setInvoiceContent(invoiceContent1) {
+    invoiceContent = invoiceContent1;
+    console.log(self.invoiceContent);
 }

@@ -33,13 +33,45 @@ final class OrderController: RouteCollection {
     }
     
     func createHandler(_ req: Request) throws -> Future<Response> {
+        
         return try req.content.decode(Order.self).flatMap { order in
-            order.statusID = 1
-            order.creationDate = Date()
-            order.modificationDate = Date()
             
-            return order.save(on: req).map { _ in
-                return req.redirect(to: "/orders")
+            let user = User.find(order.userID, on: req)
+            let scanner = Scanner.find(order.scannerID, on: req)
+            
+            return flatMap(user, scanner) { user, scanner in
+                
+                order.statusID = 1
+                order.creationDate = Date()
+                order.modificationDate = Date()
+                
+                let pdfHelper = PDFHelper()
+                let pdf = pdfHelper.renderPDF(invoiceNumber: "\(order.orderNumber ?? 0)",
+                    receivedDate: order.creationDate ?? Date(),
+                    eMail: "\(user!.eMail)",
+                    fullName: "\(user!.name ?? "n/a") \(user!.surName ?? "n/a")",
+                    jobName: "\(user!.jobName ?? "n/a")",
+                    special: "\(order.special)",
+                    address: "\(user!.address ?? "n/a")",
+                    city: "\(user!.city ?? "n/a")",
+                    state: "\(user!.state ?? "n/a")",
+                    zip: "\(user!.zip ?? "n/a")",
+                    phone: "\(user!.phone ?? "n/a")",
+                    scanner: "\(scanner!.name )",
+                    skinTones: "\(order.skinTones)",
+                    contrast: "\(order.contrast)",
+                    bwContrast: "\(order.bwContrast)",
+                    expressScanning: "\(order.expressScan)")
+                
+                
+                return order.save(on: req).map { _ in
+                    OrderPDF(orderID: order.id!,
+                             pdfContent: pdf.data(using: .utf8)!,
+                             creationDate: Date(),
+                             modificationDate: Date())
+                        .save(on: req)
+                    return req.redirect(to: "/orders")
+                }
             }
         }
     }
@@ -121,7 +153,7 @@ final class OrderController: RouteCollection {
     func renderOrderDetails(_ req: Request) throws -> Future<View> {
         struct JoinResultsTuple: Encodable {
             let order: Order
-            let status: OrderStatus
+            let orderPDF: OrderPDF
             //let nextStatus: OrderStatus
         }
 
@@ -130,20 +162,64 @@ final class OrderController: RouteCollection {
             let orderTuples: [JoinResultsTuple]
         }
         
-        return Order.query(on: req).join(\OrderStatus.id, to: \Order.statusID).alsoDecode(OrderStatus.self).all().flatMap(to: View.self) { joinOrderResults in
-            var joinResultsTuples: [JoinResultsTuple] = []
-            
-            for joinResult in joinOrderResults {
-//                try OrderStatus.find(joinResult.1.nextStatusId!, on: req).flatMap(to: OrderStatus.self) { nextStatus in
-                    joinResultsTuples.append( JoinResultsTuple( order: joinResult.0, status: joinResult.1) )
-                print("Appended \(joinResult.0) and \(joinResult.1) to Tuple")
-//                }
-            }
-            let context = MyContext(title: "order", orderTuples: joinResultsTuples)
-            print("Context: \(context)")
-            
-            return try req.view().render("orders/order_details", context)
+        struct PageData: Content {
+            var order: Order
+            var orderPDF: Data
+            var currentStatus: OrderStatus
+            var nextStatus: OrderStatus
+            var scanners: [Scanner]
+            var selectedScanner: Scanner
+            var users: [User]
+            var userCreated: User
+            var orderOwner: User
         }
+        
+        return try req.parameters.next(Order.self).flatMap { order in
+            
+            let orderPDF = OrderPDF.query(on: req).filter(\.orderID == order.id!).first()
+            let currentStatus = OrderStatus.find(order.statusID!, on: req)
+            let selectedScanner = Scanner.find(order.scannerID, on: req)
+            let scanners = Scanner.query(on: req).all()
+            
+            return flatMap(orderPDF, currentStatus, selectedScanner, scanners) { (orderPDF, currentStatus, selectedScanner, scanners) in
+                
+                let next = currentStatus!.nextStatusId
+                let users = User.query(on: req).all()
+                let userCreated = User.find(order.userCreatedID, on: req)
+                let orderOwner = User.find(order.userID, on: req)
+                
+                return flatMap(OrderStatus.find(next!, on: req), users, userCreated, orderOwner) { nextStatus, users, userCreated, orderOwner in
+                    let context = PageData(order: order,
+                                           orderPDF: (orderPDF!.pdfContent),
+                                           currentStatus: currentStatus!,
+                                           nextStatus: nextStatus!,
+                                           scanners: scanners,
+                                           selectedScanner: selectedScanner!,
+                                           users: users,
+                                           userCreated: userCreated!,
+                                           orderOwner: orderOwner!)
+                    
+                    return try req.view().render("orders/order_details", ["order": context])
+                }
+            }
+        }
+        
+//        return Order.query(on: req).join(\OrderStatus.id, to: \Order.statusID).alsoDecode(OrderStatus.self).all().flatMap(to: View.self) { joinOrderResults in
+//            var joinResultsTuples: [JoinResultsTuple] = []
+//
+//            for joinResult in joinOrderResults {
+////                try OrderStatus.find(joinResult.1.nextStatusId!, on: req).flatMap(to: OrderStatus.self) { nextStatus in
+//                    joinResultsTuples.append( JoinResultsTuple( order: joinResult.0, status: joinResult.1) )
+//                print("Appended \(joinResult.0) and \(joinResult.1) to Tuple")
+////                }
+//            }
+//            let context = MyContext(title: "order", orderTuples: joinResultsTuples)
+//            print("Context: \(context)")
+//
+//            return try req.view().render("orders/order_details", context)
+//        }
+        
+        
             
 //            return OrderStatus.query(on: req).join(\OrderStatus.id, to: \OrderStatus.nextStatusId).join(\Order., to: \Order.statusID).alsoDecode(OrderStatus.self).filter(\OrderStatus.id == order.statusID).all().flatMap(to: View.self) { joinResults in
 //
@@ -168,8 +244,6 @@ final class OrderController: RouteCollection {
             var users: [User]
             var scanners: [Scanner]
         }
-//        let userSerssion = try req.http.cookies.all
-//        print(userSerssion)
         let maxOrderNumber = Order.query(on: req).max(\.orderNumber)
         let users = User.query(on: req).all()
         let scanners = Scanner.query(on: req).all()
@@ -180,9 +254,19 @@ final class OrderController: RouteCollection {
         }
     }
     
-//    func printPDF(_ req: Request) throws -> String {
-//        return try req.parameters.next(Order.self).flatMap { order in
-//            return PDFHelper.renderPDF(invoiceNumber: order.orderNumber)
+//    func storePDF(_ req: Request) throws -> Future<Response> {
+//        return try req.content.decode(OrderPDF.self).flatMap { orderPDF in
+//            orderPDF.creationDate = Date()
+//            orderPDF.modificationDate = Date()
+//            //let order = Order.find(orderPDF.orderID, on: req)
+//            return Order.query(on: req).filter(\Order.id, .equal, orderPDF.orderID).first().flatMap { order in
+//                //let pdfHelper = PDFHelper()
+//                //orderPDF.pdfContent = pdfHelper.renderPDF(invoiceNumber: "\(String(describing: order?.orderNumber))").convertToData()
+//
+//                return orderPDF.save(on: req).map { _ in
+//                    return req.redirect(to: "/orders")
+//                }
+//            }
 //        }
 //    }
 }

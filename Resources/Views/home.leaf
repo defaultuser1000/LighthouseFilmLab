@@ -51,12 +51,6 @@
         <hr/>
         <span id="version">v 1.0.a</span>
     </div>
-    <!--<div id="content">-->
-        <!--<div id="top-padding"></div>-->
-        <!--<div id="stuff">-->
-            <!--<p>some content</p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>End of content.-->
-        <!--</div>-->
-    <!--</div>-->
     <div class="test">
         <div class="middle_header" id="middle-header">
             <div class="container">

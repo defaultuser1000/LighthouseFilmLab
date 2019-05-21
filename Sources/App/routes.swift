@@ -32,10 +32,12 @@ public func routes(_ router: Router) throws {
     
     protectedRouter.get("orders", use: orderController.renderOrders)
     protectedRouter.get("orders", "add", use: orderController.renderAddNewOrder)
+//    protectedRouter.post("orders", "add", use: orderController.testCreateWithPDF)
     protectedRouter.post("orders", "add", use: orderController.createHandler)
     protectedRouter.get("orders", "order", Order.parameter, use: orderController.renderOrderDetails)
+//    protectedRouter.get("orders","order", Order.parameter, "storePdf", use: orderController.storePDF)
     protectedRouter.post("orders", "order", Order.parameter, use: orderController.updateHandlerWeb)
-    protectedRouter.post("orders", "order", Order.parameter, "delete", use: orderController.deleteHandlerWeb)
+    protectedRouter.get("orders", "order", Order.parameter, "delete", use: orderController.deleteHandlerWeb)
     
     protectedRouter.get("users", use: usersController.renderUsers)
     protectedRouter.get("users", "add", use: usersController.renderAddNewUser)

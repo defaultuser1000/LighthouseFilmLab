@@ -68,4 +68,7 @@ extension Order {
     var userCreated: Parent<Order, User> {
         return parent(\.userCreatedID)
     }
+    var orderPDF: Children<Order, OrderPDF> {
+        return children(\.id)
+    }
 }

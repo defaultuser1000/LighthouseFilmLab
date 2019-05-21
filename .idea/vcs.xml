@@ -28,5 +28,6 @@
     <mapping directory="$PROJECT_DIR$/.build/checkouts/validation.git-2832914109364099019" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/vapor.git-123716615748469362" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.build/checkouts/websocket.git-3581545304950461979" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/.build/checkouts/wkhtmltopdf.git--5035493780380651953" vcs="Git" />
   </component>
 </project>
