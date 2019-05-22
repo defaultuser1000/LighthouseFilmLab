@@ -91,9 +91,9 @@ final class PDFHelper: NSObject {
             var HTMLContent = try String(contentsOf: fileURL, encoding: .utf8)
                 
 //            HTMLContent = HTMLContent.replacingOccurrences(of: "\'", with: "\\\'")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "<", with: "&lt;")
-            HTMLContent = HTMLContent.replacingOccurrences(of: ">", with: "&gt;")
-            HTMLContent = HTMLContent.replacingOccurrences(of: "'", with: "&#39;")
+//            HTMLContent = HTMLContent.replacingOccurrences(of: "<", with: "&lt;")
+//            HTMLContent = HTMLContent.replacingOccurrences(of: ">", with: "&gt;")
+//            HTMLContent = HTMLContent.replacingOccurrences(of: "'", with: "&#39;")
             
             
             

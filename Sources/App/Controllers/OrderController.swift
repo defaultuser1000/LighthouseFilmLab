@@ -214,19 +214,23 @@ final class OrderController: RouteCollection {
         }
     }
     
-//    func storePDF(_ req: Request) throws -> Future<Response> {
-//        return try req.content.decode(OrderPDF.self).flatMap { orderPDF in
-//            orderPDF.creationDate = Date()
-//            orderPDF.modificationDate = Date()
-//            //let order = Order.find(orderPDF.orderID, on: req)
-//            return Order.query(on: req).filter(\Order.id, .equal, orderPDF.orderID).first().flatMap { order in
-//                //let pdfHelper = PDFHelper()
-//                //orderPDF.pdfContent = pdfHelper.renderPDF(invoiceNumber: "\(String(describing: order?.orderNumber))").convertToData()
-//
-//                return orderPDF.save(on: req).map { _ in
-//                    return req.redirect(to: "/orders")
-//                }
+//    func downloadOrderForm(_ req: Request) throws -> Future<Response> {
+//        return try req.parameters.next(Order.self).flatMap { order in
+//            return OrderPDF.query(on: req).filter(\OrderPDF.orderID == order.id!).first().flatMap { orderPDF in
+//                return NSData(contentsOf: <#T##URL#>)
 //            }
+//            
+////            orderPDF.creationDate = Date()
+////            orderPDF.modificationDate = Date()
+////            //let order = Order.find(orderPDF.orderID, on: req)
+////            return Order.query(on: req).filter(\Order.id, .equal, orderPDF.orderID).first().flatMap { order in
+////                //let pdfHelper = PDFHelper()
+////                //orderPDF.pdfContent = pdfHelper.renderPDF(invoiceNumber: "\(String(describing: order?.orderNumber))").convertToData()
+////
+////                return orderPDF.save(on: req).map { _ in
+////                    return req.redirect(to: "/orders")
+////                }
+////            }
 //        }
 //    }
 }

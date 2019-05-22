@@ -1,7 +1,7 @@
 #set("page_script"){<script src="/js/order_details.js"></script>}
 #set("pageHeader") {
 #if(order){
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-modal-xl" onclick="setInvoiceContent()">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl"> <!--onclick="javascript: form.action='/orders/order/#(order.id)/downloadOrderForm';"-->
     <i class="material-icons edit-button">print</i>
 </button>
 <div></div>
@@ -243,25 +243,27 @@
     </div>
 </div>
 
-<!-- Extra large modal -->
-<div class="modal fade bd-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <div id="invoice"><iframe</div>
-             </div>
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary">Print</button>
-             </div>
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-modal="true">
+<div class="modal-dialog modal-xl" style="width: 1024px; height: 90%;">
+    <div class="modal-content" style="width: 90%; height: 90%;">
+
+        <div class="modal-header">
+            <h5 class="modal-title h4" id="myExtraLargeModalLabel">Print Order Form</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="invoice" style="width: 100%; height: 100%;">
+                <iframe id="invoice" name="invoice" srcdoc="#(order.orderPDF)" class="invoice-iframe" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="javasript: window.frames['invoice'].focus(); window.frames['invoice'].print();">Print</button>
         </div>
     </div>
+</div>
 </div>
 }else{This page is in production. Please, stand by...}
 }
