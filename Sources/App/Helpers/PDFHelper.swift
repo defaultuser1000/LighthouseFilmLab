@@ -84,46 +84,52 @@ final class PDFHelper: NSObject {
             //reading
                 //let fileURL = dir.appendingPathComponent("order_form_template.html")
                 
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                let receivedDateFormatted = dateFormatter.string(from: receivedDate)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let receivedDateFormatted = dateFormatter.string(from: receivedDate)
                 
-                var HTMLContent = try String(contentsOf: fileURL, encoding: .utf8)
+            var HTMLContent = try String(contentsOf: fileURL, encoding: .utf8)
                 
-//                HTMLContent = HTMLContent.replacingOccurrences(of: "\'", with: "\\\'")
+//            HTMLContent = HTMLContent.replacingOccurrences(of: "\'", with: "\\\'")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "<", with: "&lt;")
+            HTMLContent = HTMLContent.replacingOccurrences(of: ">", with: "&gt;")
+            HTMLContent = HTMLContent.replacingOccurrences(of: "'", with: "&#39;")
             
-                HTMLContent = HTMLContent.replacingOccurrences(of: "#FULL_NAME#", with: fullName)
+            
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#FULL_NAME#", with: fullName)
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#INVOICE_NUMBER#", with: invoiceNumber)
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#RECEIVED_DATE#", with: receivedDateFormatted)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#INVOICE_NUMBER#", with: invoiceNumber)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#JOB_NAME#", with: jobName)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#RECEIVED_DATE#", with: receivedDateFormatted)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#EMAIL#", with: eMail)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#JOB_NAME#", with: jobName)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#SPECIAL#", with: special.replacingOccurrences(of: "\n", with: "<br>"))
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#EMAIL#", with: eMail)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ADDRESS#", with: address)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#SPECIAL#", with: special.replacingOccurrences(of: "\n", with: "<br>"))
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#CITY#", with: city)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#ADDRESS#", with: address)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#STATE#", with: state)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#CITY#", with: city)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ZIP#", with: zip)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#STATE#", with: state)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#PHONE#", with: phone)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#ZIP#", with: zip)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#SCANNER#", with: scanner)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#PHONE#", with: phone)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#SKIN_TONES#", with: skinTones)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#SCANNER#", with: scanner)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#CONTRAST#", with: contrast)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#SKIN_TONES#", with: skinTones)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#BW_CONTRAST#", with: bwContrast)
                 
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#CONTRAST#", with: contrast)
-                
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#BW_CONTRAST#", with: bwContrast)
-                
-                 HTMLContent = HTMLContent.replacingOccurrences(of: "#EXPRESS_SCANNING#", with: expressScanning)
-                 return HTMLContent
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#EXPRESS_SCANNING#", with: expressScanning)
+            
+            return HTMLContent
 //            }
         }
         catch {
