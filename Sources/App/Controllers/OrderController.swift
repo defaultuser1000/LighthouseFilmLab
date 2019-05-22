@@ -151,27 +151,16 @@ final class OrderController: RouteCollection {
     }
     
     func renderOrderDetails(_ req: Request) throws -> Future<View> {
-        struct JoinResultsTuple: Encodable {
-            let order: Order
-            let orderPDF: OrderPDF
-            //let nextStatus: OrderStatus
-        }
-
-        struct MyContext: Encodable {
-            let title: String
-            let orderTuples: [JoinResultsTuple]
-        }
-        
         struct PageData: Content {
             var order: Order
             var orderPDF: Data
             var currentStatus: OrderStatus
-            var nextStatus: OrderStatus
+            //var nextStatus: OrderStatus
             var scanners: [Scanner]
             var selectedScanner: Scanner
-            var users: [User]
-            var userCreated: User
-            var orderOwner: User
+            //var users: [User]
+            //var userCreated: User
+            //var orderOwner: User
         }
         
         return try req.parameters.next(Order.self).flatMap { order in
@@ -183,59 +172,27 @@ final class OrderController: RouteCollection {
             
             return flatMap(orderPDF, currentStatus, selectedScanner, scanners) { (orderPDF, currentStatus, selectedScanner, scanners) in
                 
-                let next = currentStatus!.nextStatusId
-                let users = User.query(on: req).all()
-                let userCreated = User.find(order.userCreatedID, on: req)
-                let orderOwner = User.find(order.userID, on: req)
+//                let next = currentStatus!.nextStatusId
+//                let users = User.query(on: req).all()
+//                let userCreated = User.find(order.userCreatedID, on: req)
+//                let orderOwner = User.find(order.userID, on: req)
                 
-                return flatMap(OrderStatus.find(next!, on: req), users, userCreated, orderOwner) { nextStatus, users, userCreated, orderOwner in
+//                return flatMap(OrderStatus.find(next!, on: req), users, userCreated, orderOwner) { nextStatus, users, userCreated, orderOwner in
                     let context = PageData(order: order,
                                            orderPDF: (orderPDF!.pdfContent),
                                            currentStatus: currentStatus!,
-                                           nextStatus: nextStatus!,
+                                           //nextStatus: nextStatus!,
                                            scanners: scanners,
-                                           selectedScanner: selectedScanner!,
-                                           users: users,
-                                           userCreated: userCreated!,
-                                           orderOwner: orderOwner!)
+                                           selectedScanner: selectedScanner!//,
+                                           //users: users,
+                                           //userCreated: userCreated!,
+                                           //orderOwner: orderOwner!
+                )
                     
                     return try req.view().render("orders/order_details", ["order": context])
-                }
+//                }
             }
         }
-        
-//        return Order.query(on: req).join(\OrderStatus.id, to: \Order.statusID).alsoDecode(OrderStatus.self).all().flatMap(to: View.self) { joinOrderResults in
-//            var joinResultsTuples: [JoinResultsTuple] = []
-//
-//            for joinResult in joinOrderResults {
-////                try OrderStatus.find(joinResult.1.nextStatusId!, on: req).flatMap(to: OrderStatus.self) { nextStatus in
-//                    joinResultsTuples.append( JoinResultsTuple( order: joinResult.0, status: joinResult.1) )
-//                print("Appended \(joinResult.0) and \(joinResult.1) to Tuple")
-////                }
-//            }
-//            let context = MyContext(title: "order", orderTuples: joinResultsTuples)
-//            print("Context: \(context)")
-//
-//            return try req.view().render("orders/order_details", context)
-//        }
-        
-        
-            
-//            return OrderStatus.query(on: req).join(\OrderStatus.id, to: \OrderStatus.nextStatusId).join(\Order., to: \Order.statusID).alsoDecode(OrderStatus.self).filter(\OrderStatus.id == order.statusID).all().flatMap(to: View.self) { joinResults in
-//
-//                var joinResultsTuples: [JoinResultsTuple] = []
-//                for joinResult in joinResults {
-//                    joinResultsTuples.append( JoinResultsTuple( status: joinResult.0, nextStatus: joinResult.1))
-//                }
-//
-//                let order = Order.find(order.id!, on: req)
-//                let context = MyContext(order: order, statusTuples: joinResultsTuples)
-//
-//                return try req.view().render("order_details", context)
-//            }
-            
-            //return try req.view().render("order_details", ["order": order])
-//        }
     }
     
     func renderAddNewOrder(_ req: Request) throws -> Future<View> {
