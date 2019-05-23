@@ -28,6 +28,10 @@
     color: #555555;
 }
 
+#invoice {
+    border: 0;
+}
+
 /*div.modal {
     position: absolute;
     z-index: 5;

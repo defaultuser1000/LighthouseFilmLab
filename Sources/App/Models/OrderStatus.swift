@@ -36,6 +36,9 @@ extension OrderStatus {
     var orders: Children<OrderStatus, Order> {
         return children(\.statusID)
     }
+    var nextStatus: Parent<OrderStatus, OrderStatus> {
+        return parent(\.nextStatusId)!
+    }
 }
 struct NewStatus: Migration {
     typealias Database = PostgreSQLDatabase

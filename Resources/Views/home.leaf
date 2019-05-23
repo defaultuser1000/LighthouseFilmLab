@@ -19,6 +19,7 @@
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js?ver=1.3.2'></script>
     #if(page_script){#get(page_script)}
 </head>
 <body>
@@ -76,6 +77,9 @@
                 </div>
             </div>
         </div>
+        #if(modals) {
+            #get(modals)
+        }
         <div id="main" class="Middle">#if(main) {
             #get(main)
         } else {

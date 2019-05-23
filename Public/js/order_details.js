@@ -194,3 +194,53 @@ function setInvoiceContent(invoiceContent1) {
     invoiceContent = invoiceContent1;
     console.log(self.invoiceContent);
 }
+
+
+// function resizeIFrameToFitContent( iFrame ) {
+//
+//     iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+//     iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+// }
+//
+// window.addEventListener('DOMContentLoaded', function(e) {
+//
+//     const iFrame = document.getElementById('invoice');
+//     resizeIFrameToFitContent( iFrame );
+//
+//     // or, to resize all iframes:
+//     // const iframes = document.querySelectorAll("iframe");
+//     // for(let i = 0; i < iframes.length; i++) {
+//     //     resizeIFrameToFitContent( iframes[i] );
+//     // }
+// } );
+
+
+$(function(){
+
+    var iFrames = $('invoice-iframe');
+
+    function iResize() {
+
+        for (var i = 0, j = iFrames.length; i < j; i++) {
+            iFrames[i].style.height = iFrames[i].contentWindow.document.body.offsetHeight + 'px';}
+    }
+
+    if ($.browser.safari || $.browser.opera) {
+
+        iFrames.load(function(){
+            setTimeout(iResize, 0);
+        });
+
+        for (var i = 0, j = iFrames.length; i < j; i++) {
+            var iSource = iFrames[i].src;
+            iFrames[i].src = '';
+            iFrames[i].src = iSource;
+        }
+
+    } else {
+        iFrames.load(function() {
+            this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+        });
+    }
+
+});
