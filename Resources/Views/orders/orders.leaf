@@ -9,26 +9,48 @@
 #set("main") {
 <div class="orders_container">
 #if(orders) {
-    <div class="container">#for(order in orders) {
-        <div class="row" style="margin-bottom: 10px;">
-            <a href="orders/order/#(order.order.id)" class="btn btn-outline-secondary btn-block col order-detail-button">
-                #if(order.order.orderNumber != NULL) { Order ##(order.order.orderNumber) } else { NULL }
-                #if(order.status.code == "New") {
-                <span class="badge badge-pill badge-primary">#(order.status.code)</span>
-                } else if(order.status.code == "Arrived") {
-                <span class="badge badge-pill badge-info">#(order.status.code)</span>
-                } else if(order.status.code == "Ready") {
-                <span class="badge badge-pill badge-success">#(order.status.code)</span>
-                } else if(order.status.code == "Scanned") {
-                <span class="badge badge-pill badge-warning">#(order.status.code)</span>
-                } else if(order.status.code == "Canceled") {
-                <span class="badge badge-pill badge-danger">#(order.status.code)</span>
-                }
-            </a>
-        </div>
+<table class="table table-striped" id="orders-table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client</th>
+            <th scope="col">Status</th>
+            <th scope="col">Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        #for(order in orders) {
+        <tr>
+            <th scope="row"><a href="orders/order/#(order.order.id)">#(order.order.orderNumber)</a></th>
+            <td>#Client_Name#</td>
+            <td>#(order.status.code)</td>
+            <td class="dateCreated">#(order.order.creationDate)</td>
+        </tr>
         }
+    </tbody>
+</table>
 
-    </div>
+
+<!--<div class="container">#for(order in orders) {-->
+        <!--<div class="row" style="margin-bottom: 10px;">-->
+            <!--<a href="orders/order/#(order.order.id)" class="btn btn-outline-secondary btn-block col order-detail-button">-->
+                <!--#if(order.order.orderNumber != NULL) { Order ##(order.order.orderNumber) } else { NULL }-->
+                <!--#if(order.status.code == "New") {-->
+                <!--<span class="badge badge-pill badge-primary">#(order.status.code)</span>-->
+                <!--} else if(order.status.code == "Arrived") {-->
+                <!--<span class="badge badge-pill badge-info">#(order.status.code)</span>-->
+                <!--} else if(order.status.code == "Ready") {-->
+                <!--<span class="badge badge-pill badge-success">#(order.status.code)</span>-->
+                <!--} else if(order.status.code == "Scanned") {-->
+                <!--<span class="badge badge-pill badge-warning">#(order.status.code)</span>-->
+                <!--} else if(order.status.code == "Canceled") {-->
+                <!--<span class="badge badge-pill badge-danger">#(order.status.code)</span>-->
+                <!--}-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--}-->
+
+    <!--</div>-->
 } else { There is no orders yet...}
 </div>
 }

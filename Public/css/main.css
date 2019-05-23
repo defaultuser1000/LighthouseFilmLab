@@ -331,6 +331,19 @@ button:has(i.save-button) {
     vertical-align: top;
 }
 
+table#orders-table {
+    border-collapse: collapse;
+}
+#orders-table th a {
+    color: #555555;
+}
+#orders-table tbody tr:hover {
+    background-color: #ccc;
+}
+#orders-table tr:hover {
+    cursor: pointer;
+}
+
 .next-status {
     font-size: 1.2rem;
 }

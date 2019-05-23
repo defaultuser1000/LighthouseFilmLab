@@ -1,26 +1,27 @@
 #set("page_script"){<script src="/js/order_details.js"></script>}
 #set("pageHeader") {
 #if(order){
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl"> <!--onclick="javascript: form.action='/orders/order/#(order.id)/downloadOrderForm';"-->
-    <i class="material-icons edit-button">print</i>
-</button>
-<div></div>
-<div class="navbar">
-    <span class="header-title">Order ##(order.order.orderNumber)#if(order.currentStatus.code == "New") {
-        <span class="badge badge-pill badge-primary order-detail-badge">#(order.currentStatus.code)</span>
-        } else if(order.currentStatus.code == "Arrived") {
-        <span class="badge badge-pill badge-info order-detail-badge">#(order.currentStatus.code)</span>
-        } else if(order.currentStatus.code == "Ready") {
-        <span class="badge badge-pill badge-success order-detail-badge">#(order.currentStatus.code)</span>
-        } else if(order.currentStatus.code == "Scanned") {
-        <span class="badge badge-pill badge-warning order-detail-badge">#(order.currentStatus.code)</span>
-        } else if(order.currentStatus.code == "Canceled") {
-        <span class="badge badge-pill badge-danger order-detail-badge">#(order.currentStatus.code)</span>
-        }
-    </span>
-    <div id="moveStatus">
-        <div class="container">
-            <button type="button" class="btn btn-outline-primary"> <!--onclick="editOrder()"-->
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-2">
+            <button type="button" class="btn btn-primary col" data-toggle="modal" data-target=".bd-example-modal-xl">
+                <i class="material-icons edit-button">print</i>
+            </button>
+        </div>
+        <div class="col">
+            <span class="header-title">Order ##(order.order.orderNumber)#if(order.currentStatus.code == "New") {
+                <span class="badge badge-pill badge-primary order-detail-badge">#(order.currentStatus.code)</span>
+                } else if(order.currentStatus.code == "Arrived") {
+                <span class="badge badge-pill badge-info order-detail-badge">#(order.currentStatus.code)</span>
+                } else if(order.currentStatus.code == "Ready") {
+                <span class="badge badge-pill badge-success order-detail-badge">#(order.currentStatus.code)</span>
+                } else if(order.currentStatus.code == "Scanned") {
+                <span class="badge badge-pill badge-warning order-detail-badge">#(order.currentStatus.code)</span>
+                } else if(order.currentStatus.code == "Canceled") {
+                <span class="badge badge-pill badge-danger order-detail-badge">#(order.currentStatus.code)</span>
+                }
+            </span>
+            <button type="button" class="btn btn-outline-primary">
                 <i class="material-icons push-status">arrow_forward</i>
                 #if(order.nextStatus.code == "New") {
                 <span class="badge badge-pill badge-primary order-badge next-status">#(order.nextStatus.code)</span>
@@ -37,14 +38,14 @@
                 }
             </button>
         </div>
-    </div>
-    <div id="orderDetailButtons">
-        <button type="button" class="btn btn-primary" onclick="editOrder()">
-            <i class="material-icons edit-button">edit</i>
-        </button>
-        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
-            <i class="material-icons delete-button">delete_forever</i>
-        </button>
+        <div id="orderDetailButtons" class="col-3">
+            <button type="button" class="btn btn-primary" onclick="editOrder()">
+                <i class="material-icons edit-button">edit</i>
+            </button>
+            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#deleteModal">
+                <i class="material-icons delete-button">delete_forever</i>
+            </button>
+        </div>
     </div>
 </div>}
         }
