@@ -352,6 +352,14 @@ div#moveStatus span.order-badge {
 @media (max-width: 768px) {
     #invoice {
         display: none;
+        transition: all 0.1s;
+    }
+    
+    div.print-modal {
+        margin: 5%;
+        width: 90%;
+        height: 90%;
+        transition: all 0.2s;
     }
     
     .header-name {
