@@ -35,7 +35,7 @@ div.modal {
 
 div.modal-dialog {
     position: absolute;
-    z-index: relative + 1;
+    z-index: relative;
 }
 
 /*This just stops me getting horizontal scrolling if anything overflows the width*/
