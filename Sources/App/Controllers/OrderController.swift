@@ -154,8 +154,8 @@ final class OrderController: RouteCollection {
         struct PageData: Content {
             var order: Order
             var orderPDF: Data
-            var currentStatus: OrderStatus
-            var nextStatus: OrderStatus
+//            var currentStatus: OrderStatus
+//            var nextStatus: OrderStatus
             var scanners: [Scanner]
             var selectedScanner: Scanner
             var users: [User]
@@ -166,25 +166,25 @@ final class OrderController: RouteCollection {
         return try req.parameters.next(Order.self).flatMap { order in
             
             let orderPDF = OrderPDF.query(on: req).filter(\.orderID == order.id!).first()
-            let currentStatus = OrderStatus.find(order.statusID!, on: req)
+//            let currentStatus = OrderStatus.find(order.statusID!, on: req)
             let selectedScanner = Scanner.find(order.scannerID, on: req)
             let scanners = Scanner.query(on: req).all()
             let users = User.query(on: req).all()
             
-            return flatMap(orderPDF, currentStatus, selectedScanner, scanners, users) { (orderPDF, currentStatus, selectedScanner, scanners, users) in
+            return flatMap(orderPDF, selectedScanner, scanners, users) { (orderPDF, selectedScanner, scanners, users) in
                 
-                let next = OrderStatus.find(currentStatus!.nextStatusId!, on: req)
+//                let next = OrderStatus.find(currentStatus!.nextStatusId!, on: req)
                 let userCreated = User.find(order.userCreatedID, on: req)
                 let orderOwner = User.find(order.userID, on: req)
 //                let users = User.query(on: req).all()
 //                let userCreated = User.find(order.userCreatedID, on: req)
 //                let orderOwner = User.find(order.userID, on: req)
                 
-                return flatMap(next, userCreated, orderOwner) { nextStatus, userCreated, orderOwner in
+                return flatMap(userCreated, orderOwner) { userCreated, orderOwner in
                     let context = PageData(order: order,
                                            orderPDF: (orderPDF!.pdfContent),
-                                           currentStatus: currentStatus!,
-                                           nextStatus: nextStatus!,
+//                                           currentStatus: currentStatus!,
+//                                           nextStatus: nextStatus!,
                                            scanners: scanners,
                                            selectedScanner: selectedScanner!,
                                            users: users,
