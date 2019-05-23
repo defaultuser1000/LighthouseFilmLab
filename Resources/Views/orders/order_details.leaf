@@ -244,8 +244,8 @@
 </div>
 
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-modal="true">
-<div class="modal-dialog modal-xl" style="width: 1024px; height: 90%;">
-    <div class="modal-content" style="width: 90%; height: 90%;">
+<div class="modal-dialog modal-xl print-modal">
+    <div class="modal-content">
 
         <div class="modal-header">
             <h5 class="modal-title h4" id="myExtraLargeModalLabel">Print Order Form</h5>
