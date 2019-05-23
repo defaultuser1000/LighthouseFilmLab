@@ -350,6 +350,10 @@ div#moveStatus span.order-badge {
 }
 
 @media (max-width: 768px) {
+    #invoice {
+        display: none;
+    }
+    
     .header-name {
         display: none;
     }
