@@ -28,15 +28,15 @@
     color: #555555;
 }
 
-div.modal {
+/*div.modal {
     position: absolute;
     z-index: 5;
-}
+}*/
 
-div.modal-dialog {
+/*div.modal-dialog {
     position: absolute;
     z-index: relative;
-}
+}*/
 
 /*This just stops me getting horizontal scrolling if anything overflows the width*/
 body {
