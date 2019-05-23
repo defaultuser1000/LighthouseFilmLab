@@ -28,6 +28,11 @@
     color: #555555;
 }
 
+div.modal {
+    position: absolute;
+    z-index: 5;
+}
+
 /*This just stops me getting horizontal scrolling if anything overflows the width*/
 body {
     overflow-x: hidden;
