@@ -35,7 +35,20 @@ extension OrderPDF: Migration {
         }
     }
 }
-struct UpdateOrderIdField: PostgreSQLMigration {
+//struct UpdateOrderIdField: PostgreSQLMigration {
+//    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+//        return Database.update(OrderPDF.self, on: conn) { builder in
+//            builder.reference(from: \.orderID, to: \Order.id, onUpdate: .cascade, onDelete: .cascade)
+//        }
+//    }
+//
+//    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+//        return .done(on: conn)
+//    }
+//}
+struct UpdateOrderIdField: Migration {
+    typealias Database = PostgreSQLDatabase
+    
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
         return Database.update(OrderPDF.self, on: conn) { builder in
             builder.reference(from: \.orderID, to: \Order.id, onUpdate: .cascade, onDelete: .cascade)
@@ -46,6 +59,7 @@ struct UpdateOrderIdField: PostgreSQLMigration {
         return .done(on: conn)
     }
 }
+
 extension OrderPDF: Content { }
 extension OrderPDF: Parameter { }
 
