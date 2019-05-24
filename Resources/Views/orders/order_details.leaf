@@ -250,7 +250,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.action='/orders/order/#(order.id)/delete';">Delete</button>
+            <button type="submit" class="btn btn-danger" form="changedOrderForm" onclick="javascript: form.method='get'; form.action='/orders/order/#(order.order.id)/delete';">Delete</button>
         </div>
     </div>
 </div>

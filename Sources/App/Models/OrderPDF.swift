@@ -29,10 +29,21 @@ extension OrderPDF: Migration {
         return Database.create(self, on: conn) { builder in
             try addProperties(to: builder)
 //            builder.unique(on: \.orderNumber)
-            builder.reference(from: \.orderID, to: \Order.id)
+            builder.reference(from: \.orderID, to: \Order.id, onUpdate: .cascade, onDelete: .cascade)
 //            builder.reference(from: \.scannerID, to: \Scanner.id)
 //            builder.reference(from: \.statusID, to: \OrderStatus.id)
         }
+    }
+}
+struct UpdateOrderIdField: PostgreSQLMigration {
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        return Database.update(OrderPDF.self, on: conn) { builder in
+            builder.reference(from: \.orderID, to: \Order.id, onUpdate: .cascade, onDelete: .cascade)
+        }
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
     }
 }
 extension OrderPDF: Content { }

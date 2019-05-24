@@ -117,9 +117,20 @@ final class OrderController: RouteCollection {
     
     func deleteHandlerWeb(_ req: Request) throws -> Future<Response> {
         return try req.parameters.next(Order.self).flatMap { order in
-            return order.delete(on: req).map {_ in
-                req.redirect(to: "/orders")
+            
+            return try order.orderPDF.query(on: req).delete().flatMap { _ in
+                return order.delete(on: req).map { _ in
+                    return req.redirect(to: "/orders")
+                }
             }
+            
+            
+//            return try order.orderPDF.query(on: req).first().flatMap { orderPdf in
+//                orderPdf?.delete(on: req)
+//                return order.delete(on: req).map {_ in
+//                    req.redirect(to: "/orders")
+//                }
+//            }
         }
     }
     
