@@ -9,6 +9,7 @@
             </button>
         </div>
         <div class="col">
+            #(order.statusesJoined.currentStatus)
             <span class="header-title">Order ##(order.order.orderNumber)#if(order.currentStatus.code == "New") {
                 <span class="badge badge-pill badge-primary order-detail-badge">#(order.currentStatus.code)</span>
                 } else if(order.currentStatus.code == "Arrived") {
