@@ -1,0 +1,28 @@
+#set("pageHeader") {
+<div class="navbar">
+    <span class="header-title">Order Settings</span>
+</div>
+        }
+        #set("main") {
+<div class="container px-lg-5">
+<div class="row mx-lg-n5">
+    <a href="/settings/order/statuses" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Statuses</a>
+    <a href="/settings/order/fields" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Order Fields</a>
+</div>
+<!--<div class="row mx-lg-n5">-->
+<!--<a href="#" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Statuses constructor</a>-->
+<!--<a href="settings/scanners" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanners</a>-->
+<!--</div>-->
+</div>
+        }
+        #set("crumbs") {
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/settings">Settings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Order Settings</li>
+</ol>
+</nav>
+        }
+        #set("imgLogo") {<img alt="" class="logo-img" src="../../images/logo.png"/>}
+        #embed("home")

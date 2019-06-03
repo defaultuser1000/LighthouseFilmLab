@@ -7,10 +7,10 @@
 <div class="container px-lg-5">
     <div class="row mx-lg-n5">
         <a href="settings/user" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">User settings</a>
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Order settings</a>
+        <a href="settings/order" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Order settings</a>
     </div>
     <div class="row mx-lg-n5">
-        <a class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Statuses constructor</a>
+        <a href="#" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Statuses constructor</a>
         <a href="settings/scanners" class="btn btn-outline-primary col py-3 px-lg-5 border bg-light" style="margin: 5px;">Scanners</a>
     </div>
 </div>

@@ -46,8 +46,10 @@ final class OrderController: RouteCollection {
                 order.modificationDate = Date()
                 
                 let pdfHelper = PDFHelper()
+                let stringOrderId = String(order.id!)
                 let pdf = pdfHelper.renderPDF(invoiceNumber: "\(order.orderNumber ?? 0)",
-                    receivedDate: order.creationDate ?? Date(),
+                    orderId: stringOrderId,
+                    receivedDate: order.creationDate ,
                     eMail: "\(user!.eMail)",
                     fullName: "\(user!.name ?? "n/a") \(user!.surName ?? "n/a")",
                     jobName: "\(user!.jobName ?? "n/a")",
@@ -72,6 +74,17 @@ final class OrderController: RouteCollection {
                         .save(on: req)
                     return req.redirect(to: "/orders")
                 }
+            }
+        }
+    }
+    
+    func nextStatusHandlerWeb(_ req: Request) throws -> Future<Response> {
+        return try flatMap(req.parameters.next(Order.self), req.content.decode(Order.self)) { order, updatedOrder in
+            order.statusID = 2
+            
+            return order.save(on: req)
+                .map(to: Response.self) { savedOrder in
+                    return req.redirect(to: "/orders/order/\(savedOrder.id!)")
             }
         }
     }
@@ -123,14 +136,6 @@ final class OrderController: RouteCollection {
                     return req.redirect(to: "/orders")
                 }
             }
-            
-            
-//            return try order.orderPDF.query(on: req).first().flatMap { orderPdf in
-//                orderPdf?.delete(on: req)
-//                return order.delete(on: req).map {_ in
-//                    req.redirect(to: "/orders")
-//                }
-//            }
         }
     }
     

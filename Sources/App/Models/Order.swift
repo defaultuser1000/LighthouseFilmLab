@@ -21,10 +21,10 @@ final class Order: PostgreSQLModel {
     var special: String
     var statusID: OrderStatus.ID?
     var userCreatedID: User.ID
-    var creationDate: Date?
-    var modificationDate: Date?
+    var creationDate: Date
+    var modificationDate: Date
     
-    init(password: String, userID: String, scannerID: Scanner.ID, skinTones: String, contrast: String, bwContrast: String, expressScan: String, special: String, statusID: OrderStatus.ID?, userCreatedID: User.ID, creationDate: Date, modificationDate: Date) {
+    init(password: String, userID: String, scannerID: Scanner.ID, skinTones: String, contrast: String, bwContrast: String, expressScan: String, special: String, statusID: OrderStatus.ID?, userCreatedID: User.ID, creationDate: Date?, modificationDate: Date?) {
         self.userID = Int(userID) ?? 1
         self.scannerID = scannerID
         self.skinTones = skinTones
@@ -34,8 +34,8 @@ final class Order: PostgreSQLModel {
         self.special = special
         self.statusID = statusID ?? 1
         self.userCreatedID = userCreatedID
-        self.creationDate = creationDate
-        self.modificationDate = modificationDate
+        self.creationDate = creationDate ?? Date()
+        self.modificationDate = modificationDate ?? Date()
     }
 }
 

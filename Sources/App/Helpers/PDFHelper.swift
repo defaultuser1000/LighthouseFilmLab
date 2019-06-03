@@ -52,6 +52,7 @@ final class PDFHelper: NSObject {
     }
     
     func renderPDF(invoiceNumber: String,
+                   orderId: String,
                    receivedDate: Date,
                    eMail: String,
                    fullName: String,
@@ -98,6 +99,8 @@ final class PDFHelper: NSObject {
             
             
             HTMLContent = HTMLContent.replacingOccurrences(of: "#FULL_NAME#", with: fullName)
+            
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#ORDER_ID#", with: orderId)
             
             HTMLContent = HTMLContent.replacingOccurrences(of: "#INVOICE_NUMBER#", with: invoiceNumber)
             

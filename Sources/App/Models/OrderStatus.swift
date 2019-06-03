@@ -14,10 +14,14 @@ final class OrderStatus: PostgreSQLModel {
     var id: Int?
     var code: String?
     var nextStatusId: OrderStatus.ID?
+    var creationDate: Date?
+    var modificationDate: Date?
     
-    init(code: String, nextStatusId: OrderStatus.ID?) {
+    init(code: String, nextStatusId: OrderStatus.ID?, creationDate: Date?, modificationDate: Date?) {
         self.code = code
         self.nextStatusId = nextStatusId
+        self.creationDate = creationDate ?? Date()
+        self.modificationDate = modificationDate ?? Date()
     }
 }
 
@@ -44,8 +48,10 @@ struct NewStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "New", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Confirmed").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "New", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -56,8 +62,10 @@ struct ConfirmedStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Confirmed", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Sent").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Confirmed", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -68,8 +76,10 @@ struct SentStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Sent", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Arrived").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Sent", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -80,8 +90,10 @@ struct ArrivedStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Arrived", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Developed").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Arrived", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -92,8 +104,10 @@ struct DevelopedStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Developed", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Scanned").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Developed", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -104,8 +118,10 @@ struct ScannedStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Scanned", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Processed").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Scanned", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -116,8 +132,10 @@ struct ProcessedStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Processed", nextStatusId: nil)
-        return status.save(on: conn).transform(to: ())
+        return OrderStatus.query(on: conn).filter(\.code == "Ready").first().flatMap { nextStatus in
+            let status = OrderStatus(code: "Processed", nextStatusId: nextStatus!.id!, creationDate: Date(), modificationDate: Date())
+            return status.save(on: conn).transform(to: ())
+        }
     }
     
     static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
@@ -128,7 +146,7 @@ struct ReadyStatus: Migration {
     typealias Database = PostgreSQLDatabase
     
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
-        let status = OrderStatus(code: "Ready", nextStatusId: nil)
+        let status = OrderStatus(code: "Ready", nextStatusId: nil, creationDate: Date(), modificationDate: Date())
         return status.save(on: conn).transform(to: ())
     }
     

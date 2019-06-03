@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <script src="/js/qrcode.js"></script>
     <meta charset="utf-8">
     <title>Lighthouse Order Form</title>
     <style>
@@ -180,6 +181,17 @@
                         <div class="logo-content">
                             <img alt="" src="../../images/logo_0.5x.png">
                         </div>
+                        <div id="qrcode"></div>
+                        <script type="text/javascript">
+                            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                                text: "http://localhost:8080/orders/order/#ORDER_ID#/next",
+                                width: 128,
+                                height: 128,
+                                colorDark : "#000000",
+                                colorLight : "#ffffff",
+                                correctLevel : QRCode.CorrectLevel.H
+                            });
+                        </script>
                     </div>
                     <div class="lab-use-only">
                         LAB USE ONLY

@@ -13,8 +13,8 @@ final class OrderPDF: PostgreSQLModel {
     var id: Int?
     var orderID: Order.ID
     var pdfContent: Data
-    var creationDate: Date
-    var modificationDate: Date
+    var creationDate: Date?
+    var modificationDate: Date?
     
     init(orderID: Order.ID, pdfContent: Data, creationDate: Date, modificationDate: Date) {
         self.orderID = orderID

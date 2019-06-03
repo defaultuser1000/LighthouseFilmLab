@@ -96,3 +96,17 @@ struct EmployerRole: Migration {
         return .done(on: conn)
     }
 }
+
+struct ClientRole: Migration {
+    typealias Database = PostgreSQLDatabase
+    
+    static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
+        
+        let role = Role(name: "Client", roleType: "WORK", creationDate: Date(), modificationDate: Date())
+        return role.save(on: conn).transform(to: ())
+    }
+    
+    static func revert(on conn: PostgreSQLConnection) -> Future<Void> {
+        return .done(on: conn)
+    }
+}
