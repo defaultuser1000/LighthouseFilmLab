@@ -39,6 +39,16 @@ final class Order: PostgreSQLModel {
     }
 }
 
+extension Array {
+    func toDictionary<K,V>() -> [K:V] where Iterator.Element == (K,V) {
+        return self.reduce([:]) {
+            var dict:[K:V] = $0
+            dict[$1.0] = $1.1
+            return dict
+        }
+    }
+}
+
 extension Order: Migration {
     static func prepare(on conn: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: conn) { builder in

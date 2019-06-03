@@ -22,8 +22,20 @@
         #for(order in orders) {
         <tr>
             <th scope="row"><a href="orders/order/#(order.order.id)">#(order.order.orderNumber)</a></th>
-            <td>#Client_Name#</td>
-            <td>#(order.status.code)</td>
+            <td>#(order.user.name) #(order.user.surName) </td>
+            <td>
+                #if(order.status.code == "New") {
+                <span class="badge badge-pill badge-primary">#(order.status.code)</span>
+                } else if(order.status.code == "Arrived") {
+                <span class="badge badge-pill badge-info">#(order.status.code)</span>
+                } else if(order.status.code == "Ready") {
+                <span class="badge badge-pill badge-success">#(order.status.code)</span>
+                } else if(order.status.code == "Scanned") {
+                <span class="badge badge-pill badge-warning">#(order.status.code)</span>
+                } else if(order.status.code == "Canceled") {
+                <span class="badge badge-pill badge-danger">#(order.status.code)</span>
+                }
+            </td>
             <td class="dateCreated">#(order.order.creationDate)</td>
         </tr>
         }

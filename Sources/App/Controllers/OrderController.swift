@@ -41,7 +41,7 @@ final class OrderController: RouteCollection {
             
             return flatMap(user, scanner) { user, scanner in
                 
-                order.statusID = 1
+                order.statusID = 8
                 order.creationDate = Date()
                 order.modificationDate = Date()
                 
@@ -144,6 +144,7 @@ final class OrderController: RouteCollection {
         struct JoinResultsTuple: Encodable {
             let order: Order
             let status: OrderStatus
+            let user: User
         }
         
         struct MyContext: Encodable {
@@ -151,10 +152,13 @@ final class OrderController: RouteCollection {
             let orders: [JoinResultsTuple]
         }
         
-        return Order.query(on: req).join(\OrderStatus.id, to: \Order.statusID).alsoDecode(OrderStatus.self).all().flatMap(to: View.self) { joinResults in
+        return Order.query(on: req)
+            .join(\OrderStatus.id, to: \Order.statusID).alsoDecode(OrderStatus.self)
+            .join(\User.id, to: \Order.userID).alsoDecode(User.self)
+            .all().flatMap(to: View.self) { joinResults in
             var joinResultsTuples: [JoinResultsTuple] = []
             for joinResult in joinResults {
-                joinResultsTuples.append( JoinResultsTuple( order: joinResult.0, status: joinResult.1) )
+                joinResultsTuples.append( JoinResultsTuple( order: joinResult.0.0, status: joinResult.0.1, user: joinResult.1) )
             }
             let context = MyContext(title: "orders", orders: joinResultsTuples)
             return try req.view().render("orders/orders", context)
@@ -192,26 +196,26 @@ final class OrderController: RouteCollection {
 //                    joinResultsTuples.append( JoinResultsTuple( currentStatus: joinResult.code, nextStatus: joinResult.nextStatus.query(on: req). ))
 //                }
             
-                return flatMap(orderPDF, selectedScanner, scanners, users) { (orderPDF, selectedScanner, scanners, users) in
+            return flatMap(orderPDF, selectedScanner, scanners, users) { (orderPDF, selectedScanner, scanners, users) in
                     
 //                    let nextStatus = currentStatus?.nextStatus.get(on: req)
-                    let userCreated = User.find(order.userCreatedID, on: req)
-                    let orderOwner = User.find(order.userID, on: req)
+                let userCreated = User.find(order.userCreatedID, on: req)
+                let orderOwner = User.find(order.userID, on: req)
                     
-                    return flatMap(userCreated, orderOwner) { userCreated, orderOwner in
-                        let context = PageData(order: order,
-                                               orderPDF: (orderPDF!.pdfContent),
+                return flatMap(userCreated, orderOwner) { userCreated, orderOwner in
+                    let context = PageData(order: order,
+                                            orderPDF: (orderPDF!.pdfContent),
 //                                               statusesJoined: joinResultsTuples,
-                                               scanners: scanners,
-                                               selectedScanner: selectedScanner!,
-                                               users: users,
-                                               userCreated: userCreated!,
-                                               orderOwner: orderOwner!
-                        )
+                                            scanners: scanners,
+                                            selectedScanner: selectedScanner!,
+                                            users: users,
+                                            userCreated: userCreated!,
+                                            orderOwner: orderOwner!
+                    )
                         
-                        return try req.view().render("orders/order_details", ["order": context])
-                    }
+                    return try req.view().render("orders/order_details", ["order": context])
                 }
+            }
 //            }
         }
     }

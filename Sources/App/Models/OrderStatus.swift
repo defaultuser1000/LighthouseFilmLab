@@ -30,6 +30,7 @@ extension OrderStatus: Migration {
         }
     }
 }
+
 extension OrderStatus: Content { }
 extension OrderStatus: Parameter { }
 extension OrderStatus {

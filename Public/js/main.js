@@ -19,12 +19,17 @@ window.addEventListener('DOMContentLoaded', function(e) {
         const cellDate = dateFields.item(i).textContent;
         let date = new Date(1970, 0, 1);
         date.setSeconds(cellDate);
-        const day = date.getDate();
+        let day = "";
+        if ((date.getDate() / 10) < 1) {
+            day = "0" + date.getDate();
+        } else {
+            day = date.getDate();
+        }
         let month = "";
         if ((date.getMonth() + 1) < 10) {
-            month = "0" + (date.getMonth() + 1);
+            month = "0" + date.getMonth();
         } else {
-            month = date.getMonth() + 1;
+            month = date.getMonth();
         }
         const year = date.getFullYear();
         const hours = date.getHours();

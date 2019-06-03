@@ -9,7 +9,6 @@
             </button>
         </div>
         <div class="col">
-            #(order.statusesJoined.currentStatus)
             <span class="header-title">Order ##(order.order.orderNumber)#if(order.currentStatus.code == "New") {
                 <span class="badge badge-pill badge-primary order-detail-badge">#(order.currentStatus.code)</span>
                 } else if(order.currentStatus.code == "Arrived") {
@@ -22,7 +21,8 @@
                 <span class="badge badge-pill badge-danger order-detail-badge">#(order.currentStatus.code)</span>
                 }
             </span>
-            <button type="button" class="btn btn-outline-primary">
+            #if(order.nextStatus){
+            <button type="button" class="btn btn-outline-primary"> <!--onclick="javascript: form.action='/orders/order/#(order.order.id)/next';"-->
                 <i class="material-icons push-status">arrow_forward</i>
                 #if(order.nextStatus.code == "New") {
                 <span class="badge badge-pill badge-primary order-badge next-status">#(order.nextStatus.code)</span>
@@ -38,6 +38,7 @@
                 <span class="badge badge-pill badge-info order-badge next-status">Arrived</span>
                 }
             </button>
+            }
         </div>
         <div id="orderDetailButtons" class="col-3">
             <button type="button" class="btn btn-primary" onclick="editOrder()">
